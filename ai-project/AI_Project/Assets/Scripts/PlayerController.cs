@@ -37,10 +37,10 @@ public class PlayerController : MonoBehaviour
             target.rotation = Quaternion.Euler(0f, 90f, 0f);
         else
         {
-            if(Input.GetKeyDown(KeyCode.W)) target.rotation = Quaternion.Euler(0f, 0f, 0f);
-            else if (Input.GetKeyDown(KeyCode.S))target.rotation = Quaternion.Euler(0f, 180f, 0f);
-            else if(Input.GetKeyDown(KeyCode.A))target.rotation = Quaternion.Euler(0f, -90f, 0f);
-            else if(Input.GetKeyDown(KeyCode.D))target.rotation = Quaternion.Euler(0f, 90f, 0f);
+            if(Input.GetKey(KeyCode.W)) target.rotation = Quaternion.Euler(0f, 0f, 0f);
+            else if (Input.GetKey(KeyCode.S))target.rotation = Quaternion.Euler(0f, 180f, 0f);
+            else if(Input.GetKey(KeyCode.A))target.rotation = Quaternion.Euler(0f, -90f, 0f);
+            else if(Input.GetKey(KeyCode.D))target.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         float xSpeed = 0;
         float ySpeed = 0;
