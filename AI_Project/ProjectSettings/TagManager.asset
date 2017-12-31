@@ -11,6 +11,8 @@ TagManager:
   - Board 2Z2X
   - Board 2X
   - Bullet
+  - Enemy
+  - Enemy Eyeshot
   layers:
   - Default
   - TransparentFX
