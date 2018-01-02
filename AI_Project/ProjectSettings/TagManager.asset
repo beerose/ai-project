@@ -11,6 +11,8 @@ TagManager:
   - Board 2Z2X
   - Board 2X
   - Bullet
+  - Floor
+  - Walls
   - Enemy
   - Enemy Eyeshot
   layers:

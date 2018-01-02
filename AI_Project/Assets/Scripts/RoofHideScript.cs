@@ -14,17 +14,20 @@ public class RoofHideScript : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (GameController.Instace.currentBoard.transform != transform.parent)
+        if (!Application.isEditor)
         {
-            t += 2*Time.deltaTime;
-            if (t <= 1) col.a = t;
-            mat.color = col;
-        }
-        else
-        {
-            t = 0;
-            col.a = 0;
-            mat.color = col;
+            if (GameController.Instace.currentBoard.transform != transform.parent)
+            {
+                t += 2 * Time.deltaTime;
+                if (t <= 1) col.a = t;
+                mat.color = col;
+            }
+            else
+            {
+                t = 0;
+                col.a = 0;
+                mat.color = col;
+            }
         }
     }
 }

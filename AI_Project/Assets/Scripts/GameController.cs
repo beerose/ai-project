@@ -10,15 +10,19 @@ public class GameController : MonoBehaviour
     public CameraFollow mainCamera;
     public GameObject currentBoard;
     public GameObject Boards;
+    public GameObject Board;
     private GameObject lastBoard;
     private bool boardChange = true;
     private GameObject player;
+    private Vector3 here;
 
     void Start()
     {
         Instace = FindObjectOfType<GameController>();
         player = GameObject.FindWithTag("Player");
         lastBoard = currentBoard;
+        here = new Vector3(0, 0, 16);
+        Instantiate(Board, here, Quaternion.identity);
     }
 
     void Update()
