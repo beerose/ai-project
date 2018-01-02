@@ -20,7 +20,7 @@ public class ShotMover : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.name != Shooter.name)
+		if (col.name != Shooter.name && !col.tag.Equals("Enemy Eyeshot"))
         {
             Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);

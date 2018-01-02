@@ -13,6 +13,8 @@ TagManager:
   - Bullet
   - Floor
   - Walls
+  - Enemy
+  - Enemy Eyeshot
   layers:
   - Default
   - TransparentFX
