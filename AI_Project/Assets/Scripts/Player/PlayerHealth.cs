@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour {
     public Color m_ZeroHealthColor = Color.red;
     public float LifeTime;
 
-    private float m_CurrentHealth;
+	private float m_CurrentHealth;
     private bool m_Dead;
     private Rigidbody rb;
 

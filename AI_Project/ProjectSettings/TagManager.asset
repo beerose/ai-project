@@ -13,6 +13,7 @@ TagManager:
   - Bullet
   - Enemy
   - Enemy Eyeshot
+  - Enemy Weapon
   layers:
   - Default
   - TransparentFX

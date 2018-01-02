@@ -12,17 +12,13 @@ public class EnemyMovement : MonoBehaviour {
 	private float runningDelay = 1;
 
 	private EnemyController enemyController;
+	private EnemyShooting enemyShooting;
 	private Vector3 startPosition;
 	private NavMeshAgent agent;
 
-	private float attackDistance = 1;
-	private float attackDemage = 10;
-	private float attackDelay = 1;
-	private float attackCost = 0.2f;
-	private float attackTimer = 0;
-
 	void Start(){
 		enemyController = gameObject.GetComponentInParent<EnemyController>();
+		enemyShooting = gameObject.GetComponentInParent<EnemyShooting> ();
 		startPosition =  enemyController.transform.position; 
 		agent = enemyController.GetComponent<NavMeshAgent> ();
 	}
@@ -50,29 +46,26 @@ public class EnemyMovement : MonoBehaviour {
 		if (other.tag.Equals ("Player")) {
 			startPosition = other.transform.position;
 			setRotation (other.transform);
-			goAndHit (other);
+			move (other);
+		}
+		if (other.tag.Equals ("Bullet")) {
 		}
 	}
 
-	private void goAndHit(Collider other){
-		float distance = Vector3.Distance(transform.position, other.transform.position);
-		if (distance > attackDistance && enemyController.isEnergy (runningCost)) {
+	private void move(Collider other){
+		if (!enemyShooting.isAttackPossible (other) && enemyController.isEnergy (runningCost)) {
 			if (runningTimer <= 0) {
 				runningTimer = runningDelay;
 				enemyController.useEnergy (runningCost);
 			}
 			agent.speed = runningSpeed;
 			agent.SetDestination (other.transform.position);
-		} else if (distance <= attackDistance && attackTimer <= 0 && enemyController.isEnergy (attackCost)) {
-			other.SendMessage ("TakeDamage", attackDemage);
-			attackTimer = attackDelay;
-			enemyController.useEnergy (attackCost);
+		} else {
+			enemyShooting.attack (other);
 		}
-
-		attackTimer = updateTime (attackTimer);
 		runningTimer = updateTime (runningTimer);
 	}
-
+		
 	private float updateTime(float timer){
 		if (timer > 0) {
 			return timer - Time.deltaTime;
