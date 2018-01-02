@@ -1,6 +1,9 @@
 ###
 # Unity folders and files
 ###
+
+Main.unity
+
 [Aa]ssets/AssetStoreTools*
 [Bb]uild/
 [Ll]ibrary/
