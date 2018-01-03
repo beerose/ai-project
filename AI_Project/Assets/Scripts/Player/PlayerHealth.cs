@@ -12,10 +12,13 @@ public class PlayerHealth : MonoBehaviour {
     public Color m_ZeroHealthColor = Color.red;
     public float LifeTime;
 
-	private float m_CurrentHealth;
+    private float m_CurrentHealth;
     private bool m_Dead;
     private Rigidbody rb;
 
+	public float CurrentHealth{
+		get{ return m_CurrentHealth;}
+	}
 
     private void Awake()
     {
@@ -54,4 +57,11 @@ public class PlayerHealth : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         Destroy(gameObject, LifeTime);
     }
+
+	void OnTriggerEnter(Collider collider) {
+		string colTag = collider.transform.tag;
+		if ( colTag.Equals("Enemy Weapon") ) {
+			TakeDamage(collider.gameObject.GetComponent<ShotMover>().power); 
+		}
+	}
 }

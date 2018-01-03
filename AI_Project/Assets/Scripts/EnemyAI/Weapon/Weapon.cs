@@ -10,9 +10,9 @@ public abstract class Weapon : MonoBehaviour {
 	public float incentive;
 	protected float attackTimer;
 
-	public abstract bool isAvailable (Collider other, Transform enemyTransform);
-	public abstract float getRating (Collider other, EnemyController enemyController);
-	public abstract void attack (Collider other);
+	public abstract bool isAvailable (Transform playerTransform);
+	public abstract float getRating (Collider player, EnemyController enemyController);
+	public abstract void attack (Collider player);
 
 	void Update(){
 		attackTimer = updateTime (attackTimer);

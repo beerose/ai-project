@@ -7,9 +7,9 @@ public class BulletController : Weapon {
 	public Transform shotSpawn;
 	public float attackQuantity;
 
-	public override bool isAvailable (Collider other, Transform enemyTransform) {
+	public override bool isAvailable (Transform playerTransform) {
 		RaycastHit hit;
-		if (Physics.Raycast (enemyTransform.position, transform.forward, out hit, attackDistance)) {
+		if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
 			if (hit.collider.gameObject.tag == "Player" && attackTimer <= 0 && attackQuantity > 0) {
 				return true;
 			}
@@ -17,16 +17,16 @@ public class BulletController : Weapon {
 		return false;
 	}
 
-	public override float getRating (Collider other, EnemyController enemyController){
-		PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth> (); 
-		float distance = Vector3.Distance(transform.position, other.transform.position);
+	public override float getRating (Collider player, EnemyController enemyController){
+		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
+		Vector3 otherPosition = player.transform.position;
+		float distance = Vector3.Distance(transform.position, otherPosition);
 		float energy = 100 - (attackCost / enemyController.CurrentEnergy * 100);
-		float demage = attackDemage / enemyController.CurrentHealth * 100;
+		float demage = attackDemage / playerHealth.CurrentHealth * 100;
 		return - distance + (energy + demage) * incentive ;
 	}
 
-	public override void attack(Collider other){
-		Debug.Log ("Bullet!");
+	public override void attack(Collider player){
 		Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
 		attackTimer = attackDelay;
 	}

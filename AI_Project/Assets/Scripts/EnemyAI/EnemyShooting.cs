@@ -4,39 +4,37 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour {
 
-	public GameObject[] weapons = new GameObject[10];
+	private Weapon[] weapons;
 	private EnemyController enemyController;
 
 	void Start(){
 		enemyController = gameObject.GetComponent<EnemyController>();
+		weapons = gameObject.GetComponentsInChildren<Weapon> ();
 	}
 
-	public bool isAttackPossible(Collider other){
+	public bool isAttackPossible(Collider player){
 		for (int i = 0; i < weapons.Length; i++) {
-			if (weapons [i]) {
-				Weapon weapon = weapons [i].GetComponent<Weapon> ();
-				if (weapon.isAvailable (other,transform) && enemyController.isEnergy (weapon.attackCost)) {
-					return true;
-				}
+			if (weapons[i].isAvailable (player.transform) && enemyController.isEnergy (weapons[i].attackCost)) {
+				return true;
 			}
 		}
 		return false;
 	}
 
-	public void attack(Collider other){
+	public void attack(Collider player){
 		Weapon bestWeapon = null;
 		float bestRating = float.NegativeInfinity;
 		for (int i = 0; i < weapons.Length; i++) {
-			if (weapons [i]) {
-				Weapon weapon = weapons [i].GetComponent<Weapon> ();
-				float rating = weapon.getRating (other, enemyController);
-				if (rating > bestRating && weapon.isAvailable (other,transform) && enemyController.isEnergy (weapon.attackCost)) {
-					bestWeapon = weapon;
-					bestRating = rating;
-				}
+			float rating = weapons[i].getRating (player, enemyController);
+			if (rating > bestRating && weapons[i].isAvailable (player.transform) && enemyController.isEnergy (weapons[i].attackCost)) {
+				bestWeapon = weapons[i];
+				bestRating = rating;
 			}
 		}
-		bestWeapon.attack (other);
-		enemyController.useEnergy (bestWeapon.attackCost);
+
+		if (bestWeapon) {
+			bestWeapon.attack (player);
+			enemyController.useEnergy (bestWeapon.attackCost);
+		}
 	}
 }

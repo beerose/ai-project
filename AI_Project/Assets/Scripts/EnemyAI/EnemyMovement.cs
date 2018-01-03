@@ -27,7 +27,6 @@ public class EnemyMovement : MonoBehaviour {
 		searchPlayer ();
 	}
 		
-
 	private void searchPlayer(){
 		agent.speed = walkSpeed;
 		Vector3 randomPosition = randomNavSphere (startPosition, radius, -1);
@@ -42,30 +41,38 @@ public class EnemyMovement : MonoBehaviour {
 		return navHit.position;
 	}
 
+	void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Bullet")) {
+			startPosition = other.transform.position;
+		}
+	}
+
 	void OnTriggerStay(Collider other){
+		setRotation (other.transform);
 		if (other.tag.Equals ("Player")) {
 			startPosition = other.transform.position;
-			setRotation (other.transform);
 			move (other);
-		}
-		if (other.tag.Equals ("Bullet")) {
-		}
+		} 
 	}
 
 	private void move(Collider other){
 		if (!enemyShooting.isAttackPossible (other) && enemyController.isEnergy (runningCost)) {
-			if (runningTimer <= 0) {
-				runningTimer = runningDelay;
-				enemyController.useEnergy (runningCost);
-			}
-			agent.speed = runningSpeed;
-			agent.SetDestination (other.transform.position);
+			run (other.transform);
 		} else {
 			enemyShooting.attack (other);
 		}
 		runningTimer = updateTime (runningTimer);
 	}
 		
+	private void run(Transform targetTransform){
+		if (runningTimer <= 0) {
+			runningTimer = runningDelay;
+			enemyController.useEnergy (runningCost);
+		}
+		agent.speed = runningSpeed;
+		agent.SetDestination (targetTransform.position);
+	}
+
 	private float updateTime(float timer){
 		if (timer > 0) {
 			return timer - Time.deltaTime;
@@ -73,9 +80,9 @@ public class EnemyMovement : MonoBehaviour {
 		return timer;
 	}
 
-	private void setRotation(Transform playerTransform){
+	private void setRotation(Transform targetTransform){
 		Transform enemyTransform = enemyController.transform; 
-		Quaternion targetRotation = Quaternion.LookRotation (playerTransform.position - enemyTransform.position);
+		Quaternion targetRotation = Quaternion.LookRotation (targetTransform.position - enemyTransform.position);
 		float oryginalX = enemyTransform.rotation.x;
 		float oryginalZ = enemyTransform.rotation.z;
 
