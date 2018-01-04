@@ -35,8 +35,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4147076968653564}
   - component: {fileID: 114600214056174766}
-  - component: {fileID: 54800079801100338}
   - component: {fileID: 136748098505431768}
+  - component: {fileID: 114368550315605228}
+  - component: {fileID: 54534895368945378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -928,7 +929,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235888440159198}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54800079801100338
+--- !u!54 &54534895368945378
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -937,11 +938,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &95085460931974160
 Animator:
@@ -1070,6 +1071,18 @@ MonoBehaviour:
   shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
   shotSpawn: {fileID: 4388630016498618}
   fireRate: 0.5
+--- !u!114 &114368550315605228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121323676483868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7557dfc2bd96c476292280d7ebfc7fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackAnimClip: {fileID: 7400000, guid: 680aa8d4593c33b45842a78661c6b71e, type: 3}
 --- !u!114 &114412128099333838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,16 +1118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121323676483868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a3f87793b0b1949893570ca943fa1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ba36825257ff4761b69cc5611651f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 3
   smoothTime: 0.3
-  boundary:
-    xMin: -6
-    xMax: 6
-    zMin: -3
-    zMax: 3
 --- !u!114 &114890915255563458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,6 +1151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackAnimClip: {fileID: 7400000, guid: ce43f40fc2027a949a58e385c6a2cd1f, type: 3}
+  anim: {fileID: 0}
+  fireRate: 0
 --- !u!114 &114977614313661718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1357,8 +1367,8 @@ RectTransform:
   m_Father: {fileID: 224714787039310734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

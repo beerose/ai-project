@@ -31,13 +31,14 @@ namespace Player {
                     var walls = tango.transform.parent.Find("Walls");
                     _boundary = new Boundary
                     {
-                        xMax = walls.Find("West Wall").position.x - .5f,
-                        xMin = walls.Find("East Wall").position.x + .5f,
+                        xMin = walls.Find("West Wall").position.x + .5f,
+                        xMax = walls.Find("East Wall").position.x - .5f,
                         zMax = walls.Find("North Wall").position.z - .5f,
                         zMin = walls.Find("South Wall").position.z + .5f,
                     };
                 }
             }
+			Debug.Log(JsonUtility.ToJson(_boundary));
         }
         
 

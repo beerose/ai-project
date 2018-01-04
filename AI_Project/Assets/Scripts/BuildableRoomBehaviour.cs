@@ -43,6 +43,20 @@ public class BuildableRoomBehaviour : MonoBehaviour
         }
     }
 
+    private Vector3 _position;
+    public Vector3 Position 
+    {
+        get
+        {
+            return _position;
+        }
+        set
+        {
+            SetPosition(value);
+        }
+    }
+
+
     public void SetSize(Vector2 size)
     {
         _size = size;
@@ -71,14 +85,14 @@ public class BuildableRoomBehaviour : MonoBehaviour
         westScale.x = size.y;
         Walls[WEST].localScale = westScale;
         var westPos = Walls[WEST].position;
-        westPos.x = size.x / 2 - .25f;
+        westPos.x = - size.x / 2 + .25f;
         Walls[WEST].position = westPos;
 
         var eastScale = Walls[EAST].localScale;
         eastScale.x = size.y;
         Walls[EAST].localScale = eastScale;
         var eastPos = Walls[EAST].position;
-        eastPos.x = -size.x / 2 + .25f;
+        eastPos.x = size.x / 2  - .25f;
         Walls[EAST].position = eastPos;
 
         SetDoors(size);
@@ -86,8 +100,6 @@ public class BuildableRoomBehaviour : MonoBehaviour
 
     public void SetDoors(Vector2 size)
     {
-        _size = size;
-
         var northPos = Doors[NORTH].position;
         northPos.z = size.y / 2 - .6f;
         Doors[NORTH].position = northPos;
@@ -104,6 +116,12 @@ public class BuildableRoomBehaviour : MonoBehaviour
         eastPos.x = -size.x / 2 + .6f;
         Doors[EAST].position = eastPos;
 
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        _position = position;
+        transform.position = position;
     }
 
 

@@ -6,6 +6,7 @@ using UnityEditor;
 public class LookAtPointEditor : Editor
 {
     Vector2 cachedRoomSize;
+    Vector3 cachedRoomPosition;
 
     public override void OnInspectorGUI()
     {
@@ -19,6 +20,13 @@ public class LookAtPointEditor : Editor
         if (cachedRoomSize != room.Size)
         {
             room.SetSize(cachedRoomSize);
+        }
+
+        cachedRoomPosition = room.Position;
+        cachedRoomPosition = EditorGUILayout.Vector3Field("Room position", room.Position);
+        if (cachedRoomPosition != room.Position)
+        {
+            room.SetPosition(cachedRoomPosition);
         }
 
         if (GUILayout.Button("Collect doors and walls"))
