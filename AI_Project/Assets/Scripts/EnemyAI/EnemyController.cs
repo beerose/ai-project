@@ -14,7 +14,15 @@ public class EnemyController : MonoBehaviour {
 	public float energyDelay = 3;
 
 	private float currentHealth;
+	public float CurrentHealth {
+		get{ return currentHealth;}
+	}
+
 	private float currentEnergy;
+	public float CurrentEnergy {
+		get{ return currentEnergy;}
+	}
+
 	private float energyTimer = 0;
 	private float healthTimer = 0;
 
@@ -61,7 +69,7 @@ public class EnemyController : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		string colTag = collider.transform.tag;
 		if ( colTag.Equals("Bullet") ) {
-			currentHealth -= 1; 
+			currentHealth -=  collider.gameObject.GetComponent<ShotMover>().power; 
 		}
 	}
 

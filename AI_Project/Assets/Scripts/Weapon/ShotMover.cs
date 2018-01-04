@@ -8,6 +8,7 @@ public class ShotMover : MonoBehaviour
     public GameObject Shooter;
     public float Speed;
     public float LifeTime;
+    public float power = 1;
     private Rigidbody rb;
     
 

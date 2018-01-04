@@ -12,17 +12,13 @@ public class EnemyMovement : MonoBehaviour {
 	private float runningDelay = 1;
 
 	private EnemyController enemyController;
+	private EnemyShooting enemyShooting;
 	private Vector3 startPosition;
 	private NavMeshAgent agent;
 
-	private float attackDistance = 1;
-	private float attackDemage = 10;
-	private float attackDelay = 1;
-	private float attackCost = 0.2f;
-	private float attackTimer = 0;
-
 	void Start(){
 		enemyController = gameObject.GetComponentInParent<EnemyController>();
+		enemyShooting = gameObject.GetComponentInParent<EnemyShooting> ();
 		startPosition =  enemyController.transform.position; 
 		agent = enemyController.GetComponent<NavMeshAgent> ();
 	}
@@ -31,7 +27,6 @@ public class EnemyMovement : MonoBehaviour {
 		searchPlayer ();
 	}
 		
-
 	private void searchPlayer(){
 		agent.speed = walkSpeed;
 		Vector3 randomPosition = randomNavSphere (startPosition, radius, -1);
@@ -46,31 +41,36 @@ public class EnemyMovement : MonoBehaviour {
 		return navHit.position;
 	}
 
-	void OnTriggerStay(Collider other){
-		if (other.tag.Equals ("Player")) {
+	void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Bullet")) {
 			startPosition = other.transform.position;
-			setRotation (other.transform);
-			goAndHit (other);
 		}
 	}
 
-	private void goAndHit(Collider other){
-		float distance = Vector3.Distance(transform.position, other.transform.position);
-		if (distance > attackDistance && enemyController.isEnergy (runningCost)) {
-			if (runningTimer <= 0) {
-				runningTimer = runningDelay;
-				enemyController.useEnergy (runningCost);
-			}
-			agent.speed = runningSpeed;
-			agent.SetDestination (other.transform.position);
-		} else if (distance <= attackDistance && attackTimer <= 0 && enemyController.isEnergy (attackCost)) {
-			other.SendMessage ("TakeDamage", attackDemage);
-			attackTimer = attackDelay;
-			enemyController.useEnergy (attackCost);
-		}
+	void OnTriggerStay(Collider other){
+		setRotation (other.transform);
+		if (other.tag.Equals ("Player")) {
+			startPosition = other.transform.position;
+			move (other);
+		} 
+	}
 
-		attackTimer = updateTime (attackTimer);
+	private void move(Collider other){
+		if (!enemyShooting.isAttackPossible (other) && enemyController.isEnergy (runningCost)) {
+			run (other.transform);
+		} else {
+			enemyShooting.attack (other);
+		}
 		runningTimer = updateTime (runningTimer);
+	}
+		
+	private void run(Transform targetTransform){
+		if (runningTimer <= 0) {
+			runningTimer = runningDelay;
+			enemyController.useEnergy (runningCost);
+		}
+		agent.speed = runningSpeed;
+		agent.SetDestination (targetTransform.position);
 	}
 
 	private float updateTime(float timer){
@@ -80,9 +80,9 @@ public class EnemyMovement : MonoBehaviour {
 		return timer;
 	}
 
-	private void setRotation(Transform playerTransform){
+	private void setRotation(Transform targetTransform){
 		Transform enemyTransform = enemyController.transform; 
-		Quaternion targetRotation = Quaternion.LookRotation (playerTransform.position - enemyTransform.position);
+		Quaternion targetRotation = Quaternion.LookRotation (targetTransform.position - enemyTransform.position);
 		float oryginalX = enemyTransform.rotation.x;
 		float oryginalZ = enemyTransform.rotation.z;
 
