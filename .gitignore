@@ -5,7 +5,7 @@ AI_Project/Assets/Scenes/Main.unity
 # Unity folders and files
 ###
 
-Main.unity
+*.unity
 
 *.meta
 

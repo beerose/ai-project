@@ -27,7 +27,9 @@ public class PlayerAnimatorController : MonoBehaviour
 
     public void ChangeAnimAttackSpeed()
     {
-        fireRate = transform.parent.GetComponentInChildren<WeaponController>().fireRate;
+        var x = transform.parent.GetComponentInChildren<WeaponController>();
+        Debug.Log(x);
+        fireRate = x.fireRate;
         anim.SetFloat("attackSpeedMultipler", AttackAnimClip.length / fireRate);
     }
 }
