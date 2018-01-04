@@ -15,7 +15,7 @@ TagManager:
   - Walls
   - Enemy
   - Enemy Eyeshot
-  - Enemy Weapon
+  - Dungeon
   layers:
   - Default
   - TransparentFX
