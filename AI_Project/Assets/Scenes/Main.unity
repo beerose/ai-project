@@ -1825,10 +1825,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178141697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c82407f3d8e974ea9d08b7f793c7fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  shot: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
   shotSpawn: {fileID: 1038299422}
   fireRate: 0.5
 --- !u!23 &1178141700
