@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction {
-    North, East, South, West
+public enum Direction
+{
+    North,
+    East,
+    South,
+    West
 }
 
 public class DoorBehaviour : MonoBehaviour
@@ -18,7 +22,7 @@ public class DoorBehaviour : MonoBehaviour
     private float newBoundaryZMin;
     private float newBoundaryZMax;
 
-    bool AgentCanPassThroughDoor(Transform agent) 
+    bool AgentCanPassThroughDoor(Transform agent)
     {
         return agent.tag == "Player";
     }

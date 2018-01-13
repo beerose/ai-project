@@ -8,13 +8,13 @@ public class PlayerAnimatorController : MonoBehaviour
     public AnimationClip AttackAnimClip;
     private Animator anim;
     private float fireRate;
-    
+
     void Start()
     {
         anim = GetComponent<Animator>();
         ChangeAnimAttackSpeed();
     }
-    
+
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) ||
@@ -27,8 +27,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     public void ChangeAnimAttackSpeed()
     {
-        var x = transform.parent.GetComponentInChildren<WeaponController>();
-        Debug.Log(x);
+        WeaponController x = transform.parent.GetComponentInChildren<WeaponController>();
         fireRate = x.fireRate;
         anim.SetFloat("attackSpeedMultipler", AttackAnimClip.length / fireRate);
     }
