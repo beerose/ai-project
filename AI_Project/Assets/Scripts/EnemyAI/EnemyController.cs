@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		string colTag = collider.transform.tag;
 		if ( colTag.Equals("Bullet") ) {
-			currentHealth -=  collider.gameObject.GetComponent<ShotMover>().power; 
+			currentHealth -=  collider.gameObject.GetComponent<ShotMover>().Power; 
 		}
 	}
 

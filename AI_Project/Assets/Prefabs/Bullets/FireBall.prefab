@@ -265,13 +265,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695753459632526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbf5c11a86e76343a011dcb7bf172a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 012a9e366131a4fd2bc68d7db2a41d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 1899989828998330, guid: 1a6e36064447acc4ab9735d5e3e61fce, type: 2}
-  Shooter: {fileID: 1121323676483868, guid: 9c709412a0bc1624896cb130c6c68289, type: 2}
-  Speed: 10
-  LifeTime: 1.5
+  Speed: 5
+  LifeTime: 5
+  Power: 1
 --- !u!135 &135523367701246412
 SphereCollider:
   m_ObjectHideFlags: 1

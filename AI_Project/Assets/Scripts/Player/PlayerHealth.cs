@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
-
+public class PlayerHealth : MonoBehaviour
+{
     public float m_StartingHealth = 100f;
     public Slider m_Slider;
     public Image m_FillImage;
@@ -16,9 +16,10 @@ public class PlayerHealth : MonoBehaviour {
     private bool m_Dead;
     private Rigidbody rb;
 
-	public float CurrentHealth{
-		get{ return m_CurrentHealth;}
-	}
+    public float CurrentHealth
+    {
+        get { return m_CurrentHealth; }
+    }
 
     private void Awake()
     {
@@ -37,9 +38,9 @@ public class PlayerHealth : MonoBehaviour {
     {
         m_CurrentHealth -= amount;
 
-        if (m_CurrentHealth < 0f && !m_Dead) 
+        if (m_CurrentHealth < 0f && !m_Dead)
         {
-            OnDeath();    
+            OnDeath();
         }
     }
 
@@ -58,10 +59,12 @@ public class PlayerHealth : MonoBehaviour {
         Destroy(gameObject, LifeTime);
     }
 
-	void OnTriggerEnter(Collider collider) {
-		string colTag = collider.transform.tag;
-		if ( colTag.Equals("Enemy Weapon") ) {
-			TakeDamage(collider.gameObject.GetComponent<ShotMover>().power); 
-		}
-	}
+    void OnTriggerEnter(Collider collider)
+    {
+        string colTag = collider.transform.tag;
+        if (colTag.Equals("Enemy Weapon"))
+        {
+            TakeDamage(collider.gameObject.GetComponent<ShotMover>().Power);
+        }
+    }
 }
