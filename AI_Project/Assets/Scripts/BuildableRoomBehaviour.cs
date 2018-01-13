@@ -62,10 +62,13 @@ public class BuildableRoomBehaviour : MonoBehaviour
         _size = size;
 
 		var floorScale = Floor.localScale;
+        var roofScale = Roof.localScale;
 		floorScale.z = size.y / 10;
 		floorScale.x = size.x / 10;
+        roofScale.z = size.y + 0.01f;
+        roofScale.x = size.x + 0.01f;
 		Floor.localScale = floorScale;
-		Roof.localScale = floorScale;
+		Roof.localScale = roofScale;
 
         var northScale = Walls[NORTH].localScale;
         northScale.x = size.x;

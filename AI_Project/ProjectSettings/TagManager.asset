@@ -16,6 +16,7 @@ TagManager:
   - Enemy
   - Enemy Eyeshot
   - Dungeon
+  - Enemy Weapon
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - 
   - 
   - Skip
-  - 
+  - Roof
   - 
   - 
   - 
