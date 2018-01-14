@@ -16,10 +16,10 @@ public class RoofHideScript : MonoBehaviour
     {
         if (!Application.isEditor)
         {
-            if (GameController.Instace.currentBoard.transform != transform.parent)
+            if (GameController.Instace.GetCurrentBoard().transform != transform.parent)
             {
                 t += 2 * Time.deltaTime;
-                if (t <= 1) col.a = t;
+                col.a = Mathf.Clamp(t,0,1);
                 mat.color = col;
             }
             else

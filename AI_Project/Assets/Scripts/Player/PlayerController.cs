@@ -28,6 +28,7 @@ namespace Player
             {
                 if (tango.CompareTag("Floor"))
                 {
+                    FindObjectOfType<GameController>().ChangeBoard(tango.transform.parent.gameObject);
                     var walls = tango.transform.parent.Find("Walls");
                     _boundary = new Boundary
                     {
