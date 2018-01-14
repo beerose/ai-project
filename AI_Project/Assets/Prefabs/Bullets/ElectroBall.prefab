@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4294863487377742}
   - component: {fileID: 135574409455311354}
+  - component: {fileID: 33542777008293170}
   - component: {fileID: 23451983645722046}
   - component: {fileID: 54022511007407734}
   - component: {fileID: 114476696578289612}
-  - component: {fileID: 33542777008293170}
   m_Layer: 0
   m_Name: ElectroBall
   m_TagString: Bullet

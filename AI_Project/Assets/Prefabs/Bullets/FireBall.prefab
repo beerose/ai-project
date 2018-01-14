@@ -71,10 +71,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4309476799497678}
   - component: {fileID: 135523367701246412}
+  - component: {fileID: 33963074377603194}
   - component: {fileID: 23503289773441066}
   - component: {fileID: 54576890948470380}
   - component: {fileID: 114439539589746814}
-  - component: {fileID: 33963074377603194}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Bullet

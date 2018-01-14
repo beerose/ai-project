@@ -9,14 +9,13 @@ public class WeaponController : MonoBehaviour
     private Transform shotSpawn;
     private float nextFire;
     private string ShooterName;
-
-    //private AudioSource audioSource;
+    private AudioSource aud;
 
     void Start()
     {
         ShooterName = OldestParent();
         shotSpawn = GetComponentInChildren<Transform>();
-        //audioSource = GetComponent<AudioSource>();
+        aud = GetComponent<AudioSource>();
     }
 
     public void Fire()
@@ -26,7 +25,7 @@ public class WeaponController : MonoBehaviour
             nextFire = Time.time + fireRate;
             ShotMover bullet = Instantiate(shot, shotSpawn.position, shotSpawn.rotation).GetComponent<ShotMover>();
             bullet.SetShooterName(ShooterName);
-            //audioSource.Play();
+            aud.Play();
         }
     }
 
