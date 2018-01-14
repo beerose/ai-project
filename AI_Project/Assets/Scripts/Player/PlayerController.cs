@@ -20,6 +20,7 @@ namespace Player
         private Vector3 velocity = Vector3.zero;
         private WeaponController weapon;
         private Animator anim;
+        private AudioSource aud;
 
         public void OnEnterNewRoom()
         {
@@ -48,6 +49,7 @@ namespace Player
             target = GetComponent<Transform>();
             weapon = GetComponentInChildren<WeaponController>();
             anim = GetComponentInChildren<Animator>();
+            aud = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -84,6 +86,7 @@ namespace Player
                 0.0f,
                 Mathf.Clamp(transform.position.z, _boundary.zMin, _boundary.zMax)
             );
+            FootStepsSound(xSpeed, zSpeed);
         }
 
 
@@ -93,6 +96,12 @@ namespace Player
             if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
             if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
             if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
+        }
+
+        void FootStepsSound(float xSpeed,float zSpeed)
+        {
+            if (xSpeed == 0 && zSpeed == 0) aud.Stop();
+            else if (!aud.isPlaying) aud.Play();
         }
     }
 }
