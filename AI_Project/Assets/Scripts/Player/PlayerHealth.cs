@@ -9,12 +9,16 @@ public class PlayerHealth : MonoBehaviour
     public Slider m_Slider;
     public Image m_FillImage;
     public Color m_FullHealthColor = Color.green;
+
     public Color m_ZeroHealthColor = Color.red;
-    public float LifeTime;
+    //public float LifeTime;
 
     private float m_CurrentHealth;
+
     private bool m_Dead;
-    private Rigidbody rb;
+
+    //private Rigidbody rb;
+    private PlayerAnimatorController pAnimC;
 
     public float CurrentHealth
     {
@@ -30,15 +34,17 @@ public class PlayerHealth : MonoBehaviour
     {
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
-
+        pAnimC = GetComponentInChildren<PlayerAnimatorController>();
         SetHealthUI();
     }
 
     public void TakeDamage(float amount)
     {
+        Debug.Log("Player take damage");
+        pAnimC.GetHit();
         m_CurrentHealth -= amount;
-
-        if (m_CurrentHealth < 0f && !m_Dead)
+        SetHealthUI();
+        if (m_CurrentHealth <= 0f && !m_Dead)
         {
             OnDeath();
         }
@@ -55,8 +61,9 @@ public class PlayerHealth : MonoBehaviour
     private void OnDeath()
     {
         m_Dead = true;
-        rb = GetComponent<Rigidbody>();
-        Destroy(gameObject, LifeTime);
+        GameController.Instace.GameOver();
+        //rb = GetComponent<Rigidbody>();
+        //Destroy(gameObject, LifeTime);
     }
 
     void OnTriggerEnter(Collider collider)
