@@ -9,13 +9,15 @@ public class PlayerHealth : MonoBehaviour
     public Slider m_Slider;
     public Image m_FillImage;
     public Color m_FullHealthColor = Color.green;
-
     public Color m_ZeroHealthColor = Color.red;
+    public float DamageFromEnemyCollision = 5;
+    public float DelayFromTakeDamage = 0.5f;
+
     //public float LifeTime;
 
     private float m_CurrentHealth;
-
     private bool m_Dead;
+    private float lastHit;
 
     //private Rigidbody rb;
     private PlayerAnimatorController pAnimC;
@@ -69,9 +71,20 @@ public class PlayerHealth : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         string colTag = collider.transform.tag;
-        if (colTag.Equals("Enemy Weapon"))
+        if (colTag.Equals("Enemy Weapon") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
         {
+            lastHit = Time.time;
             TakeDamage(collider.gameObject.GetComponent<ShotMover>().Power);
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        string colTag = collision.transform.tag;
+        if (colTag.Equals("Enemy") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
+        {
+            lastHit = Time.time;
+            TakeDamage(DamageFromEnemyCollision);
         }
     }
 }
