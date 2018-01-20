@@ -84,12 +84,12 @@ public class EnemyController : MonoBehaviour
         return timer;
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision coll)
     {
-        string colTag = collider.transform.tag;
+        string colTag = coll.transform.tag;
         if (colTag.Equals("Bullet"))
         {
-            currentHealth -= collider.gameObject.GetComponent<ShotMover>().Power;
+            currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
         }
     }
 

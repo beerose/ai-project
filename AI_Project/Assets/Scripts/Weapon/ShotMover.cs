@@ -20,18 +20,18 @@ public class ShotMover : MonoBehaviour
         Destroy(gameObject, LifeTime);
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
         if (ShooterName == "") Debug.Log("ShooterName is null");
-        if (col.tag.Equals("Bullet"))
+        if (col.collider.tag.Equals("Bullet"))
         {
-            if (!col.GetComponent<ShotMover>().GetShooterName().Equals(ShooterName))
+            if (!col.collider.GetComponent<ShotMover>().GetShooterName().Equals(ShooterName))
             {
                 Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
                 Destroy(gameObject);
             }
         }
-        else if (col.name != ShooterName && !col.tag.Equals("Enemy Eyeshot"))
+        else if (col.collider.name != ShooterName && !col.collider.tag.Equals("Enemy Eyeshot"))
         {
             Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);

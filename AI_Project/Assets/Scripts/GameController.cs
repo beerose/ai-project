@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public static GameController Instace;
 
     public GameObject GameOverUI;
+    public GameObject YouWinUI;
+
 
     //public CameraFollow mainCamera;
     private GameObject currentBoard;
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour
     {
         Instace = FindObjectOfType<GameController>();
         gameOver = false;
+        RemoveDoors();
         //player = GameObject.FindWithTag("Player");
         //lastBoard = currentBoard;
         //here = new Vector3(0, 0, 16);
@@ -34,6 +37,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (GameObject.FindGameObjectsWithTag("Boss").Length == 0 && Time.timeSinceLevelLoad > 3f) //temporary
+        {
+            YouWinUI.SetActive(true);
+        }
         if (Input.GetKey("escape")) Application.Quit();
         if (boardChange)
         {
@@ -69,5 +76,30 @@ public class GameController : MonoBehaviour
     public bool getGameStatus()
     {
         return gameOver;
+    }
+
+    private void RemoveDoors() //temporary
+    {
+        foreach (var door1 in GameObject.FindGameObjectsWithTag("Door"))
+        {
+            bool kill = true;
+            foreach (var door2 in GameObject.FindGameObjectsWithTag("Door"))
+            {
+                float dist = Distance(door1.transform.position.x, door2.transform.position.x,
+                    door1.transform.position.z,
+                    door2.transform.position.z);
+                if (dist > 0 && dist < 4)
+                {
+                    kill = false;
+                }
+            }
+            if(kill)door1.GetComponent<DoorBehaviour>().KYS();
+        }
+    }
+
+
+    float Distance(float x1, float x2, float z1, float z2)
+    {
+        return Mathf.Sqrt((x2 - x1) * (x2 - x1) + (z2 - z1) * (z2 - z1));
     }
 }
