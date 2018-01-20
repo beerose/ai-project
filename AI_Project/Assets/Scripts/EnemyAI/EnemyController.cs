@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Instantiate(DeathEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
         rechargeHealth();
         rechargeEnergy();

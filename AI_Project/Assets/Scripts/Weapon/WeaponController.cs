@@ -6,7 +6,6 @@ public class WeaponController : MonoBehaviour
 {
     public GameObject shot;
     public float fireRate;
-    private Transform shotSpawn;
     private float nextFire;
     private string ShooterName;
     private AudioSource aud;
@@ -14,7 +13,6 @@ public class WeaponController : MonoBehaviour
     void Start()
     {
         ShooterName = OldestParent();
-        shotSpawn = GetComponentInChildren<Transform>();
         aud = GetComponent<AudioSource>();
     }
 
@@ -23,7 +21,7 @@ public class WeaponController : MonoBehaviour
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            ShotMover bullet = Instantiate(shot, shotSpawn.position, shotSpawn.rotation).GetComponent<ShotMover>();
+            ShotMover bullet = Instantiate(shot, transform.position, transform.rotation).GetComponent<ShotMover>();
             bullet.SetShooterName(ShooterName);
             aud.Play();
         }
