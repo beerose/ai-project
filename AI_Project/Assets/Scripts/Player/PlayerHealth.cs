@@ -70,12 +70,13 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        string colTag = collider.transform.tag;
-        if (colTag.Equals("Enemy Weapon") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
-        {
-            lastHit = Time.time;
-            TakeDamage(collider.gameObject.GetComponent<ShotMover>().Power);
-        }
+		if (collider.tag.Equals ("bullet")) {
+			ShotMover shotMover = collider.GetComponent<ShotMover> ();
+			if (!shotMover.Equals ("Player") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead) {
+				lastHit = Time.time;
+				TakeDamage (shotMover.Power);
+			}
+		}
     }
 
     void OnCollisionStay(Collision collision)
