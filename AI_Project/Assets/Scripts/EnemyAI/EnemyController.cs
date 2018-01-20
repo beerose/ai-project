@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyController : MonoBehaviour
 {
@@ -84,7 +85,7 @@ public class EnemyController : MonoBehaviour
         return timer;
     }
 
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerEnter(Collider coll)
     {
         string colTag = coll.transform.tag;
         if (colTag.Equals("Bullet"))
