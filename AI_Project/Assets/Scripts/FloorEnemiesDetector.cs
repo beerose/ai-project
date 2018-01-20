@@ -20,15 +20,18 @@ public class FloorEnemiesDetector : MonoBehaviour
 
     void Check()
     {
-        foreach (DoorBehaviour door in doors)
-        {
-            door.OpenDoor();
-        }
         if (numberOfEnemys > 0)
         {
             foreach (DoorBehaviour door in doors)
             {
                 door.CloseDoor();
+            }
+        }
+        else
+        {
+            foreach (DoorBehaviour door in doors)
+            {
+                door.OpenDoor();
             }
         }
         numberOfEnemys = 0;
