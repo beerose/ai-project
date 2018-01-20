@@ -15,6 +15,8 @@ public class DoorBehaviour : MonoBehaviour
     public const int teleportationStrength = 3;
     public Direction direction;
     public bool isOpen = true;
+    public Color OpenColor = Color.green;
+    public Color CloseColor = Color.red;
 
     private GameObject nextBoard;
     private float newBoundaryXMin;
@@ -60,5 +62,22 @@ public class DoorBehaviour : MonoBehaviour
                 player.OnEnterNewRoom();
             }
         }
+    }
+
+    public void CloseDoor()
+    {
+        isOpen = false;
+        GetComponent<Renderer>().material.color = CloseColor;
+    }
+
+    public void OpenDoor()
+    {
+        isOpen = true;
+        GetComponent<Renderer>().material.color = OpenColor;
+    }
+
+    public void KYS()
+    {
+        gameObject.SetActive(false);
     }
 }

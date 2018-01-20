@@ -7,7 +7,7 @@ public class MobSpawner : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.5f);
     }
 
     private void Spawn()

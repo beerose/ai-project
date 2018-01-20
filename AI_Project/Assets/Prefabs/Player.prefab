@@ -531,8 +531,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1927242581144406}
   m_LocalRotation: {x: -0.43308944, y: 0.5589576, z: -0.43308944, w: 0.5589576}
-  m_LocalPosition: {x: -6.101346e-33, y: 0.4345707, z: 0.019774662}
-  m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
   m_Children:
   - {fileID: 4979053374642376}
   - {fileID: 4799807034238668}
@@ -562,8 +562,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121323676483868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4958842389314520}
   - {fileID: 4618056391679412}
@@ -1135,6 +1135,8 @@ MonoBehaviour:
   m_FillImage: {fileID: 114495752380404508}
   m_FullHealthColor: {r: 0, g: 0.741, b: 0, a: 1}
   m_ZeroHealthColor: {r: 0.784, g: 0, b: 0, a: 1}
+  DamageFromEnemyCollision: 5
+  DelayFromTakeDamage: 0.5
 --- !u!114 &114584579001945786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1294,10 +1296,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.4
+  m_Radius: 0.4260232
+  m_Height: 1.12
   m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0.05}
+  m_Center: {x: 0, y: -0.24, z: 0.06}
 --- !u!137 &137213082946509068
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

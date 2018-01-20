@@ -17,6 +17,7 @@ TagManager:
   - Enemy Eyeshot
   - Dungeon
   - Enemy Weapon
+  - Boss
   layers:
   - Default
   - TransparentFX
