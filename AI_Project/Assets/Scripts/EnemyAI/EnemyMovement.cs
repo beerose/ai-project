@@ -20,10 +20,10 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        enemyController = gameObject.GetComponentInParent<EnemyController>();
-        enemyShooting = gameObject.GetComponentInParent<EnemyShooting>();
+        enemyController = transform.parent.GetComponentInChildren<EnemyController>();
+        enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting>();
         startPosition = enemyController.transform.position;
-        agent = enemyController.GetComponent<NavMeshAgent>();
+        agent = transform.parent.GetComponent<NavMeshAgent>();
         anim = GetComponentInParent<Animator>();
     }
 
@@ -58,9 +58,10 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        setRotation(other.transform);
+        
         if (other.tag.Equals("Player"))
         {
+            setRotation(other.transform);
             anim.SetTrigger("Attack");
             startPosition = other.transform.position;
             move(other);
@@ -69,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void move(Collider other)
     {
-        if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
+        /*if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
         {
             run(other.transform);
         }
@@ -77,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
         {
             enemyShooting.attack(other);
         }
-        runningTimer = updateTime(runningTimer);
+        runningTimer = updateTime(runningTimer);*/
     }
 
     private void run(Transform targetTransform)
