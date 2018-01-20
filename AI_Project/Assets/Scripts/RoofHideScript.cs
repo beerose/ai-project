@@ -7,20 +7,32 @@ public class RoofHideScript : MonoBehaviour
     private Material mat;
     private Color col;
     private float t;
+
     void Start()
     {
+        GetComponent<Renderer>().sortingOrder = 1;
         mat = GetComponent<Renderer>().material;
         col = mat.color;
     }
+
     void LateUpdate()
     {
         if (!Application.isEditor)
         {
             if (GameController.Instace.GetCurrentBoard().transform != transform.parent)
             {
-                t += 2 * Time.deltaTime;
-                col.a = Mathf.Clamp(t,0,1);
-                mat.color = col;
+                if (Time.timeSinceLevelLoad < 1f)
+                {
+                    t = 1;
+                    col.a = 1;
+                    mat.color = col;
+                }
+                else
+                {
+                    t += 2 * Time.deltaTime;
+                    col.a = Mathf.Clamp(t, 0, 1);
+                    mat.color = col;
+                }
             }
             else
             {

@@ -54,51 +54,57 @@ namespace Player
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                target.rotation = Quaternion.Euler(0f, 0f, 0f);
-            else if (Input.GetKey(KeyCode.DownArrow))
-                target.rotation = Quaternion.Euler(0f, 180f, 0f);
-            else if (Input.GetKey(KeyCode.LeftArrow))
-                target.rotation = Quaternion.Euler(0f, -90f, 0f);
-            else if (Input.GetKey(KeyCode.RightArrow))
-                target.rotation = Quaternion.Euler(0f, 90f, 0f);
-            else
+            if (!GameController.Instace.getGameStatus())
             {
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+                if (Input.GetKey(KeyCode.UpArrow))
+                    target.rotation = Quaternion.Euler(0f, 0f, 0f);
+                else if (Input.GetKey(KeyCode.DownArrow))
+                    target.rotation = Quaternion.Euler(0f, 180f, 0f);
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                    target.rotation = Quaternion.Euler(0f, -90f, 0f);
+                else if (Input.GetKey(KeyCode.RightArrow))
+                    target.rotation = Quaternion.Euler(0f, 90f, 0f);
+                else
                 {
-                    if (Input.GetKey(KeyCode.W)) target.rotation = Quaternion.Euler(0f, 0f, 0f);
-                    else if (Input.GetKey(KeyCode.S)) target.rotation = Quaternion.Euler(0f, 180f, 0f);
-                    else if (Input.GetKey(KeyCode.A)) target.rotation = Quaternion.Euler(0f, -90f, 0f);
-                    else if (Input.GetKey(KeyCode.D)) target.rotation = Quaternion.Euler(0f, 90f, 0f);
+                    if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+                    {
+                        if (Input.GetKey(KeyCode.W)) target.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        else if (Input.GetKey(KeyCode.S)) target.rotation = Quaternion.Euler(0f, 180f, 0f);
+                        else if (Input.GetKey(KeyCode.A)) target.rotation = Quaternion.Euler(0f, -90f, 0f);
+                        else if (Input.GetKey(KeyCode.D)) target.rotation = Quaternion.Euler(0f, 90f, 0f);
+                    }
                 }
+                float xSpeed = 0;
+                float ySpeed = 0;
+                float zSpeed = 0;
+                if (Input.GetKey(KeyCode.W)) zSpeed = playerSpeed;
+                if (Input.GetKey(KeyCode.S)) zSpeed = -playerSpeed;
+                if (Input.GetKey(KeyCode.A)) xSpeed = -playerSpeed;
+                if (Input.GetKey(KeyCode.D)) xSpeed = playerSpeed;
+                Vector3 targetPosition = new Vector3(xSpeed, ySpeed, zSpeed) + target.position;
+                transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+                transform.position = new Vector3(
+                    Mathf.Clamp(transform.position.x, _boundary.xMin, _boundary.xMax),
+                    0.0f,
+                    Mathf.Clamp(transform.position.z, _boundary.zMin, _boundary.zMax)
+                );
+                FootStepsSound(xSpeed, zSpeed);
             }
-            float xSpeed = 0;
-            float ySpeed = 0;
-            float zSpeed = 0;
-            if (Input.GetKey(KeyCode.W)) zSpeed = playerSpeed;
-            if (Input.GetKey(KeyCode.S)) zSpeed = -playerSpeed;
-            if (Input.GetKey(KeyCode.A)) xSpeed = -playerSpeed;
-            if (Input.GetKey(KeyCode.D)) xSpeed = playerSpeed;
-            Vector3 targetPosition = new Vector3(xSpeed, ySpeed, zSpeed) + target.position;
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-            transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, _boundary.xMin, _boundary.xMax),
-                0.0f,
-                Mathf.Clamp(transform.position.z, _boundary.zMin, _boundary.zMax)
-            );
-            FootStepsSound(xSpeed, zSpeed);
         }
 
 
         void LateUpdate()
         {
-            if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
-            if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
-            if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
-            if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
+            if (!GameController.Instace.getGameStatus())
+            {
+                if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
+            }
         }
 
-        void FootStepsSound(float xSpeed,float zSpeed)
+        void FootStepsSound(float xSpeed, float zSpeed)
         {
             if (xSpeed == 0 && zSpeed == 0) aud.Stop();
             else if (!aud.isPlaying) aud.Play();
