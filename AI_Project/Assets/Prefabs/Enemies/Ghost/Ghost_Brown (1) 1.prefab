@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114296135012074206}
   - component: {fileID: 195387450403879890}
   m_Layer: 0
-  m_Name: Ghost_Brown
+  m_Name: Ghost_Brown (1) 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

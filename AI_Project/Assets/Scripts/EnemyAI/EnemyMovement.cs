@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void move(Collider other)
     {
-        /*if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
+        if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
         {
             run(other.transform);
         }
@@ -78,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
         {
             enemyShooting.attack(other);
         }
-        runningTimer = updateTime(runningTimer);*/
+        runningTimer = updateTime(runningTimer);
     }
 
     private void run(Transform targetTransform)
