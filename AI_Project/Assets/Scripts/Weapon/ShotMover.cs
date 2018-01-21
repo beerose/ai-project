@@ -5,9 +5,9 @@ using UnityEngine;
 public class ShotMover : MonoBehaviour
 {
     public GameObject Explosion;
-    public float Speed;
     public float LifeTime;
-    public float Power = 1;
+	public float Power { set; get;}
+	public float Speed { set; get;}
 
     private Rigidbody rb;
     private string ShooterTag;
