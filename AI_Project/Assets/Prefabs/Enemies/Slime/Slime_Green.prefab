@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1457729761778424
 GameObject:
   m_ObjectHideFlags: 1
@@ -753,10 +753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0edbe8ff0a921459fdc03570a1f173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 40
   energy: 20
-  healthLimit: 5
-  healthDelay: 4
+  healthLimit: 0
+  healthDelay: 0
   energyLimit: 5
   energyDelay: 3
   DeathEffect: {fileID: 1524917693999438, guid: c0ea7f5ec02f0034fbff7da145ccc5c2,

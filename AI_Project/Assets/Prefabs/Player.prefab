@@ -1137,6 +1137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 3
   smoothTime: 0.3
+  weaponPower: 1
 --- !u!114 &114611730041033170
 MonoBehaviour:
   m_ObjectHideFlags: 1
