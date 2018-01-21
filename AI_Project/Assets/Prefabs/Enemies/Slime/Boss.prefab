@@ -772,9 +772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b656b40a794a034f895a4ca2e2a56fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
+  walkSpeed: 7
   radius: 15
-  runningSpeed: 15
+  runningSpeed: 12
   runningCost: 0.2
 --- !u!114 &114876383922165570
 MonoBehaviour:
