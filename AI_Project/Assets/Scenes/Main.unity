@@ -1046,6 +1046,86 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114990330970923694, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114852561438869198, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818967956808826, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114794712295755660, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762722224787234, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634384888805956, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114626050187000818, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114619468555670928, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535735485237980, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478829234978152, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114398331268442438, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114366446284009974, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114365885856590004, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330651595700942, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114030722771585358, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023104646372082, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05,
+        type: 2}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13ddad40aacac6e4eb5ee6aafdcd8d05, type: 2}
   m_IsPrefabParent: 0

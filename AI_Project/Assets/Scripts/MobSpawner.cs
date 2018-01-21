@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MobSpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MobSpawner : MonoBehaviour
     {
         gameObject.SetActive(false);
         Invoke("Spawn", 0.5f);
+        Debug.Log(GetComponent<NavMeshAgent>().agentTypeID);
     }
 
     private void Spawn()
