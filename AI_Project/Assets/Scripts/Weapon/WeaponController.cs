@@ -7,12 +7,12 @@ public class WeaponController : MonoBehaviour
     public GameObject shot;
     public float fireRate;
     private float nextFire;
-    private string ShooterName;
+    private string ShooterTag;
     private AudioSource aud;
 
     void Start()
     {
-        ShooterName = OldestParent();
+        ShooterTag = transform.parent.tag;
         aud = GetComponent<AudioSource>();
     }
 
@@ -22,7 +22,7 @@ public class WeaponController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             ShotMover bullet = Instantiate(shot, transform.position, transform.rotation).GetComponent<ShotMover>();
-            bullet.SetShooterName(ShooterName);
+            bullet.SetShooterTag(ShooterTag);
 			bullet.Power = power;
             aud.Play();
         }

@@ -566,7 +566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1937790665296738}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -0.5, z: 8.16}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4698324907945584}
@@ -597,7 +597,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427019685298488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.39, z: 0.88}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4698324907945584}
@@ -726,12 +726,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4add345d7d318428caa7081d444b2679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDemage: 90
+  attackDemage: 5
   attackDistance: 5
   attackCost: 2
-  attackDelay: 1
   incentive: 2
-  attacksNumber: 10
+  attacksNumber: 3
 --- !u!114 &114346835090245602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -789,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireRate: 0
+  fireRate: 0.5
 --- !u!114 &114814920821775772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -834,7 +833,6 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -850,7 +848,6 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

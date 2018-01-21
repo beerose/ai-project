@@ -6,14 +6,14 @@ public abstract class Weapon : MonoBehaviour {
 	public float attackDemage;
 	public float attackDistance;
 	public float attackCost;
-	public float attackDelay;
+	protected float attackDelay;
 	public float incentive;
 	protected float attackTimer;
 
 	public abstract bool isAvailable (Transform playerTransform);
 	public abstract float getRating (Collider player, EnemyController enemyController);
 	public abstract void attack (Collider player);
-
+    
 	void Update(){
 		attackTimer = updateTime (attackTimer);
 	}
