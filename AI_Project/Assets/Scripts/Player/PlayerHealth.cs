@@ -70,9 +70,10 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-		if (collider.tag.Equals ("bullet")) {
+		Debug.Log (collider.tag);
+		if (collider.tag.Equals ("Bullet")) {
 			ShotMover shotMover = collider.GetComponent<ShotMover> ();
-			if (!shotMover.Equals ("Player") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead) {
+			if (!shotMover.GetShooterName().Equals ("Player") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead) {
 				lastHit = Time.time;
 				TakeDamage (shotMover.Power);
 			}

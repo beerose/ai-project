@@ -17,12 +17,14 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 startPosition;
     private NavMeshAgent agent;
     private Animator anim;
+	private Transform enemyTransform;
 
     void Start()
     {
+		enemyTransform = transform.parent.transform;
         enemyController = transform.parent.GetComponentInChildren<EnemyController>();
         enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting>();
-        startPosition = enemyController.transform.position;
+		startPosition = enemyTransform.position;
         agent = transform.parent.GetComponent<NavMeshAgent>();
         anim = GetComponentInParent<Animator>();
     }
@@ -30,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         searchPlayer();
+		runningTimer = updateTime(runningTimer);
     }
 
     private void searchPlayer()
@@ -52,13 +55,19 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.tag.Equals("Bullet"))
         {
+			Vector3 randomPosition = randomNavSphere(enemyTransform.position, radius, -1);
+			if (enemyController.isEnergy (runningCost)) {
+				run (randomPosition);
+			} else {
+				agent.speed = walkSpeed;
+				agent.SetDestination(randomPosition);
+			}
             startPosition = other.transform.position;
         }
     }
 
     void OnTriggerStay(Collider other)
-    {
-        
+    {  
         if (other.tag.Equals("Player"))
         {
             setRotation(other.transform);
@@ -72,16 +81,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
         {
-            run(other.transform);
+			run(other.transform.position);
         }
         else
         {
             enemyShooting.attack(other);
         }
-        runningTimer = updateTime(runningTimer);
     }
 
-    private void run(Transform targetTransform)
+	private void run(Vector3 targetPostion)
     {
         if (runningTimer <= 0)
         {
@@ -89,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
             enemyController.useEnergy(runningCost);
         }
         agent.speed = runningSpeed;
-        agent.SetDestination(targetTransform.position);
+		agent.SetDestination(targetPostion);
     }
 
     private float updateTime(float timer)
@@ -101,9 +109,8 @@ public class EnemyMovement : MonoBehaviour
         return timer;
     }
 
-    private void setRotation(Transform targetTransform)
+	private void setRotation(Transform targetTransform)
     {
-        Transform enemyTransform = enemyController.transform;
         Quaternion targetRotation = Quaternion.LookRotation(targetTransform.position - enemyTransform.position);
         float oryginalX = enemyTransform.rotation.x;
         float oryginalZ = enemyTransform.rotation.z;

@@ -16,13 +16,14 @@ public class WeaponController : MonoBehaviour
         aud = GetComponent<AudioSource>();
     }
 
-    public void Fire()
+	public void Fire(float power)
     {
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             ShotMover bullet = Instantiate(shot, transform.position, transform.rotation).GetComponent<ShotMover>();
             bullet.SetShooterName(ShooterName);
+			bullet.Power = power;
             aud.Play();
         }
     }

@@ -31,7 +31,7 @@ public class BulletController : Weapon {
 	}
 
 	public override void attack(Collider player){
-		weapon.Fire();
+		weapon.Fire(attackDemage);
 		attackTimer = attackDelay;
 	}
 
