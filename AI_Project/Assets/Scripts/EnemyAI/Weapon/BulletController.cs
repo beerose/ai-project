@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : Weapon {
-	public GameObject bullet;
-	public Transform shotSpawn;
-	public float attackQuantity;
+	public float attacksNumber;
+	private WeaponController weapon;
+
+	void Start(){
+		weapon = GetComponent<WeaponController> ();
+		InvokeRepeating("Fire", 0f, weapon.fireRate);
+	}
 
 	public override bool isAvailable (Transform playerTransform) {
 		RaycastHit hit;
 		if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
-			if (hit.collider.gameObject.tag == "Player" && attackTimer <= 0 && attackQuantity > 0) {
+			if (hit.collider.gameObject.tag == "Player" && attackTimer <= 0 && attacksNumber > 0) {
 				return true;
 			}
 		}
@@ -27,7 +31,7 @@ public class BulletController : Weapon {
 	}
 
 	public override void attack(Collider player){
-		Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+		weapon.Fire(attackDemage);
 		attackTimer = attackDelay;
 	}
 
