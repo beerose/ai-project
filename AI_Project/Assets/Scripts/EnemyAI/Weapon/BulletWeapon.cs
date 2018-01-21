@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : Weapon {
+public class BulletWeapon : Weapon {
 	public float attacksNumber;
-	private WeaponController weapon;
+	private WeaponController weaponController;
 
 	void Start(){
-		weapon = GetComponent<WeaponController> ();
-	    attackDelay = weapon.fireRate;
-	    //InvokeRepeating("Fire", 0f, weapon.fireRate);
+		weaponController = GetComponent<WeaponController> ();
 	}
 
 	public override bool isAvailable (Transform playerTransform) {
-		RaycastHit hit;
-		if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
-			if (hit.collider.gameObject.tag == "Player" && attackTimer <= 0 && attacksNumber > 0) {
-				return true;
+		if(weaponController.isAvailable() && attacksNumber > 0){
+			RaycastHit hit;
+			if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
+				if (hit.collider.gameObject.tag == "Player") {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -32,8 +32,7 @@ public class BulletController : Weapon {
 	}
 
 	public override void attack(Collider player){
-		weapon.Fire(attackDemage);
-		attackTimer = attackDelay;
+		weaponController.Fire(attackDemage);
 	}
 
 }

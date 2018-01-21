@@ -38,6 +38,11 @@ public class WeaponController : MonoBehaviour
         return t.name;
     }
 
+	public bool isAvailable()
+	{
+		return Time.time > nextFire;
+	}
+
     public float GetPower()
     {
         return shot.GetComponent<ShotMover>().Power;
