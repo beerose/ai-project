@@ -191,11 +191,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4079381074006226}
   - component: {fileID: 95500042610788130}
-  - component: {fileID: 114568392944309122}
   - component: {fileID: 195147638960480814}
+  - component: {fileID: 114568392944309122}
   m_Layer: 0
   m_Name: Ghost_White
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4634675552402422}
-  - component: {fileID: 135946541127071906}
+  - component: {fileID: 136568208558833704}
   - component: {fileID: 114706419584802444}
   - component: {fileID: 54501116674716938}
   - component: {fileID: 114714690849004676}
@@ -273,13 +273,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808302846714232}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.309, z: 1.562}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4174402994691894}
-  - {fileID: 4887248381344042}
   - {fileID: 4634675552402422}
   - {fileID: 4394498334306936}
+  - {fileID: 4174402994691894}
+  - {fileID: 4887248381344042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -323,7 +323,7 @@ Transform:
   m_Children:
   - {fileID: 4799597018749130}
   m_Father: {fileID: 4079381074006226}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4236358699837060
 Transform:
@@ -364,7 +364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4079381074006226}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4428112855803504
 Transform:
@@ -407,7 +407,7 @@ Transform:
   - {fileID: 4147804984867408}
   - {fileID: 4641832044630254}
   m_Father: {fileID: 4079381074006226}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4641832044630254
 Transform:
@@ -416,7 +416,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784275350311598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0.60000014}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4634675552402422}
@@ -470,11 +470,11 @@ Transform:
   m_GameObject: {fileID: 1523226735492440}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 4441082475720460}
   m_Father: {fileID: 4079381074006226}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4906611632834582
 Transform:
@@ -673,7 +673,7 @@ Animator:
   m_GameObject: {fileID: 1808302846714232}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd4b310424927a840906404a14eeb5e4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e216e7940d2106f49b2b0a3931cdce54, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -696,7 +696,7 @@ MonoBehaviour:
   incentive: 1
   attackDistance: 1
   attackDelay: 1
-  attackDemage: 2
+  attackDemage: 5
 --- !u!114 &114168377239118920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -795,8 +795,8 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135946541127071906
-SphereCollider:
+--- !u!136 &136568208558833704
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -804,9 +804,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Radius: 0.32
+  m_Height: 0.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.3, z: 0.02}
 --- !u!137 &137253460181896996
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -816,7 +817,6 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -832,7 +832,6 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

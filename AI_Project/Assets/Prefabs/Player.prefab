@@ -1137,7 +1137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 3
   smoothTime: 0.3
-  weaponPower: 1
 --- !u!114 &114611730041033170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1258,7 +1257,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
-  fireRate: 0.5
+  fireDelay: 0.5
+  speed: 5
+  power: 1
 --- !u!136 &136748098505431768
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -9,7 +9,7 @@ public class MobSpawner : MonoBehaviour
     {
         gameObject.SetActive(false);
         Invoke("Spawn", 0.5f);
-        Debug.Log(GetComponent<NavMeshAgent>().agentTypeID);
+        //Debug.Log(GetComponent<NavMeshAgent>().agentTypeID);
     }
 
     private void Spawn()
