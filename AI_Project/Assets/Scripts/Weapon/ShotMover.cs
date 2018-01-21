@@ -10,7 +10,7 @@ public class ShotMover : MonoBehaviour
     public float Power = 1;
 
     private Rigidbody rb;
-    private string ShooterName;
+    private string ShooterTag;
     private string OtherSameShooterBullet;
 
     void Start()
@@ -22,29 +22,29 @@ public class ShotMover : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (ShooterName == "") Debug.Log("ShooterName is null");
+        if (ShooterTag == "") Debug.Log("ShooterName is null");
         if (col.tag.Equals("Bullet"))
         {
-            if (!col.GetComponent<ShotMover>().GetShooterName().Equals(ShooterName))
+            if (!col.GetComponent<ShotMover>().GetShooterTag().Equals(ShooterTag))
             {
                 Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
                 Destroy(gameObject);
             }
         }
-        else if (col.name != ShooterName && !col.tag.Equals("Enemy Eyeshot"))
+        else if (!col.tag.Equals(ShooterTag) && !col.tag.Equals("Enemy Eyeshot"))
         {
             Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
     }
 
-    public void SetShooterName(string s)
+    public void SetShooterTag(string s)
     {
-        ShooterName = s;
+        ShooterTag = s;
     }
 
-    public string GetShooterName()
+    public string GetShooterTag()
     {
-        return ShooterName;
+        return ShooterTag;
     }
 }

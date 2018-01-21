@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
         string colTag = coll.transform.tag;
 		if (colTag.Equals("Bullet"))
         {
-			string shooter = coll.GetComponent<ShotMover> ().GetShooterName ();
+			string shooter = coll.GetComponent<ShotMover> ().GetShooterTag ();
 			if (shooter.Equals ("Player")) {
 				currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
 			}

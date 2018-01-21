@@ -8,7 +8,8 @@ public class BulletController : Weapon {
 
 	void Start(){
 		weapon = GetComponent<WeaponController> ();
-		InvokeRepeating("Fire", 0f, weapon.fireRate);
+	    attackDelay = weapon.fireRate;
+	    //InvokeRepeating("Fire", 0f, weapon.fireRate);
 	}
 
 	public override bool isAvailable (Transform playerTransform) {
