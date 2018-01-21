@@ -26,7 +26,7 @@ public class EnemyShooting : MonoBehaviour {
 		Weapon bestWeapon = null;
 		float bestRating = float.NegativeInfinity;
 		for (int i = 0; i < weapons.Length; i++) {
-			float rating = weapons[i].getRating (player, enemyController);
+			float rating = weapons[i].getRating (player, enemyController.CurrentEnergy);
 			if (rating > bestRating && weapons[i].isAvailable (player.transform) && enemyController.isEnergy (weapons[i].attackCost)) {
 				bestWeapon = weapons[i];
 				bestRating = rating;

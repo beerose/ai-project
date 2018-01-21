@@ -88,7 +88,7 @@ public class PlayerHealth : MonoBehaviour
 		}
     }
 
-    void OnCollisionStay(Collision collision)
+    /*void OnCollisionStay(Collision collision)
     {
         string colTag = collision.transform.tag;
         if ((colTag.Equals("Enemy") || colTag.Equals("Boss")) && lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
@@ -96,5 +96,5 @@ public class PlayerHealth : MonoBehaviour
             lastHit = Time.time;
             TakeDamage(DamageFromEnemyCollision);
         }
-    }
+    }*/
 }
