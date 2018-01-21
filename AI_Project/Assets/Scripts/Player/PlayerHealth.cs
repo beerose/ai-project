@@ -31,6 +31,15 @@ public class PlayerHealth : MonoBehaviour
     {
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            m_CurrentHealth = m_StartingHealth;
+            SetHealthUI();
+        }
+    }
+
 
     private void OnEnable()
     {
