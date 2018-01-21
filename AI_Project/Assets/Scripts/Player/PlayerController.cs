@@ -14,7 +14,6 @@ namespace Player
     {
         public float playerSpeed;
         public float smoothTime = 0.3F;
-		public float weaponPower = 1;
 
         private Boundary _boundary;
         private Transform target;
@@ -98,10 +97,10 @@ namespace Player
         {
             if (!GameController.Instace.getGameStatus())
             {
-				if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire(weaponPower);
-				if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire(weaponPower);
-				if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire(weaponPower);
-				if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire(weaponPower);
+				if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
+				if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
+				if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
+				if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
             }
         }
 

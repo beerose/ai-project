@@ -79,14 +79,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void move(Collider other)
     {
-        if (!enemyShooting.isAttackPossible(other) && enemyController.isEnergy(runningCost))
-        {
-			run(other.transform.position);
-        }
-        else
-        {
-            enemyShooting.attack(other);
-        }
+		if (enemyShooting && enemyShooting.isAttackPossible (other)) {
+			enemyShooting.attack (other);
+		} else if (enemyController.isEnergy (runningCost)){
+			run (other.transform.position);
+		}
     }
 
 	private void run(Vector3 targetPostion)

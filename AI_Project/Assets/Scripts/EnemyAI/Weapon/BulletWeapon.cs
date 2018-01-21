@@ -22,17 +22,17 @@ public class BulletWeapon : Weapon {
 		return false;
 	}
 
-	public override float getRating (Collider player, EnemyController enemyController){
+	public override float getRating (Collider player, float enemyEnergy){
 		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
 		Vector3 otherPosition = player.transform.position;
 		float distance = Vector3.Distance(transform.position, otherPosition);
-		float energy = 100 - (attackCost / enemyController.CurrentEnergy * 100);
-		float demage = attackDemage / playerHealth.CurrentHealth * 100;
+		float energy = 100 - (attackCost / enemyEnergy * 100);
+		float demage = weaponController.power / playerHealth.CurrentHealth * 100;
 		return - distance + (energy + demage) * incentive ;
 	}
 
 	public override void attack(Collider player){
-		weaponController.Fire(attackDemage);
+		weaponController.Fire();
 	}
 
 }

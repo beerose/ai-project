@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon {
 	public float attackDelay;
+	public float attackDemage;
 	private float attackTimer;
 
 	public override bool isAvailable(Transform playerTransform){
@@ -11,9 +12,9 @@ public class MeleeWeapon : Weapon {
 		return distance <= attackDistance && attackTimer <= 0;
 	}
 		
-	public override float getRating (Collider player, EnemyController enemyController){
+	public override float getRating (Collider player, float enemyEnergy){
 		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
-		float energy = 100 - (attackCost / enemyController.CurrentEnergy * 100);
+		float energy = 100 - (attackCost / enemyEnergy * 100);
 		float demage = attackDemage / playerHealth.CurrentHealth * 100;
 		return (energy + demage) * incentive ;
 	}
