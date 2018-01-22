@@ -751,8 +751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   energy: 20
-  healthLimit: 5
-  healthDelay: 4
+  healthLimit: 0
+  healthDelay: 0
   energyLimit: 5
   energyDelay: 3
   DeathEffect: {fileID: 1524917693999438, guid: c0ea7f5ec02f0034fbff7da145ccc5c2,
