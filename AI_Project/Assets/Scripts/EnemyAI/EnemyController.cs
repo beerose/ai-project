@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
 
     public GameObject DeathEffect;
 
+
     private float currentHealth;
 
     public float CurrentHealth
@@ -32,6 +33,8 @@ public class EnemyController : MonoBehaviour
 
     private float energyTimer = 0;
     private float healthTimer = 0;
+
+    private bool alwaysSpawn = false;
 
     void Start()
     {
@@ -88,13 +91,13 @@ public class EnemyController : MonoBehaviour
     void OnTriggerEnter(Collider coll)
     {
         string colTag = coll.transform.tag;
-		if (colTag.Equals("Bullet"))
+        if (colTag.Equals("Bullet"))
         {
-			string shooter = coll.GetComponent<ShotMover> ().GetShooterTag ();
-			if (shooter.Equals ("Player")) {
-				currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
-			}
-            
+            string shooter = coll.GetComponent<ShotMover>().GetShooterTag();
+            if (shooter.Equals("Player"))
+            {
+                currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
+            }
         }
     }
 
@@ -106,5 +109,15 @@ public class EnemyController : MonoBehaviour
     public bool isEnergy(float value)
     {
         return value <= currentEnergy;
+    }
+
+    public void SetAlwaysSpawn()
+    {
+        alwaysSpawn = true;
+    }
+
+    public bool GetAlwaysSpawn()
+    {
+        return alwaysSpawn;
     }
 }

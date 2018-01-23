@@ -55,6 +55,9 @@ public class BossBehaviour : MonoBehaviour
     private void Spawner(int n)
     {
         for (var i = 0; i < n; i++)
-            Instantiate(Spawn, transform.position, transform.rotation);
+        {
+            Instantiate(Spawn, transform.position, transform.rotation).GetComponentInChildren<EnemyController>()
+                .SetAlwaysSpawn();
+        }
     }
 }

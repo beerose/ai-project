@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95417282878342012}
   - component: {fileID: 195877630031911108}
   - component: {fileID: 114552343911323862}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Brown
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4777704726648818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeadControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4936623249285318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RIG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4211975945555362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4843974601121578}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeadTipJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 82616634238245324}
   - component: {fileID: 114738006371035574}
   - component: {fileID: 114388947345283300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4347749125917826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GhostControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4650276938255184}
   - component: {fileID: 82474008277112070}
   - component: {fileID: 114944387513323406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MeleeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 114915050033405282}
   - component: {fileID: 54543917806067152}
   - component: {fileID: 114662148629949412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brain
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4201400748593000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TailControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4330839327278888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RootControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4400721616239278}
   - component: {fileID: 135340755657634490}
   - component: {fileID: 114607997793697130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eyeshot
   m_TagString: Enemy Eyeshot
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4144609131179386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TailJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4354667992370288}
   - component: {fileID: 137862495692156726}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4513441099718460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeadJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4505162733655244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RootJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

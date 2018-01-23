@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public GameObject GameOverUI;
     public GameObject YouWinUI;
 
+    private EnemiesCollector EC;
+
     private GameObject currentBoard;
 
     public bool HaveBoss = false;
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour
         Instace = FindObjectOfType<GameController>();
         gameOver = false;
         RemoveDoors();
+        EC = GameObject.FindGameObjectWithTag("EnemiesCollector").GetComponent<EnemiesCollector>();
     }
 
     void Update()
@@ -40,6 +43,7 @@ public class GameController : MonoBehaviour
 
     public void ChangeBoard(GameObject newBoard)
     {
+        if(Time.time>0.5f)EC.LoadEnemiesInRoom(newBoard.name);
         currentBoard = newBoard;
     }
 
