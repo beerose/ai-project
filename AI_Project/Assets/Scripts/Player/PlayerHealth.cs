@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     //private Rigidbody rb;
     private PlayerAnimatorController pAnimC;
 
+    private Light playerLight;
+
     public float CurrentHealth
     {
         get { return m_CurrentHealth; }
@@ -31,24 +33,41 @@ public class PlayerHealth : MonoBehaviour
     {
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            m_CurrentHealth = m_StartingHealth;
+            SetHealthUI();
+            SetLight();
+        }
+    }
+
 
     private void OnEnable()
     {
         m_CurrentHealth = m_StartingHealth;
         m_Dead = false;
         pAnimC = GetComponentInChildren<PlayerAnimatorController>();
+        playerLight = GetComponentInChildren<Light>();
         SetHealthUI();
+        SetLight();
     }
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("Player take damage");
-        pAnimC.GetHit();
-        m_CurrentHealth -= amount;
-        SetHealthUI();
-        if (m_CurrentHealth <= 0f && !m_Dead)
+        if (lastHit + DelayFromTakeDamage < Time.time)
         {
-            OnDeath();
+            lastHit = Time.time;
+            Debug.Log("Player take damage");
+            pAnimC.GetHit();
+            m_CurrentHealth -= amount;
+            SetHealthUI();
+            SetLight();
+            if (m_CurrentHealth <= 0f && !m_Dead)
+            {
+                OnDeath();
+            }
         }
     }
 
@@ -57,6 +76,11 @@ public class PlayerHealth : MonoBehaviour
     {
         m_Slider.value = m_CurrentHealth;
         m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
+    }
+
+    private void SetLight()
+    {
+        playerLight.range = m_CurrentHealth / m_StartingHealth * 10;
     }
 
 
@@ -70,13 +94,14 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-		if (collider.tag.Equals ("Bullet")) {
-			ShotMover shotMover = collider.GetComponent<ShotMover> ();
-			if (!shotMover.GetShooterTag().Equals ("Player") && lastHit + DelayFromTakeDamage < Time.time && !m_Dead) {
-				lastHit = Time.time;
-				TakeDamage (shotMover.Power);
-			}
-		}
+        if (collider.tag.Equals("Bullet"))
+        {
+            ShotMover shotMover = collider.GetComponent<ShotMover>();
+            if (!shotMover.GetShooterTag().Equals("Player") && !m_Dead)
+            {
+                TakeDamage(shotMover.Power);
+            }
+        }
     }
 
     /*void OnCollisionStay(Collision collision)

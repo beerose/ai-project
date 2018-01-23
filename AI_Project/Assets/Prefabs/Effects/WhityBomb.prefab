@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4308008072923240}
   - component: {fileID: 108873612641721698}
   - component: {fileID: 114697311820620652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4856711237462162}
   - component: {fileID: 198329035871059960}
   - component: {fileID: 199167684551463920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4797785018911008}
   - component: {fileID: 198700771895824170}
   - component: {fileID: 199935061292003742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdustB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4100364650157366}
   - component: {fileID: 108361049495133874}
   - component: {fileID: 114710590337913728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 198872215968371334}
   - component: {fileID: 114308676946397736}
   - component: {fileID: 199865120808111718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WhityBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4402409295470274}
   - component: {fileID: 198702248184919030}
   - component: {fileID: 199539415522790244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYsphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

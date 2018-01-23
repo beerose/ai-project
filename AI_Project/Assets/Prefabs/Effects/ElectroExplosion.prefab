@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4005844194125688}
   - component: {fileID: 198685628145623322}
   - component: {fileID: 199317453366508818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdustB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4587358633644868}
   - component: {fileID: 108029193700128026}
   - component: {fileID: 114262621042574602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114806847722273218}
   - component: {fileID: 199584722004458976}
   - component: {fileID: 82415666325320356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ElectroExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4543343661225806}
   - component: {fileID: 198544339940372320}
   - component: {fileID: 199123098221735810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

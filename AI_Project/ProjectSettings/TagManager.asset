@@ -18,6 +18,7 @@ TagManager:
   - Dungeon
   - Enemy Weapon
   - Boss
+  - EnemiesCollector
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - 
   - Skip
   - 
-  - 
+  - Basic
   - 
   - 
   - 

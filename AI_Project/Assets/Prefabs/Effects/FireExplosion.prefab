@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4742281315972080}
   - component: {fileID: 198452629303880480}
   - component: {fileID: 199945256569403788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYskill_core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4850700252312616}
   - component: {fileID: 198141721707342416}
   - component: {fileID: 199943029246334618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4622435506196004}
   - component: {fileID: 198437579755893316}
   - component: {fileID: 199405697214759582}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114571143814971280}
   - component: {fileID: 199220866415432148}
   - component: {fileID: 82054053752144130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4319587728925612}
   - component: {fileID: 108673602156043888}
   - component: {fileID: 114420795930867872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

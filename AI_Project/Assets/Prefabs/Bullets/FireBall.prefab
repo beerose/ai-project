@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4913362299455276}
   - component: {fileID: 198121154384689386}
   - component: {fileID: 199445854246737096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdustD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4513468785843944}
   - component: {fileID: 198200400026449472}
   - component: {fileID: 199684148022338540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4274745104568718}
   - component: {fileID: 198064658951621474}
   - component: {fileID: 199822293013319896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBallSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 23503289773441066}
   - component: {fileID: 54576890948470380}
   - component: {fileID: 114439539589746814}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4559484676556878}
   - component: {fileID: 108872197840683348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,9 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 1899989828998330, guid: 1a6e36064447acc4ab9735d5e3e61fce, type: 2}
-  Speed: 5
   LifeTime: 5
-  Power: 1
 --- !u!135 &135523367701246412
 SphereCollider:
   m_ObjectHideFlags: 1

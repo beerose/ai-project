@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23451983645722046}
   - component: {fileID: 54022511007407734}
   - component: {fileID: 114476696578289612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ElectroBall
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4740614068961418}
   - component: {fileID: 198668660955530178}
   - component: {fileID: 199118666796303506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ErekiSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321235837729020}
   - component: {fileID: 108992801076619922}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4470097609911086}
   - component: {fileID: 198669953805943988}
   - component: {fileID: 199047076236662172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ElectroBallSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,9 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 1496018894177416, guid: 9d8a82c3f9d1e334c84965a674f52ddd, type: 2}
-  Speed: 5
   LifeTime: 5
-  Power: 1
 --- !u!135 &135574409455311354
 SphereCollider:
   m_ObjectHideFlags: 1

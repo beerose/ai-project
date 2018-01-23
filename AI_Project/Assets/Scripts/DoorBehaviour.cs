@@ -32,7 +32,7 @@ public class DoorBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         var agent = collision.transform;
-        Debug.Log(agent);
+        //Debug.Log(agent);
 
         if (isOpen && AgentCanPassThroughDoor(agent))
         {

@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cb3e627f292b44591903a18e9cb406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinLightPower: 0.8
-  MaxLightPower: 2.5
-  MinWaitTime: 0.1
+  MinLightPower: 1.8
+  MaxLightPower: 3.2
+  MinWaitTime: 0.2
   MaxWaitTime: 0.7
   SmoothTime: 0.1
