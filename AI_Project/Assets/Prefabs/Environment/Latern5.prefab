@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4380057939548796}
   - component: {fileID: 33280905085793448}
   - component: {fileID: 23879830195012538}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Candle2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4246082730831120}
   - component: {fileID: 108228031701836494}
   - component: {fileID: 114216745647357932}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4615800598854270}
   - component: {fileID: 33831606357209214}
   - component: {fileID: 23599192835415584}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: reshetka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4062497489107852}
   - component: {fileID: 54394076385666476}
   - component: {fileID: 114534801460134878}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Latern5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4429349680363278}
   - component: {fileID: 33491332959135346}
   - component: {fileID: 23285162170828792}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4903087935426578}
   - component: {fileID: 33398962341131228}
   - component: {fileID: 23614773324022512}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Latern5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
