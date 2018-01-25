@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224504827452610512}
   - component: {fileID: 114677816036448446}
   - component: {fileID: 114850962694600240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 224809506684095486}
   - component: {fileID: 222967512281183880}
   - component: {fileID: 114759686189751430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224473779206507384}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 223405274140201998}
   - component: {fileID: 114611730041033170}
   - component: {fileID: 114584579001945786}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 224000852411040658}
   - component: {fileID: 222441809612112760}
   - component: {fileID: 114495752380404508}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833636665358546}
   - component: {fileID: 108602313764486958}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -489,7 +489,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254232886063884}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.69954, y: -0.5, z: 0.5378658}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0.5307866}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4817969999382272}
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2f6c044b2b09d49b81e76d98c22e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 1487419809602354, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  Spawn: {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
   minimumScale: 0.5
   Phase1SpawnNumber: 2
   Phase2SpawnNumber: 4
@@ -979,7 +979,6 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -995,7 +994,6 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
