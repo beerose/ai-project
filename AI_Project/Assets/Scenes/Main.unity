@@ -199,7 +199,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 9.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 139058794}
   - {fileID: 524550497}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -260,8 +259,8 @@ RectTransform:
   m_Children:
   - {fileID: 1857028703}
   - {fileID: 694856045}
-  m_Father: {fileID: 99861879}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1522,7 +1521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 99861879}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &524550498
 AudioListener:
@@ -2252,7 +2251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c3e92f2b7e21348bbc2dd48000e53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 4b051f6e542958c4c928d29a74e07c17, type: 2}
+  item: {fileID: 11400000, guid: ad43350192e98b04db71971d2b3cead8, type: 2}
 --- !u!135 &791478215
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2263,7 +2262,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &791478216
 MeshRenderer:
@@ -2462,7 +2461,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &873723763
 MeshRenderer:
@@ -2736,7 +2735,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1052607568
 MeshRenderer:
@@ -3252,6 +3251,7 @@ GameObject:
   - component: {fileID: 1520578346}
   - component: {fileID: 1520578345}
   - component: {fileID: 1520578344}
+  - component: {fileID: 1520578348}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3328,13 +3328,26 @@ RectTransform:
   m_Children:
   - {fileID: 1655971808}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1520578348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520578343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4661def6946f17f4cac51337636012bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemsParent: {fileID: 755016371}
+  inventoryUI: {fileID: 1655971807}
 --- !u!1001 &1541200454
 Prefab:
   m_ObjectHideFlags: 0
@@ -3763,7 +3776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1655971808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4802,7 +4815,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &2141674218
 MeshFilter:
