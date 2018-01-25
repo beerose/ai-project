@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4062497489107852}
+  - component: {fileID: 54394076385666476}
+  - component: {fileID: 114534801460134878}
   m_Layer: 0
   m_Name: Latern5
   m_TagString: Untagged
@@ -118,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383818733195300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429349680363278}
@@ -350,6 +352,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1315816233865816}
   m_Mesh: {fileID: 4300002, guid: 92a5a5383e624784da2627a47a052328, type: 3}
+--- !u!54 &54394076385666476
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383818733195300}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!108 &108228031701836494
 Light:
   m_ObjectHideFlags: 1
@@ -359,9 +376,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.907, b: 0.4705882, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6275863, a: 1}
   m_Intensity: 2
-  m_Range: 7
+  m_Range: 5
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -402,3 +419,22 @@ MonoBehaviour:
   MinWaitTime: 0.2
   MaxWaitTime: 0.7
   SmoothTime: 0.1
+--- !u!114 &114534801460134878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383818733195300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50de1df35c46ca24bb48674dc5914627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReturnToStart: 1
+  TimeToReturn: 3
+  DodgeMaxVelocity: 10
+  Smoothing: 0.2
+  SmoothingReturn: 0.07
+  WaitToStartDodge: {x: 0, y: 0}
+  DodgeTime: {x: 1, y: 2}
+  AfterDodgeWait: {x: 0, y: 0}
