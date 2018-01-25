@@ -7,13 +7,22 @@ public class EnemyShooting : MonoBehaviour {
 
 	private Weapon[] weapons;
 	private EnemyController enemyController;
+	private SphereCollider sphereCollider;
 
 	void Start(){
-		enemyController = gameObject.GetComponent<EnemyController>();
-		weapons = gameObject.GetComponentsInChildren<Weapon> ();
+		enemyController = transform.parent.GetComponentInChildren<EnemyController>();
+		weapons = transform.parent.GetComponentsInChildren <Weapon> ();
+		sphereCollider = transform.GetComponent<SphereCollider> ();
 	}
 		
-	public bool isAttackPossible(Collider player){
+
+	void OnTriggerStay(Collider other){  
+		if (other.tag.Equals("Player") && isAttackPossible (other)){
+			attack (other);
+		}
+	}
+
+	private bool isAttackPossible(Collider player){
 		for (int i = 0; i < weapons.Length; i++) {
 			if (weapons[i].isAvailable (player.transform) && enemyController.isEnergy (weapons[i].attackCost)) {
 				return true;
@@ -22,11 +31,11 @@ public class EnemyShooting : MonoBehaviour {
 		return false;
 	}
 
-	public void attack(Collider player){
+	private void attack(Collider player){
 		Weapon bestWeapon = null;
-		float bestRating = float.NegativeInfinity;
+		double bestRating = double.NegativeInfinity;
 		for (int i = 0; i < weapons.Length; i++) {
-			float rating = weapons[i].getRating (player, enemyController.CurrentEnergy);
+			double rating = weapons[i].getRating (player, enemyController.CurrentEnergy, sphereCollider.radius);
 			if (rating > bestRating && weapons[i].isAvailable (player.transform) && enemyController.isEnergy (weapons[i].attackCost)) {
 				bestWeapon = weapons[i];
 				bestRating = rating;
@@ -37,5 +46,27 @@ public class EnemyShooting : MonoBehaviour {
 			bestWeapon.attack (player);
 			enemyController.useEnergy (bestWeapon.attackCost);
 		}
+	}
+
+	public double getWeaponsRating(){
+		double sum = 0;
+		for (int i = 0; i < weapons.Length; i++) {
+			double rating = weapons[i].getRating (enemyController.CurrentEnergy);
+			if (enemyController.isEnergy (weapons[i].attackCost)) {
+				sum += rating;
+			}
+		}
+		return (weapons.Length == 0) ? 0 : sum / weapons.Length;
+	}
+
+	public double getBestWeaponRating(){
+		double bestRating = double.NegativeInfinity;
+		for (int i = 0; i < weapons.Length; i++) {
+			double rating = weapons[i].getRating (enemyController.CurrentEnergy);
+			if (rating > bestRating && enemyController.isEnergy (weapons[i].attackCost)) {
+				bestRating = rating;
+			}
+		}
+		return bestRating;
 	}
 }

@@ -12,11 +12,19 @@ public class MeleeWeapon : Weapon {
 		return distance <= attackDistance && attackTimer <= 0;
 	}
 		
-	public override float getRating (Collider player, float enemyEnergy){
+	public override double getRating (Collider player, float enemyEnergy, float distance){
 		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
-		float energy = 100 - (attackCost / enemyEnergy * 100);
-		float demage = attackDemage / playerHealth.CurrentHealth * 100;
-		return (energy + demage) * incentive ;
+		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
+		double rDemage = attackDemage / playerHealth.CurrentHealth * 100;
+		return (rEnergy + rDemage) * incentive ;
+	}
+
+	public override double getRating(float enemyEnergy){
+		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
+		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
+		double rDemage = attackDemage / playerHealth.m_StartingHealth * 100;
+		double rDelay = attackDelay / 10 * 100;
+		return - rDelay + (rEnergy + rDemage) * incentive ;
 	}
 
 	public override void attack(Collider player){
