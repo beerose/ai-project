@@ -100,10 +100,10 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       bloom:
-        intensity: 0.5
-        threshold: 1.1
+        intensity: 1.5
+        threshold: 0.2
         softKnee: 0.5
-        radius: 4
+        radius: 3.32
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
@@ -121,16 +121,16 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 1.5
-        temperature: -6
-        tint: 36.3
-        hueShift: 30
-        saturation: 1.532
-        contrast: 1.205
+        temperature: 0
+        tint: 0
+        hueShift: 0
+        saturation: 1
+        contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 2
+        currentEditingChannel: 0
       colorWheels:
         mode: 1
         log:
@@ -138,9 +138,9 @@ MonoBehaviour:
           power: {r: 1, g: 1, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
-          lift: {r: 1, g: 1, b: 1, a: 0}
-          gamma: {r: 1, g: 1, b: 1, a: 0}
-          gain: {r: 1, g: 1, b: 1, a: 0}
+          lift: {r: 0, g: 0, b: 0, a: 0}
+          gamma: {r: 0, g: 0, b: 0, a: 0}
+          gain: {r: 0, g: 0, b: 0, a: 0}
       curves:
         master:
           curve:

@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
 
     public void ChangeBoard(GameObject newBoard)
     {
-        if(Time.time>0.5f)EC.LoadEnemiesInRoom(newBoard.name);
+        if(Time.timeSinceLevelLoad>0.5f)EC.LoadEnemiesInRoom(newBoard.name);
         currentBoard = newBoard;
     }
 
