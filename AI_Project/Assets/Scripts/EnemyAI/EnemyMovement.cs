@@ -13,7 +13,6 @@ public class EnemyMovement : MonoBehaviour
     private float runningDelay = 1;
 
     private EnemyController enemyController;
-    private EnemyShooting enemyShooting;
     private Vector3 startPosition;
     private NavMeshAgent agent;
     private Animator anim;
@@ -23,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
     {
 		enemyTransform = transform.parent.transform;
         enemyController = transform.parent.GetComponentInChildren<EnemyController>();
-        enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting>();
 		startPosition = enemyTransform.position;
         agent = transform.parent.GetComponent<NavMeshAgent>();
         anim = GetComponentInParent<Animator>();
@@ -73,19 +71,13 @@ public class EnemyMovement : MonoBehaviour
             setRotation(other.transform);
             anim.SetTrigger("Attack");
             startPosition = other.transform.position;
-            move(other);
+			if (enemyController.isEnergy (runningCost))
+			{
+				run (other.transform.position);
+			}
         }
     }
-
-    private void move(Collider other)
-    {
-		if (enemyShooting && enemyShooting.isAttackPossible (other)) {
-			enemyShooting.attack (other);
-		} else if (enemyController.isEnergy (runningCost)){
-			run (other.transform.position);
-		}
-    }
-
+		
 	private void run(Vector3 targetPostion)
     {
         if (runningTimer <= 0)
@@ -117,4 +109,9 @@ public class EnemyMovement : MonoBehaviour
         finalRotation.z = oryginalZ;
         enemyTransform.rotation = finalRotation;
     }
+
+	public double getRating(){
+		double speed = 100 - (runningCost / enemyController.energy * 100);
+		return - (100 / runningSpeed) - (100 / walkSpeed) + speed;
+	}
 }

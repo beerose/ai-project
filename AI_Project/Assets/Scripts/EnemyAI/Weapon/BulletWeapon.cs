@@ -22,13 +22,24 @@ public class BulletWeapon : Weapon {
 		return false;
 	}
 
-	public override float getRating (Collider player, float enemyEnergy){
+	public override double getRating (Collider player, float enemyEnergy, float distance){
 		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
 		Vector3 otherPosition = player.transform.position;
-		float distance = Vector3.Distance(transform.position, otherPosition);
-		float energy = 100 - (attackCost / enemyEnergy * 100);
-		float demage = weaponController.power / playerHealth.CurrentHealth * 100;
-		return - distance + (energy + demage) * incentive ;
+		double maxDistance = (attackDistance > distance) ? distance : attackDistance;
+		double rDistance = Vector3.Distance(transform.position, otherPosition) / maxDistance * 100;
+		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
+		double rDemage = weaponController.power / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.speed;
+		return - (rDistance / rSpeed) + (rEnergy + rDemage) * incentive ;
+	}
+
+	public override double getRating(float enemyEnergy){
+		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
+		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
+		double rDemage = weaponController.power / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.speed / 20 * 100;
+		double rDelay = weaponController.fireDelay / 10 * 100;
+		return - rDelay - (100 / rSpeed) + (rEnergy + rDemage) * incentive ;
 	}
 
 	public override void attack(Collider player){
