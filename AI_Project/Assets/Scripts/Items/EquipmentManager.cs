@@ -6,16 +6,16 @@ public class EquipmentManager : MonoBehaviour
 {
     #region Singleton
 
-    public static EquipmentManager Inststance;
+    public static EquipmentManager Instance;
 
     void Awake()
     {
-        Inststance = this;
+        Instance = this;
     }
 
     #endregion
 
-    private Equipment[] currentEquipment;
+    public Equipment[] currentEquipment;
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
 
@@ -45,9 +45,27 @@ public class EquipmentManager : MonoBehaviour
 
         if (OnEquipmentChangedCallback != null)
         {
-            OnEquipmentChangedCallback.Invoke(newItem,oldItem);
+            OnEquipmentChangedCallback.Invoke(newItem, oldItem);
         }
 
         currentEquipment[slotIndex] = newItem;
+    }
+
+    public void Unequip(Equipment oldItem)
+    {
+        int slotIndex = (int)oldItem.EquipSlot;
+
+        if (currentEquipment[slotIndex] != null)
+        {
+            if (inventory.Add(oldItem))
+            {
+                currentEquipment[slotIndex] = null;
+
+                if (OnEquipmentChangedCallback != null)
+                {
+                    OnEquipmentChangedCallback.Invoke(null, oldItem);
+                }
+            }
+        }
     }
 }

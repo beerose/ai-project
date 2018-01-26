@@ -21,7 +21,7 @@ public class WeaponController : MonoBehaviour
         if (transform.parent.tag.Equals("Player"))
         {
             HP = GetComponentInParent<PlayerHealth>();
-            EquipmentManager.Inststance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
+            EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
         }
     }
 

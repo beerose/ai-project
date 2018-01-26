@@ -15,7 +15,13 @@ public class Equipment : Item
     {
         base.Use();
         RemoveFromInventory();
-        EquipmentManager.Inststance.Equip(this);
+        EquipmentManager.Instance.Equip(this);
+    }
+
+    public override void Unequip()
+    {
+        base.Unequip();
+        EquipmentManager.Instance.Unequip(this);
     }
 }
 
