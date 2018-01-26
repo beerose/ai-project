@@ -28,7 +28,7 @@ public class EquipmentUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (oldItem != null && i == (int) newItem.EquipSlot)
+            if (oldItem != null && i == (int) oldItem.EquipSlot)
             {
                 slots[i].ClerSlot();
             }
@@ -36,7 +36,6 @@ public class EquipmentUI : MonoBehaviour
             {
                 slots[i].AddItem(newItem);
             }
-            
         }
     }
 }
