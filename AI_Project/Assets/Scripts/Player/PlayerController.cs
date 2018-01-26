@@ -38,10 +38,16 @@ namespace Player
                         zMin = Mathf.Ceil(walls.Find("South Wall").position.z),
                         zMax = Mathf.Floor(walls.Find("North Wall").position.z)
                     };
+                    var doors = tango.transform.parent.Find("Doors");
+                    foreach (DoorBehaviour door in doors.GetComponentsInChildren<DoorBehaviour>())
+                    {
+                        door.FirmlyCloseDoor();
+                    }
+
+
                 }
             }
         }
-
 
         void Start()
         {
@@ -97,10 +103,10 @@ namespace Player
         {
             if (!GameController.Instace.getGameStatus())
             {
-				if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
-				if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
-				if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
-				if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
             }
         }
 
