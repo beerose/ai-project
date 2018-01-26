@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public float m_HealthModifier = 0f;
     public float m_StartingHealth = 100f;
     public Slider m_Slider;
     public Image m_FillImage;
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerAnimatorController pAnimC;
 
     private Light playerLight;
+    private float startLight;
 
     public float CurrentHealth
     {
@@ -37,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            m_CurrentHealth = m_StartingHealth;
+            m_CurrentHealth = m_StartingHealth + m_HealthModifier;
             SetHealthUI();
             SetLight();
         }
@@ -46,10 +48,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        m_CurrentHealth = m_StartingHealth;
+        m_CurrentHealth = m_StartingHealth + m_HealthModifier;
         m_Dead = false;
         pAnimC = GetComponentInChildren<PlayerAnimatorController>();
         playerLight = GetComponentInChildren<Light>();
+        startLight = playerLight.range;
         SetHealthUI();
         SetLight();
     }
@@ -72,15 +75,17 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void SetHealthUI()
+    public void SetHealthUI()
     {
+        m_Slider.maxValue = m_StartingHealth + m_HealthModifier;
         m_Slider.value = m_CurrentHealth;
-        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
+
+        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / (m_StartingHealth + m_HealthModifier));
     }
 
     private void SetLight()
     {
-        playerLight.range = m_CurrentHealth / m_StartingHealth * 10;
+        playerLight.range = m_CurrentHealth / (m_StartingHealth + m_HealthModifier) * startLight;
     }
 
 
