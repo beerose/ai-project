@@ -28,14 +28,15 @@ public class EquipmentUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
+            if (oldItem != null && i == (int) newItem.EquipSlot)
+            {
+                slots[i].ClerSlot();
+            }
             if (newItem != null && i == (int) newItem.EquipSlot)
             {
                 slots[i].AddItem(newItem);
             }
-            else if (oldItem != null)
-            {
-                slots[i].ClerSlot();
-            }
+            
         }
     }
 }
