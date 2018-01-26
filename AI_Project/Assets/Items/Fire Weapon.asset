@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Fire Weapon
   m_EditorClassIdentifier: 
   name: Fire Weapon
-  icon: {fileID: 21300000, guid: eb3e574b60592114eb0f438ebb6fe462, type: 3}
+  icon: {fileID: 21300000, guid: 92b315788e6ebb34f90dddacbca17e68, type: 3}
   isDefaultItem: 0
   EquipSlot: 0
-  HealthModifier: 30
-  DamageModifier: 1
+  HealthModifier: 0
+  DamageModifier: 2

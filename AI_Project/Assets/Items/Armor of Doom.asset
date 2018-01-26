@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Armor of Doom
   m_EditorClassIdentifier: 
   name: Armor of Doom
-  icon: {fileID: 21300000, guid: fd885f19747bd3e43b96c1db6a69f8d1, type: 3}
+  icon: {fileID: 21300000, guid: ad1c6eeb198c12b49ae7fcd600230d1e, type: 3}
   isDefaultItem: 0
   EquipSlot: 1
-  HealthModifier: 100
+  HealthModifier: 60
   DamageModifier: 1

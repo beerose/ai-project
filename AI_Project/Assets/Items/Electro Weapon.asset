@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Electro Weapon
   m_EditorClassIdentifier: 
   name: Electro Weapon
-  icon: {fileID: 21300000, guid: 5b26e5a7308f6c14c9b9e604555048f1, type: 3}
+  icon: {fileID: 21300000, guid: 5dc5f26eb2281954ea9f360eca7dc1a9, type: 3}
   isDefaultItem: 0
   EquipSlot: 0
-  HealthModifier: 10
-  DamageModifier: 2
+  HealthModifier: 0
+  DamageModifier: 3
