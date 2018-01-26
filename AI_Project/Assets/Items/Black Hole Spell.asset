@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8d420b6c6ed5894bb7fd1da09ec2137, type: 3}
-  m_Name: Black
+  m_Name: Black Hole Spell
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: Black Hole Spell
+  icon: {fileID: 21300000, guid: afd2139f5711d46449e7e3a38ce5b17e, type: 3}
   isDefaultItem: 0
-  EquipSlot: 0
-  HealthModifier: 0
-  DamageModifier: 0
+  EquipSlot: 2
+  HealthModifier: 10
+  DamageModifier: 5

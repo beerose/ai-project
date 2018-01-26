@@ -83,6 +83,12 @@ public class PlayerHealth : MonoBehaviour
         m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / (m_StartingHealth + m_HealthModifier));
     }
 
+    public void UpdateHP()
+    {
+        if (m_CurrentHealth > m_HealthModifier + m_StartingHealth)
+            m_CurrentHealth = m_HealthModifier + m_StartingHealth;
+    }
+
     private void SetLight()
     {
         playerLight.range = m_CurrentHealth / (m_StartingHealth + m_HealthModifier) * startLight;

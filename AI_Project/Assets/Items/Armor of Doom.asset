@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d420b6c6ed5894bb7fd1da09ec2137, type: 3}
   m_Name: Armor of Doom
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
+  name: Armor of Doom
+  icon: {fileID: 21300000, guid: fd885f19747bd3e43b96c1db6a69f8d1, type: 3}
   isDefaultItem: 0
-  EquipSlot: 0
-  HealthModifier: 0
-  DamageModifier: 0
+  EquipSlot: 1
+  HealthModifier: 100
+  DamageModifier: 1

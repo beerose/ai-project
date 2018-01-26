@@ -31,6 +31,7 @@ public class WeaponController : MonoBehaviour
         {
             HP.m_HealthModifier += newItem.HealthModifier;
             HP.SetHealthUI();
+            HP.UpdateHP();
             PowerModifier += newItem.DamageModifier;
         }
 
@@ -38,6 +39,7 @@ public class WeaponController : MonoBehaviour
         {
             HP.m_HealthModifier -= oldItem.HealthModifier;
             HP.SetHealthUI();
+            HP.UpdateHP();
             PowerModifier -= oldItem.DamageModifier;
         }
     }
