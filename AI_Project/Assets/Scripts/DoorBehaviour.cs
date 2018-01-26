@@ -70,7 +70,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         firmlyClosed = true;
         CloseDoor();
-        Invoke("ForceTheDoor", 1.5f);
+        Invoke("ForceTheDoor", 1.0f);
     }
 
     private void ForceTheDoor()
