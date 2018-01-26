@@ -1167,6 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55654ae4b7cd54964a7bb7c96e006ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HealthModifer: 0
   m_StartingHealth: 100
   m_Slider: {fileID: 114677816036448446}
   m_FillImage: {fileID: 114495752380404508}
@@ -1326,6 +1327,7 @@ MonoBehaviour:
   fireDelay: 0.5
   speed: 5
   power: 1
+  PowerModifer: 0
 --- !u!136 &136748098505431768
 CapsuleCollider:
   m_ObjectHideFlags: 1
