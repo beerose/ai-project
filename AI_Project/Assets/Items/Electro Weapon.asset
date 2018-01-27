@@ -13,7 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Electro Weapon
   icon: {fileID: 21300000, guid: 5dc5f26eb2281954ea9f360eca7dc1a9, type: 3}
-  isDefaultItem: 0
   EquipSlot: 0
+  DamageModifier: 4
+  BulletSpeedModifier: -1
+  FireDelayModifier: 0.2
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
   HealthModifier: 0
-  DamageModifier: 3
+  Spell: {fileID: 0}

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Black Hole Spell
   icon: {fileID: 21300000, guid: 7e051d18bae47984299ed30a69f8bf1e, type: 3}
-  isDefaultItem: 0
   EquipSlot: 2
+  DamageModifier: 0
+  BulletSpeedModifier: 0
+  FireDelayModifier: 0
+  Shot: {fileID: 0}
   HealthModifier: 0
-  DamageModifier: 6
+  Spell: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
