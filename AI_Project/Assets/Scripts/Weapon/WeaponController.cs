@@ -6,27 +6,54 @@ public class WeaponController : MonoBehaviour
 {
     public GameObject shot;
     public float fireDelay;
-	public float speed;
-	public float power;
+    public float speed;
+    public float power;
+    public float PowerModifier;
     private float nextFire;
     private string ShooterTag;
     private AudioSource aud;
+    private PlayerHealth HP;
 
     void Start()
     {
         ShooterTag = transform.parent.tag;
         aud = GetComponent<AudioSource>();
+        if (transform.parent.tag.Equals("Player"))
+        {
+            HP = GetComponentInParent<PlayerHealth>();
+            EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
+        }
     }
 
-	public void Fire()
+    void onEquipmentChangedCallback(Equipment newItem, Equipment oldItem)
+    {
+        if (newItem != null)
+        {
+            HP.m_HealthModifier += newItem.HealthModifier;
+            HP.SetHealthUI();
+            HP.UpdateHP();
+            PowerModifier += newItem.DamageModifier;
+        }
+
+        if (oldItem != null)
+        {
+            HP.m_HealthModifier -= oldItem.HealthModifier;
+            HP.SetHealthUI();
+            HP.UpdateHP();
+            PowerModifier -= oldItem.DamageModifier;
+        }
+    }
+
+
+    public void Fire()
     {
         if (Time.time > nextFire)
         {
-			nextFire = Time.time + fireDelay;
+            nextFire = Time.time + fireDelay;
             ShotMover bullet = Instantiate(shot, transform.position, transform.rotation).GetComponent<ShotMover>();
             bullet.SetShooterTag(ShooterTag);
-			bullet.Power = power;
-			bullet.Speed = speed;
+            bullet.Power = power + PowerModifier;
+            bullet.Speed = speed;
             aud.Play();
         }
     }
@@ -41,10 +68,10 @@ public class WeaponController : MonoBehaviour
         return t.name;
     }
 
-	public bool isAvailable()
-	{
-		return Time.time > nextFire;
-	}
+    public bool isAvailable()
+    {
+        return Time.time > nextFire;
+    }
 
     public float GetPower()
     {

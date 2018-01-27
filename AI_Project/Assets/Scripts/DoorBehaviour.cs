@@ -14,6 +14,7 @@ public class DoorBehaviour : MonoBehaviour
 {
     public const int teleportationStrength = 3;
     public Direction direction;
+
     public bool isOpen = true;
     public Color OpenColor = Color.green;
     public Color CloseColor = Color.red;
@@ -23,6 +24,7 @@ public class DoorBehaviour : MonoBehaviour
     private float newBoundaryXMax;
     private float newBoundaryZMin;
     private float newBoundaryZMax;
+    private bool firmlyClosed;
 
     bool AgentCanPassThroughDoor(Transform agent)
     {
@@ -64,6 +66,18 @@ public class DoorBehaviour : MonoBehaviour
         }
     }
 
+    public void FirmlyCloseDoor()
+    {
+        firmlyClosed = true;
+        CloseDoor();
+        Invoke("ForceTheDoor", 1.0f);
+    }
+
+    private void ForceTheDoor()
+    {
+        firmlyClosed = false;
+    }
+
     public void CloseDoor()
     {
         isOpen = false;
@@ -72,8 +86,11 @@ public class DoorBehaviour : MonoBehaviour
 
     public void OpenDoor()
     {
-        isOpen = true;
-        GetComponent<Renderer>().material.color = OpenColor;
+        if (!firmlyClosed)
+        {
+            isOpen = true;
+            GetComponent<Renderer>().material.color = OpenColor;
+        }
     }
 
     public void KYS()

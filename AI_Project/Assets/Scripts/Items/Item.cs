@@ -14,4 +14,17 @@ public class Item : ScriptableObject
 
         Debug.Log("Using " + name);
     }
+
+    public virtual void Unequip()
+    {
+        // Unequip the item
+        // Something might happen
+
+        Debug.Log("Unequip " + name);
+    }
+
+    public void RemoveFromInventory()
+    {
+        Inventory.Instance.Remove(this);
+    }
 }
