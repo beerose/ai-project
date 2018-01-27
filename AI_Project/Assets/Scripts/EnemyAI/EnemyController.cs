@@ -100,6 +100,14 @@ public class EnemyController : MonoBehaviour
                 currentHealth -= coll.gameObject.GetComponent<ShotMover>().Damage;
             }
         }
+        if (colTag.Equals("Spell"))
+        {
+            string shooter = coll.GetComponent<SpellBehaviour>().GetShooterTag();
+            if (shooter.Equals("Player"))
+            {
+                currentHealth -= coll.gameObject.GetComponent<SpellBehaviour>().Damage;
+            }
+        }
     }
 
 	public double getRating(){

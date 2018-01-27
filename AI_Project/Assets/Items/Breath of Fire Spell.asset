@@ -19,4 +19,4 @@ MonoBehaviour:
   FireDelayModifier: 0
   Shot: {fileID: 0}
   HealthModifier: 0
-  Spell: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
+  Spell: {fileID: 1799730970850962, guid: 3aaaac9dbf25db246b15e40d2c3c978f, type: 2}

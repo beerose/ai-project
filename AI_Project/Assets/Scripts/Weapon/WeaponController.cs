@@ -24,6 +24,7 @@ public class WeaponController : MonoBehaviour
     private GameObject defaultShot;
     private GameObject defaultSpell;
 
+
     void Start()
     {
         defaultShot = Shot;
@@ -41,7 +42,7 @@ public class WeaponController : MonoBehaviour
     void manaRegen()
     {
         Mana += ManaRegen;
-        
+
         if (Mana > MaxMana) Mana = MaxMana;
     }
 
@@ -109,17 +110,18 @@ public class WeaponController : MonoBehaviour
 
     public void Cast()
     {
-        float manaCost = 10;
-        if (Mana >= manaCost && Time.time > nextFire)
+        if (Spell != null)
         {
-            nextFire = Time.time + FireDelay + FireDelayModifier;
-            Mana -= manaCost;
-            ShotMover spell = Instantiate(Spell, transform.position, transform.rotation).GetComponent<ShotMover>();
-            spell.SetShooterTag(ShooterTag);
-            spell.Damage = 10 * (Damage + DamageModifier);
-            spell.Speed = 0;
-            spell.LifeTime = Single.MaxValue;
-            aud.Play();
+            float manaCost = Spell.GetComponent<SpellBehaviour>().ManaCost;
+            if (Mana >= manaCost && Time.time > nextFire)
+            {
+                nextFire = Time.time + FireDelay + FireDelayModifier;
+                Mana -= manaCost;
+                SpellBehaviour spell = Instantiate(Spell, transform.position, transform.rotation)
+                    .GetComponent<SpellBehaviour>();
+                spell.SetShooterTag(ShooterTag);
+                Debug.Log("Casting " + spell.name);
+            }
         }
     }
 
