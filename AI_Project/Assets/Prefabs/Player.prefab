@@ -1328,10 +1328,12 @@ MonoBehaviour:
   MaxMana: 35
   Mana: 35
   ManaRegen: 5
-  Damage: 2
+  Damage: 1
   DamageModifier: 0
   FireDelay: 0.5
   FireDelayModifier: 0
+  SpellDelay: 1
+  SpellDelayModifier: 0
   BulletSpeed: 5
   BulletSpeedModifier: 0
 --- !u!136 &136748098505431768

@@ -7,17 +7,20 @@ public class WeaponController : MonoBehaviour
 {
     public GameObject Shot;
     public GameObject Spell;
-    public float MaxMana;
-    public float Mana;
-    public float ManaRegen;
-    public float Damage;
-    public float DamageModifier;
-    public float FireDelay;
-    public float FireDelayModifier;
-    public float BulletSpeed;
-    public float BulletSpeedModifier;
+    public float MaxMana = 35f;
+    public float Mana = 35f;
+    public float ManaRegen = 5f;
+    public float Damage = 1f;
+    public float DamageModifier = 0f;
+    public float FireDelay = 0.5f;
+    public float FireDelayModifier = 0f;
+    public float SpellDelay = 1f;
+    public float SpellDelayModifier = 0f;
+    public float BulletSpeed = 5f;
+    public float BulletSpeedModifier = 0f;
 
     private float nextFire;
+    private float nextSpell;
     private string ShooterTag;
     private AudioSource aud;
     private PlayerHealth HP;
@@ -130,9 +133,9 @@ public class WeaponController : MonoBehaviour
         if (Spell != null)
         {
             float manaCost = Spell.GetComponent<SpellBehaviour>().ManaCost;
-            if (Mana >= manaCost && Time.time > nextFire)
+            if (Mana >= manaCost && Time.time > nextSpell)
             {
-                nextFire = Time.time + FireDelay + FireDelayModifier;
+                nextSpell = Time.time + SpellDelay + SpellDelayModifier;
                 Mana -= manaCost;
                 SpellBehaviour spell = Instantiate(Spell, transform.position, transform.rotation)
                     .GetComponent<SpellBehaviour>();
