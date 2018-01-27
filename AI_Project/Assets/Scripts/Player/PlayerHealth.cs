@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void OnEnable()
+    private void Start()
     {
         m_CurrentHealth = m_StartingHealth + m_HealthModifier;
         m_Dead = false;
@@ -77,12 +77,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void SetHealthUI()
     {
-        StatisticsUI.Instance.HPupdate(m_CurrentHealth,m_StartingHealth + m_HealthModifier);
+        StatisticsUI.Instance.HPupdate(m_CurrentHealth, m_StartingHealth + m_HealthModifier);
 
         m_Slider.maxValue = m_StartingHealth + m_HealthModifier;
         m_Slider.value = m_CurrentHealth;
 
-        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / (m_StartingHealth + m_HealthModifier));
+        m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor,
+            m_CurrentHealth / (m_StartingHealth + m_HealthModifier));
     }
 
     public void UpdateHP()
