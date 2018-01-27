@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
             string shooter = coll.GetComponent<ShotMover>().GetShooterTag();
             if (shooter.Equals("Player"))
             {
-                currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
+                currentHealth -= coll.gameObject.GetComponent<ShotMover>().Damage;
             }
         }
     }

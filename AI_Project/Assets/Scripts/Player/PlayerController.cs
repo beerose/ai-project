@@ -107,6 +107,7 @@ namespace Player
                 if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
                 if (Input.GetKey(KeyCode.LeftArrow)) weapon.Fire();
                 if (Input.GetKey(KeyCode.RightArrow)) weapon.Fire();
+                if (Input.GetKey(KeyCode.Space)) weapon.Cast();
             }
         }
 

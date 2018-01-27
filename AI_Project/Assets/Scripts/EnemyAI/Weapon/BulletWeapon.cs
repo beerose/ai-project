@@ -28,17 +28,17 @@ public class BulletWeapon : Weapon {
 		double maxDistance = (attackDistance > distance) ? distance : attackDistance;
 		double rDistance = Vector3.Distance(transform.position, otherPosition) / maxDistance * 100;
 		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = weaponController.power / playerHealth.m_StartingHealth * 100;
-		double rSpeed = weaponController.speed;
+		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.BulletSpeed;
 		return - (rDistance / rSpeed) + (rEnergy + rDemage) * incentive ;
 	}
 
 	public override double getRating(float enemyEnergy){
 		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
 		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = weaponController.power / playerHealth.m_StartingHealth * 100;
-		double rSpeed = weaponController.speed / 20 * 100;
-		double rDelay = weaponController.fireDelay / 10 * 100;
+		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.BulletSpeed / 20 * 100;
+		double rDelay = weaponController.FireDelay / 10 * 100;
 		return - rDelay - (100 / rSpeed) + (rEnergy + rDemage) * incentive ;
 	}
 

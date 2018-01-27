@@ -6,7 +6,7 @@ public class ShotMover : MonoBehaviour
 {
     public GameObject Explosion;
     public float LifeTime;
-	public float Power { set; get;}
+	public float Damage { set; get;}
 	public float Speed { set; get;}
 
     private Rigidbody rb;

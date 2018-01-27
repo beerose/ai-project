@@ -8,8 +8,15 @@ public class Equipment : Item
 {
     public EquipmentSlot EquipSlot;
 
-    public int HealthModifier;
-    public int DamageModifier;
+    public float DamageModifier; //Weapon
+    public float BulletSpeedModifier; //Weapon
+    public float FireDelayModifier; //Weapon
+    public GameObject Shot; //Weapon
+
+    public float HealthModifier; //Armor
+
+
+    public GameObject Spell; //Spell
 
     public override void Use()
     {

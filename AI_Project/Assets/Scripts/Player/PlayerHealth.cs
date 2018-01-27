@@ -110,7 +110,7 @@ public class PlayerHealth : MonoBehaviour
             ShotMover shotMover = collider.GetComponent<ShotMover>();
             if (!shotMover.GetShooterTag().Equals("Player") && !m_Dead)
             {
-                TakeDamage(shotMover.Power);
+                TakeDamage(shotMover.Damage);
             }
         }
     }

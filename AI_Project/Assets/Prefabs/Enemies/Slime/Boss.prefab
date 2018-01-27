@@ -489,7 +489,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254232886063884}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.5307866}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4817969999382272}
@@ -919,10 +919,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 0.5
-  speed: 15
-  power: 10
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114804975130302282
 MonoBehaviour:
   m_ObjectHideFlags: 1

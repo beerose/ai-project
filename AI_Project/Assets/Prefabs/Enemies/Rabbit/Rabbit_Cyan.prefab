@@ -946,10 +946,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114315819878793548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -972,10 +979,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 5
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114532728898045814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -987,10 +1001,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114652636532980802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1002,10 +1023,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114712696403282736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,10 +1060,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114818061096857162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1066,10 +1101,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114901000195938442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1096,10 +1138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 4
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 10
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!135 &135482677552995626
 SphereCollider:
   m_ObjectHideFlags: 1

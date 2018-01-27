@@ -60,7 +60,7 @@ public class MultiBulletWeapon : Weapon {
 	private double averagePower(){
 		double average = 0;
 		for (int i = 0; i < weaponControllers.Length; i++) {
-			average += weaponControllers [i].power;
+			average += weaponControllers [i].Damage;
 		}
 		return average / weaponControllers.Length;
 	}
@@ -68,7 +68,7 @@ public class MultiBulletWeapon : Weapon {
 	private double averageSpeed(){
 		double average = 0;
 		for (int i = 0; i < weaponControllers.Length; i++) {
-			average += weaponControllers [i].speed;
+			average += weaponControllers [i].BulletSpeed;
 		}
 		return average / weaponControllers.Length;
 	}
@@ -76,8 +76,8 @@ public class MultiBulletWeapon : Weapon {
 	private double maxDelay(){
 		double max = 0;
 		for (int i = 0; i < weaponControllers.Length; i++) {
-			if (max < weaponControllers [i].fireDelay)
-				max = weaponControllers [i].fireDelay;
+			if (max < weaponControllers [i].FireDelay)
+				max = weaponControllers [i].FireDelay;
 		}
 		return max;
 	}
