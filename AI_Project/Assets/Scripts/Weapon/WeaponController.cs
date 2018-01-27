@@ -35,8 +35,16 @@ public class WeaponController : MonoBehaviour
         {
             HP = GetComponentInParent<PlayerHealth>();
             EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
+
+            InvokeRepeating("manaRegen", 0, 1f);
+
+            StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
+                BulletSpeed + BulletSpeedModifier);
+            if (Spell != null)
+                StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
+                    Spell.GetComponent<SpellBehaviour>().ManaCost);
+            else StatisticsUI.Instance.SpellUpdate(0f, 0f);
         }
-        InvokeRepeating("manaRegen", 0, 1f);
     }
 
     void manaRegen()
@@ -44,6 +52,8 @@ public class WeaponController : MonoBehaviour
         Mana += ManaRegen;
 
         if (Mana > MaxMana) Mana = MaxMana;
+
+        StatisticsUI.Instance.MPUpdate(Mana, MaxMana);
     }
 
     void onEquipmentChangedCallback(Equipment newItem, Equipment oldItem)
@@ -60,8 +70,8 @@ public class WeaponController : MonoBehaviour
             if ((int) oldItem.EquipSlot == 1)
             {
                 HP.m_HealthModifier -= oldItem.HealthModifier;
-                HP.SetHealthUI();
                 HP.UpdateHP();
+                HP.SetHealthUI();
             }
 
             if ((int) oldItem.EquipSlot == 2)
@@ -82,8 +92,8 @@ public class WeaponController : MonoBehaviour
             if ((int) newItem.EquipSlot == 1)
             {
                 HP.m_HealthModifier += newItem.HealthModifier;
-                HP.SetHealthUI();
                 HP.UpdateHP();
+                HP.SetHealthUI();
             }
             if ((int) newItem.EquipSlot == 2)
             {
@@ -92,6 +102,13 @@ public class WeaponController : MonoBehaviour
         }
 
         transform.parent.GetComponentInChildren<PlayerAnimatorController>().ChangeAnimAttackSpeed();
+
+        StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
+            BulletSpeed + BulletSpeedModifier);
+        if (Spell != null)
+            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
+                Spell.GetComponent<SpellBehaviour>().ManaCost);
+        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
     }
 
 
@@ -120,6 +137,7 @@ public class WeaponController : MonoBehaviour
                 SpellBehaviour spell = Instantiate(Spell, transform.position, transform.rotation)
                     .GetComponent<SpellBehaviour>();
                 spell.SetShooterTag(ShooterTag);
+                StatisticsUI.Instance.MPUpdate(Mana, MaxMana);
                 Debug.Log("Casting " + spell.name);
             }
         }

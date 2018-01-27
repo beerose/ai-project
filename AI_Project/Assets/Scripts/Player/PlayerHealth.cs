@@ -77,6 +77,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void SetHealthUI()
     {
+        StatisticsUI.Instance.HPupdate(m_CurrentHealth,m_StartingHealth + m_HealthModifier);
+
         m_Slider.maxValue = m_StartingHealth + m_HealthModifier;
         m_Slider.value = m_CurrentHealth;
 
