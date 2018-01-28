@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-
+using Dungeon;
 
 [CustomEditor(typeof(BuildableRoomBehaviour))]
 public class LookAtPointEditor : Editor
