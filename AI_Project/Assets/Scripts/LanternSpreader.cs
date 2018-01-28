@@ -31,8 +31,5 @@ public class LanternSpreader : MonoBehaviour
                 Instantiate(Lantern, transform.position + new Vector3(-spawn.x, 0.7f, -spawn.y), transform.rotation);
             }
         }
-
-
-        Debug.Log(board);
     }
 }
