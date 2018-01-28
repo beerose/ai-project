@@ -15,11 +15,9 @@ public class GameController : MonoBehaviour
 
     private GameObject currentBoard;
 
-    public bool HaveBoss = false;
-
     private bool gameOver;
 
-    private bool youWin; //temporary
+    private bool youWin;
 
 
     void Start()
@@ -32,18 +30,12 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Boss").Length == 0 && Time.timeSinceLevelLoad > 3f &&
-            HaveBoss) //temporary
-        {
-            youWin = true;
-            YouWinUI.SetActive(true);
-        }
         if (Input.GetKey("escape")) Application.Quit();
     }
 
     public void ChangeBoard(GameObject newBoard)
     {
-        if(Time.timeSinceLevelLoad>0.5f)EC.LoadEnemiesInRoom(newBoard.name);
+        if (Time.timeSinceLevelLoad > 0.5f) EC.LoadEnemiesInRoom(newBoard.name);
         currentBoard = newBoard;
     }
 
@@ -57,13 +49,27 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public void WinGame()
+    {
+        if (!gameOver)
+        {
+            youWin = true;
+            YouWinUI.SetActive(true);
+        }
+        else
+        {
+            youWin = true;
+        }
+    }
+
     public void GameOver()
     {
-        if (!youWin) //temporary
+        if (!youWin)
         {
             gameOver = true;
             GameOverUI.SetActive(true);
         }
+        else { gameOver = true; }
     }
 
     public bool getGameStatus()

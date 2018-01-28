@@ -924,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 1857028702}
   YouWinUI: {fileID: 694856044}
-  HaveBoss: 0
+  HaveBoss: 1
 --- !u!82 &197016231
 AudioSource:
   m_ObjectHideFlags: 0
