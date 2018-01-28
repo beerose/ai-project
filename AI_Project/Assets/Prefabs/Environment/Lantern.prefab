@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 54394076385666476}
   - component: {fileID: 114534801460134878}
   m_Layer: 0
-  m_Name: Latern5
+  m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
