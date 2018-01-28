@@ -19,6 +19,8 @@ TagManager:
   - Enemy Weapon
   - Boss
   - EnemiesCollector
+  - Spell
+  - Item
   layers:
   - Default
   - TransparentFX

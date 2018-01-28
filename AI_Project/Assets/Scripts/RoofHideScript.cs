@@ -17,7 +17,7 @@ public class RoofHideScript : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Application.isEditor)
+        if (!Application.isEditor)
         {
             if (GameController.Instace.GetCurrentBoard().transform != transform.parent)
             {

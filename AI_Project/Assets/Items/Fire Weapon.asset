@@ -13,7 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fire Weapon
   icon: {fileID: 21300000, guid: 92b315788e6ebb34f90dddacbca17e68, type: 3}
-  isDefaultItem: 0
   EquipSlot: 0
+  DamageModifier: 1
+  BulletSpeedModifier: 3
+  FireDelayModifier: -0.1
+  Shot: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
   HealthModifier: 0
-  DamageModifier: 2
+  Spell: {fileID: 0}

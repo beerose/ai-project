@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55654ae4b7cd54964a7bb7c96e006ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HealthModifer: 0
+  m_HealthModifier: 0
   m_StartingHealth: 100
   m_Slider: {fileID: 114677816036448446}
   m_FillImage: {fileID: 114495752380404508}
@@ -1323,11 +1323,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
-  fireDelay: 0.5
-  speed: 5
-  power: 1
-  PowerModifer: 0
+  Shot: {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 35
+  Mana: 35
+  ManaRegen: 5
+  Damage: 1
+  DamageModifier: 0
+  FireDelay: 0.5
+  FireDelayModifier: 0
+  SpellDelay: 1
+  SpellDelayModifier: 0
+  BulletSpeed: 5
+  BulletSpeedModifier: 0
 --- !u!136 &136748098505431768
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 114268501032193818}
   m_Layer: 0
   m_Name: Breath of Fire Spell
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385919867544522}
   m_LocalRotation: {x: 0.000000115202326, y: 0.7071068, z: 0.7071068, w: -0.000000115202326}
-  m_LocalPosition: {x: -1.98, y: -0.2, z: -2.059}
+  m_LocalPosition: {x: 8.02, y: -0.2, z: -2.059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4300784542194868}
@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 85405b942dd89d54fbc40670094a4231, type: 2}
+  PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
+    type: 2}
 --- !u!135 &135789693556459872
 SphereCollider:
   m_ObjectHideFlags: 1

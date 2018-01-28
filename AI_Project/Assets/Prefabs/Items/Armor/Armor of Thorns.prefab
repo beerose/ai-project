@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114093101510781190}
   m_Layer: 0
   m_Name: Armor of Thorns
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243841256390690}
   m_LocalRotation: {x: -0.6693365, y: 0.19402003, z: 0.15013026, w: 0.7012887}
-  m_LocalPosition: {x: 2.42, y: -0.4, z: 2.3531365}
+  m_LocalPosition: {x: 12.42, y: -0.4, z: 2.3531365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4349446187624516}
@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: c963978daffcb3948b9086c93fe17987, type: 2}
+  PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
+    type: 2}
 --- !u!135 &135438373477893440
 SphereCollider:
   m_ObjectHideFlags: 1

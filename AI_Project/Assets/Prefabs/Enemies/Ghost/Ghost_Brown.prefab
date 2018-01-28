@@ -692,10 +692,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9685422b3735842228b7e0de879e2ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
-  fireDelay: 2
-  speed: 15
-  power: 5
+  Shot: {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
+  Spell: {fileID: 0}
+  MaxMana: 0
+  Mana: 0
+  ManaRegen: 0
+  Damage: 5
+  DamageModifier: 0
+  FireDelay: 1
+  FireDelayModifier: 0
+  BulletSpeed: 15
+  BulletSpeedModifier: 0
 --- !u!114 &114007943337577060
 MonoBehaviour:
   m_ObjectHideFlags: 1

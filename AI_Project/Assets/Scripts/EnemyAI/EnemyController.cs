@@ -47,11 +47,12 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Instantiate(DeathEffect, transform.position, transform.rotation);
+            if(transform.CompareTag("Boss"))GameController.Instace.WinGame();
             Destroy(transform.parent.gameObject);
         }
         rechargeHealth();
         rechargeEnergy();
-		EnemyShooting enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting> ();
+		//EnemyShooting enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting> ();
     }
 
     private void rechargeEnergy()
@@ -97,7 +98,15 @@ public class EnemyController : MonoBehaviour
             string shooter = coll.GetComponent<ShotMover>().GetShooterTag();
             if (shooter.Equals("Player"))
             {
-                currentHealth -= coll.gameObject.GetComponent<ShotMover>().Power;
+                currentHealth -= coll.gameObject.GetComponent<ShotMover>().Damage;
+            }
+        }
+        if (colTag.Equals("Spell"))
+        {
+            string shooter = coll.GetComponent<SpellBehaviour>().GetShooterTag();
+            if (shooter.Equals("Player"))
+            {
+                currentHealth -= coll.gameObject.GetComponent<SpellBehaviour>().Damage;
             }
         }
     }

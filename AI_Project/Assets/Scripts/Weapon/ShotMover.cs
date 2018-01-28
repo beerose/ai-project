@@ -6,7 +6,7 @@ public class ShotMover : MonoBehaviour
 {
     public GameObject Explosion;
     public float LifeTime;
-	public float Power { set; get;}
+	public float Damage { set; get;}
 	public float Speed { set; get;}
 
     private Rigidbody rb;
@@ -31,7 +31,15 @@ public class ShotMover : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (!col.tag.Equals(ShooterTag) && !col.tag.Equals("Enemy Eyeshot"))
+        else if (col.tag.Equals("Spell"))
+        {
+            if (!col.GetComponent<SpellBehaviour>().GetShooterTag().Equals(ShooterTag))
+            {
+                Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(gameObject);
+            }
+        }
+        else if (!col.tag.Equals(ShooterTag) && !col.tag.Equals("Enemy Eyeshot") && !col.tag.Equals("Item"))
         {
             Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
