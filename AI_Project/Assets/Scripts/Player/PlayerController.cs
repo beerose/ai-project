@@ -51,6 +51,17 @@ namespace Player
 
         void Start()
         {
+            gameObject.SetActive(false);
+            Invoke("active",0.5f);
+        }
+
+        private void active()
+        {
+            gameObject.SetActive(true);
+        }
+
+        void OnEnable()
+        {
             OnEnterNewRoom();
             target = GetComponent<Transform>();
             weapon = GetComponentInChildren<WeaponController>();

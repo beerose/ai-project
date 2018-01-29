@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float m_HealthModifier = 0f;
     public float m_StartingHealth = 100f;
+    public float m_HPRegen = 1f;
     public Slider m_Slider;
     public Image m_FillImage;
     public Color m_FullHealthColor = Color.green;
@@ -55,22 +56,36 @@ public class PlayerHealth : MonoBehaviour
         startLight = playerLight.range;
         SetHealthUI();
         SetLight();
+        InvokeRepeating("regen", 0, 1);
+    }
+
+    private void regen()
+    {
+        if (!m_Dead)
+        {
+            m_CurrentHealth += m_HPRegen;
+            if (m_CurrentHealth > m_StartingHealth + m_HealthModifier)
+                m_CurrentHealth = m_StartingHealth + m_HealthModifier;
+            SetHealthUI();
+            SetLight();
+        }
     }
 
     public void TakeDamage(float amount)
     {
-        if (lastHit + DelayFromTakeDamage < Time.time)
+        if (lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
         {
             lastHit = Time.time;
             Debug.Log("Player take damage");
             pAnimC.GetHit();
             m_CurrentHealth -= amount;
-            SetHealthUI();
-            SetLight();
             if (m_CurrentHealth <= 0f && !m_Dead)
             {
+                m_CurrentHealth = 0;
                 OnDeath();
             }
+            SetHealthUI();
+            SetLight();
         }
     }
 

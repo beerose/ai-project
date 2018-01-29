@@ -11,6 +11,8 @@ namespace Dungeon {
         public int roomCount;
         public int radius;
 
+        private int number;
+
         public void CollectRooms()
         {
             Random.InitState(1211);
@@ -19,9 +21,12 @@ namespace Dungeon {
 
         public GameObject CreateRoomGameObject(RoomModel roomModel)
         {
+            
             GameObject roomGameObject = Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, transform);
             var room = roomGameObject.GetComponent<BuildableRoomBehaviour>();
             room.SetupFromModel(roomModel);
+            room.name = room.name + number;
+            number++;
             //behaviour.SetDoors(roomModel.Neighbours);
             return roomGameObject;
         }
