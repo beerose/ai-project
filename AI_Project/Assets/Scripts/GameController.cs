@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
     public GameObject GameOverUI;
     public GameObject YouWinUI;
+    public GameObject Boss;
 
     private EnemiesCollector EC;
 
@@ -24,13 +25,33 @@ public class GameController : MonoBehaviour
     {
         Instace = FindObjectOfType<GameController>();
         gameOver = false;
-        RemoveDoors();
+        //RemoveDoors();
         EC = GameObject.FindGameObjectWithTag("EnemiesCollector").GetComponent<EnemiesCollector>();
+        Invoke("bossSpawn", 1); //temporary
+    }
+
+    private void bossSpawn() //temporary
+    {
+        var boards = GameObject.FindGameObjectsWithTag("Board");
+        int id = new System.Random().Next(boards.Length);
+        int i = 0;
+        for (i = 0; i < 50; i++)
+        {
+            if (boards[id].name.Equals(currentBoard.name))
+            {
+                id = new System.Random(i).Next(boards.Length);
+                Debug.Log(boards[id].name);
+            }
+            else
+                break;
+        }
+        if (i != 50) Instantiate(Boss, boards[id].transform.position, boards[id].transform.rotation);
     }
 
     void Update()
     {
         if (Input.GetKey("escape")) Application.Quit();
+        if (Input.GetKey(KeyCode.R)) NewGame();
     }
 
     public void ChangeBoard(GameObject newBoard)
@@ -69,7 +90,10 @@ public class GameController : MonoBehaviour
             gameOver = true;
             GameOverUI.SetActive(true);
         }
-        else { gameOver = true; }
+        else
+        {
+            gameOver = true;
+        }
     }
 
     public bool getGameStatus()
@@ -77,7 +101,7 @@ public class GameController : MonoBehaviour
         return gameOver;
     }
 
-    private void RemoveDoors() //temporary
+    /*private void RemoveDoors() //temporary
     {
         foreach (var door1 in GameObject.FindGameObjectsWithTag("Door"))
         {
@@ -94,11 +118,11 @@ public class GameController : MonoBehaviour
             }
             if (kill) door1.GetComponent<DoorBehaviour>().KYS();
         }
-    }
+    }*/
 
-
+    /*
     float Distance(float x1, float x2, float z1, float z2) //temporary
     {
         return Mathf.Sqrt((x2 - x1) * (x2 - x1) + (z2 - z1) * (z2 - z1));
-    }
+    }*/
 }

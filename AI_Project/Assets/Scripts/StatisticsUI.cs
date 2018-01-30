@@ -26,6 +26,11 @@ public class StatisticsUI : MonoBehaviour
     public Text DPS;
     public Text Spell;
 
+    void Start()
+    {
+        HP.text = "HP : " + 0 + " / " + 0;
+    }
+
     public void HPupdate(float t, float tMax)
     {
         HP.text = "HP : " + t.ToString("N0") + " / " + tMax.ToString("N0");

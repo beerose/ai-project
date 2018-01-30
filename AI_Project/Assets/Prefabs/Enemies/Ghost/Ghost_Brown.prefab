@@ -701,6 +701,8 @@ MonoBehaviour:
   DamageModifier: 0
   FireDelay: 1
   FireDelayModifier: 0
+  SpellDelay: 1
+  SpellDelayModifier: 0
   BulletSpeed: 15
   BulletSpeedModifier: 0
 --- !u!114 &114007943337577060
@@ -800,7 +802,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136676942327110566
 CapsuleCollider:

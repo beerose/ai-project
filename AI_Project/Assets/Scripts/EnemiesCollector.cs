@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemiesCollector : MonoBehaviour
 {
-    public float DelayTime = 1.0f;
+    public float DelayTime = 0.5f;
     private List<GameObject> enemies = new List<GameObject>();
     private List<string> rooms = new List<string>();
 

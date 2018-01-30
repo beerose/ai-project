@@ -415,10 +415,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinLightPower: 1.8
-  MaxLightPower: 3.2
+  MaxLightPower: 3
   MinWaitTime: 0.2
   MaxWaitTime: 0.7
-  SmoothTime: 0.1
+  SmoothTime: 0.15
 --- !u!114 &114534801460134878
 MonoBehaviour:
   m_ObjectHideFlags: 1
