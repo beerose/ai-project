@@ -34,17 +34,24 @@ public class GameController : MonoBehaviour
     {
         var boards = GameObject.FindGameObjectsWithTag("Board");
         int id = new System.Random().Next(boards.Length);
-        while (boards[id].name.Equals(currentBoard.name))
+        int i = 0;
+        for (i = 0; i < 50; i++)
         {
-            id = new System.Random().Next(boards.Length);
+            if (boards[id].name.Equals(currentBoard.name))
+            {
+                id = new System.Random(i).Next(boards.Length);
+                Debug.Log(boards[id].name);
+            }
+            else
+                break;
         }
-        Instantiate(Boss, boards[id].transform.position, boards[id].transform.rotation);
+        if (i != 50) Instantiate(Boss, boards[id].transform.position, boards[id].transform.rotation);
     }
 
     void Update()
     {
         if (Input.GetKey("escape")) Application.Quit();
-        if(Input.GetKey(KeyCode.R)) NewGame();
+        if (Input.GetKey(KeyCode.R)) NewGame();
     }
 
     public void ChangeBoard(GameObject newBoard)
