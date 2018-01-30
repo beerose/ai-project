@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4062497489107852}
   - component: {fileID: 54394076385666476}
   - component: {fileID: 114534801460134878}
+  - component: {fileID: 114300668591438292}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Untagged
@@ -395,7 +396,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -419,6 +420,19 @@ MonoBehaviour:
   MinWaitTime: 0.2
   MaxWaitTime: 0.7
   SmoothTime: 0.15
+--- !u!114 &114300668591438292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383818733195300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a17b5bf56d746f4db5f53b8186fbe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Range: 50
 --- !u!114 &114534801460134878
 MonoBehaviour:
   m_ObjectHideFlags: 1

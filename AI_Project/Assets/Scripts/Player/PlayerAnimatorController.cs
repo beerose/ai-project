@@ -7,7 +7,7 @@ public class PlayerAnimatorController : MonoBehaviour
     public AnimationClip AttackAnimClip;
     private Animator anim;
 
-    void Start()
+    void OnEnable()
     {
         anim = GetComponent<Animator>();
         ChangeAnimAttackSpeed();

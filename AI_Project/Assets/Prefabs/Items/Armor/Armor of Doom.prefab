@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 23942636586242266}
   - component: {fileID: 135216773821418518}
   - component: {fileID: 114650484597756172}
+  - component: {fileID: 114772927170993866}
   m_Layer: 0
   m_Name: Armor of Doom
   m_TagString: Item
@@ -217,6 +218,19 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 28a810d68e15eca438445b56376f7dc4, type: 2}
   PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
     type: 2}
+--- !u!114 &114772927170993866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803259217054420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a17b5bf56d746f4db5f53b8186fbe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Range: 50
 --- !u!135 &135216773821418518
 SphereCollider:
   m_ObjectHideFlags: 1
