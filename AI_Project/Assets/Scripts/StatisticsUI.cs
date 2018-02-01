@@ -30,6 +30,9 @@ public class StatisticsUI : MonoBehaviour
     void Start()
     {
         HP.text = "HP : " + 0 + " / " + 0;
+        MP.text = "MP : " + 0 + " / " + 0;
+        DPS.text = "Main DPS / Speed : " + 0 + " / " + 0;
+        Spell.text = "Spell DMG / Cost : " + 0 + " / " + 0;
         Potions.text = "HP potions : " + 0;
     }
 
