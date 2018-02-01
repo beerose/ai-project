@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4062497489107852}
   - component: {fileID: 54394076385666476}
   - component: {fileID: 114534801460134878}
+  - component: {fileID: 114806303018506884}
   - component: {fileID: 114300668591438292}
   m_Layer: 0
   m_Name: Lantern
@@ -439,7 +440,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383818733195300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50de1df35c46ca24bb48674dc5914627, type: 3}
   m_Name: 
@@ -452,3 +453,24 @@ MonoBehaviour:
   WaitToStartDodge: {x: 0, y: 0}
   DodgeTime: {x: 1, y: 2}
   AfterDodgeWait: {x: 0, y: 0}
+--- !u!114 &114806303018506884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383818733195300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543ddbe12367a4899b011d43ef41f357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enablePositionNoise: 1
+  _enableRotationNoise: 0
+  _positionFrequency: 0.2
+  _rotationFrequency: 0.2
+  _positionAmplitude: 0.5
+  _rotationAmplitude: 10
+  _positionScale: {x: 2, y: 0, z: 2}
+  _rotationScale: {x: 1, y: 1, z: 0}
+  _positionFractalLevel: 3
+  _rotationFractalLevel: 3
