@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 114795496302624984}
   - component: {fileID: 114765474497490228}
   - component: {fileID: 114597143472052142}
+  - component: {fileID: 114464943399271654}
   - component: {fileID: 114575893521756222}
   m_Layer: 0
   m_Name: Room
@@ -990,6 +991,22 @@ MonoBehaviour:
   isOpen: 1
   OpenColor: {r: 0, g: 1, b: 0, a: 1}
   CloseColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &114464943399271654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567877314684868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca3a481fb76d9c47b075cb368365b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Traps:
+  - {fileID: 1211989775045890, guid: e9da7f83e02d8df4c8d102604957eeee, type: 2}
+  - {fileID: 1200320811826846, guid: c6f172dc18c53f84b888871fed99f3fe, type: 2}
+  - {fileID: 1906070287596550, guid: af3a8654df4a07b458dd11525e82d053, type: 2}
+  - {fileID: 1079332354268702, guid: 61bb9c531c8ea674bbb09a9cfccec5c9, type: 2}
 --- !u!114 &114524155127546978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1062,7 +1079,13 @@ MonoBehaviour:
   - {fileID: 1385919867544522, guid: 82235e1062e4bf046a60cd18fed676dd, type: 2}
   - {fileID: 1283544000292108, guid: b1a45bd15b6e636438a1eac1a1b01b06, type: 2}
   - {fileID: 1542099136377792, guid: 6d1908bbbcb702f429ca2ccbfa61a3c6, type: 2}
-  ChanceToGetItem: 30
+  - {fileID: 1583215447875342, guid: 75dcfcc38c11dc145b7ff6eeedb02a4d, type: 2}
+  - {fileID: 1841720307943524, guid: bc47f7a127a7a474ebd8aae235c52a27, type: 2}
+  - {fileID: 1583215447875342, guid: 75dcfcc38c11dc145b7ff6eeedb02a4d, type: 2}
+  - {fileID: 1841720307943524, guid: bc47f7a127a7a474ebd8aae235c52a27, type: 2}
+  - {fileID: 1583215447875342, guid: 75dcfcc38c11dc145b7ff6eeedb02a4d, type: 2}
+  - {fileID: 1841720307943524, guid: bc47f7a127a7a474ebd8aae235c52a27, type: 2}
+  ChanceToGetItem: 50
 --- !u!114 &114629195672326186
 MonoBehaviour:
   m_ObjectHideFlags: 1

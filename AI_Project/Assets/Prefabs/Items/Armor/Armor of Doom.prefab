@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 28a810d68e15eca438445b56376f7dc4, type: 2}
-  PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
+  PickUPEffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
     type: 2}
 --- !u!114 &114772927170993866
 MonoBehaviour:

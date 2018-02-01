@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d6de66e966a83a142b085e5de8f1af0e, type: 2}
-  PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
+  PickUPEffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
     type: 2}
 --- !u!198 &198232877804330850
 ParticleSystem:

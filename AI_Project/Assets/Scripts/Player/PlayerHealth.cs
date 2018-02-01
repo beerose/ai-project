@@ -26,24 +26,29 @@ public class PlayerHealth : MonoBehaviour
 
     private Light playerLight;
     private float startLight;
+    private int Potions = 3;
 
     public float CurrentHealth
     {
         get { return m_CurrentHealth; }
     }
-
-    private void Awake()
-    {
-    }
-
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H) && Potions>0 && m_CurrentHealth != m_StartingHealth + m_HealthModifier)
         {
-            m_CurrentHealth = m_StartingHealth + m_HealthModifier;
+            Potions--;
+            m_CurrentHealth += (m_StartingHealth + m_HealthModifier)/4;
+            UpdateHP();
             SetHealthUI();
             SetLight();
         }
+    }
+
+    public void AddPotion()
+    {
+        Potions++;
+        StatisticsUI.Instance.PotionsUpdate(Potions);
     }
 
 
@@ -64,8 +69,7 @@ public class PlayerHealth : MonoBehaviour
         if (!m_Dead)
         {
             m_CurrentHealth += m_HPRegen;
-            if (m_CurrentHealth > m_StartingHealth + m_HealthModifier)
-                m_CurrentHealth = m_StartingHealth + m_HealthModifier;
+            UpdateHP();
             SetHealthUI();
             SetLight();
         }
@@ -93,6 +97,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetHealthUI()
     {
         StatisticsUI.Instance.HPupdate(m_CurrentHealth, m_StartingHealth + m_HealthModifier);
+        StatisticsUI.Instance.PotionsUpdate(Potions);
 
         m_Slider.maxValue = m_StartingHealth + m_HealthModifier;
         m_Slider.value = m_CurrentHealth;
