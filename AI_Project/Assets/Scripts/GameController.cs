@@ -54,9 +54,11 @@ public class GameController : MonoBehaviour
         {
             var iui = GameObject.Find("Inventory UI");
             var eui = GameObject.Find("Equipment UI");
+            var cui = GameObject.Find("Controls UI");
             if (iui != null) iui.SetActive(false);
             if (eui != null) eui.SetActive(false);
-            if (iui == null && eui == null) OptionsUI.SetActive(!OptionsUI.activeSelf);
+            if (cui != null) cui.SetActive(false);
+            if (iui == null && eui == null && cui == null) OptionsUI.SetActive(!OptionsUI.activeSelf);
         }
     }
 
