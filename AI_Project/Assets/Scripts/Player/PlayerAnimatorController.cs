@@ -36,7 +36,8 @@ public class PlayerAnimatorController : MonoBehaviour
     public void ChangeAnimAttackSpeed()
     {
         WeaponController x = transform.parent.GetComponentInChildren<WeaponController>();
-		float newAnimLength = Mathf.Clamp(AttackAnimClip.length / (x.FireDelay + x.FireDelayModifier), AttackAnimClip.length,
+        float newAnimLength = Mathf.Clamp(AttackAnimClip.length / (x.FireDelay + x.FireDelayModifier),
+            AttackAnimClip.length,
             5 * AttackAnimClip.length);
         anim.SetFloat("attackSpeedMultipler", newAnimLength);
     }

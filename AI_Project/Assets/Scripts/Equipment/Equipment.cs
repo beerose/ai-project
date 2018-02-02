@@ -30,6 +30,20 @@ public class Equipment : Item
         base.Unequip();
         EquipmentManager.Instance.Unequip(this);
     }
+
+    public void  Build(string name, Sprite icon, EquipmentSlot equipmentSlot, float dmgMod, float bulletSpeedMod,
+        float fireDelayMod, GameObject shot, float HPMod, GameObject spell)
+    {
+        this.name = name;
+        this.icon = icon;
+        this.EquipSlot = equipmentSlot;
+        this.DamageModifier = dmgMod;
+        this.BulletSpeedModifier = bulletSpeedMod;
+        this.FireDelayModifier = fireDelayMod;
+        this.Shot = shot;
+        this.HealthModifier = HPMod;
+        this.Spell = spell;
+    }
 }
 
 public enum EquipmentSlot

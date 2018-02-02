@@ -6,8 +6,8 @@ public class ShotMover : MonoBehaviour
 {
     public GameObject Explosion;
     public float LifeTime;
-	public float Damage { set; get;}
-	public float Speed { set; get;}
+    public float Damage { set; get; }
+    public float Speed { set; get; }
 
     private Rigidbody rb;
     private string ShooterTag;
@@ -22,7 +22,7 @@ public class ShotMover : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (ShooterTag == "") Debug.Log("ShooterName is null");
+        if (ShooterTag == "") Debug.LogWarning("ShooterName is null");
         if (col.tag.Equals("Bullet"))
         {
             if (!col.GetComponent<ShotMover>().GetShooterTag().Equals(ShooterTag))
@@ -39,7 +39,8 @@ public class ShotMover : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (!col.tag.Equals(ShooterTag) && !col.tag.Equals("Enemy Eyeshot") && !col.tag.Equals("Item"))
+        else if (!col.tag.Equals(ShooterTag) && !col.tag.Equals("Enemy Eyeshot") && !col.tag.Equals("Item") &&
+                 !col.tag.Equals("Floor"))
         {
             Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);

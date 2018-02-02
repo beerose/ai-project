@@ -36,25 +36,23 @@ public class WeaponController : MonoBehaviour
         aud = GetComponent<AudioSource>();
         if (transform.parent.tag.Equals("Player"))
         {
-            gameObject.SetActive(false);
-            Invoke("active", 0.5f);
+            HP = GetComponentInParent<PlayerHealth>();
+            EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
+
+            InvokeRepeating("manaRegen", 0.5f, 1f);
+
+            Invoke("dmgUpdate",0.5f);
         }
     }
 
-    private void active()
+    void dmgUpdate()
     {
-        gameObject.SetActive(true);
-        HP = GetComponentInParent<PlayerHealth>();
-        EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
-
-        InvokeRepeating("manaRegen", 0, 1f);
-
         StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
-            BulletSpeed + BulletSpeedModifier);
-        if (Spell != null)
-            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
-                Spell.GetComponent<SpellBehaviour>().ManaCost);
-        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
+                BulletSpeed + BulletSpeedModifier);
+            if (Spell != null)
+                StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
+                    Spell.GetComponent<SpellBehaviour>().ManaCost);
+            else StatisticsUI.Instance.SpellUpdate(0f, 0f);
     }
 
     void manaRegen()
@@ -113,12 +111,7 @@ public class WeaponController : MonoBehaviour
 
         transform.parent.GetComponentInChildren<PlayerAnimatorController>().ChangeAnimAttackSpeed();
 
-        StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
-            BulletSpeed + BulletSpeedModifier);
-        if (Spell != null)
-            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
-                Spell.GetComponent<SpellBehaviour>().ManaCost);
-        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
+        dmgUpdate();
     }
 
 
