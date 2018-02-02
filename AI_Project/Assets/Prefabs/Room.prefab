@@ -96,8 +96,8 @@ GameObject:
   - component: {fileID: 64592527842966828}
   - component: {fileID: 23423126048455154}
   - component: {fileID: 114524155127546978}
-  - component: {fileID: 114277425272878556}
   - component: {fileID: 114629195672326186}
+  - component: {fileID: 114277425272878556}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Floor
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 0
+  m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
@@ -1160,11 +1160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
-  - {fileID: 1736865356848088, guid: b934b19277178b047b67e9b065e4bfeb, type: 2}
   - {fileID: 1724323781931408, guid: 4f1b2279e721867498cd4ceec0c1ebcc, type: 2}
-  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1724323781931408, guid: 4f1b2279e721867498cd4ceec0c1ebcc, type: 2}
+  - {fileID: 1724323781931408, guid: 4f1b2279e721867498cd4ceec0c1ebcc, type: 2}
+  - {fileID: 1736865356848088, guid: b934b19277178b047b67e9b065e4bfeb, type: 2}
+  - {fileID: 1736865356848088, guid: b934b19277178b047b67e9b065e4bfeb, type: 2}
+  - {fileID: 1736865356848088, guid: b934b19277178b047b67e9b065e4bfeb, type: 2}
   - {fileID: 1868168956714288, guid: a10e7c939675c3d42a0592428c91bbc0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
+  - {fileID: 1357826690711840, guid: 9c8e6b52a146b2d4994f42592a19bba0, type: 2}
 --- !u!114 &114795496302624984
 MonoBehaviour:
   m_ObjectHideFlags: 1

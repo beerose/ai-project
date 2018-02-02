@@ -24,7 +24,7 @@ public class TrapsSpreader : MonoBehaviour
             int trapSpreadRange;
 
             if (id == 0) trapSpreadRange = 6;
-            else trapSpreadRange = 3;
+            else trapSpreadRange = 2;
 
             Vector3 roof = transform.Find("Roof").localScale;
             roof.x -= 0.01f;
@@ -32,7 +32,7 @@ public class TrapsSpreader : MonoBehaviour
             roof.z -= 0.01f;
             Vector4 board = new Vector4(-roof.x / 2 + 4, roof.x / 2 - 4, -roof.z / 2 + 4, roof.z / 2 - 4);
 
-            int iter = Mathf.RoundToInt(roof.x * roof.z / 60);
+            int iter = Mathf.RoundToInt(roof.x * roof.z / 40);
             if (roof.x < 10 || roof.z < 10) iter = 0; 
             for (int i = 0; i < iter; i++)
             {

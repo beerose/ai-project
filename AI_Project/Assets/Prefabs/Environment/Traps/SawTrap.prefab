@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4925218351573372}
   - component: {fileID: 111156050572386674}
   - component: {fileID: 114274075559672222}
+  - component: {fileID: 208203982621827090}
   m_Layer: 0
   m_Name: SawTrap
   m_TagString: Untagged
@@ -445,3 +446,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
+--- !u!208 &208203982621827090
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211989775045890}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.05, y: 0.25, z: 1.85}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -1.5}
+  m_TimeToStationary: 0.5

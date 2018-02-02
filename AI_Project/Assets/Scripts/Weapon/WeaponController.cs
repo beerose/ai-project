@@ -36,18 +36,25 @@ public class WeaponController : MonoBehaviour
         aud = GetComponent<AudioSource>();
         if (transform.parent.tag.Equals("Player"))
         {
-            HP = GetComponentInParent<PlayerHealth>();
-            EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
-
-            InvokeRepeating("manaRegen", 0, 1f);
-
-            StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
-                BulletSpeed + BulletSpeedModifier);
-            if (Spell != null)
-                StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
-                    Spell.GetComponent<SpellBehaviour>().ManaCost);
-            else StatisticsUI.Instance.SpellUpdate(0f, 0f);
+            gameObject.SetActive(false);
+            Invoke("active", 0.5f);
         }
+    }
+
+    private void active()
+    {
+        gameObject.SetActive(true);
+        HP = GetComponentInParent<PlayerHealth>();
+        EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
+
+        InvokeRepeating("manaRegen", 0, 1f);
+
+        StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
+            BulletSpeed + BulletSpeedModifier);
+        if (Spell != null)
+            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
+                Spell.GetComponent<SpellBehaviour>().ManaCost);
+        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
     }
 
     void manaRegen()

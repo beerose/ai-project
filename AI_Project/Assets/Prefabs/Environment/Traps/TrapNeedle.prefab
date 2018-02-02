@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4293862130539142}
   - component: {fileID: 111799975410739310}
   - component: {fileID: 114774218832750090}
+  - component: {fileID: 208885355240336740}
   m_Layer: 0
   m_Name: TrapNeedle
   m_TagString: Untagged
@@ -238,3 +239,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
+--- !u!208 &208885355240336740
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079332354268702}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

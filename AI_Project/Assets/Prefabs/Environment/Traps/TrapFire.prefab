@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 135642320468165496}
   - component: {fileID: 114275542809316450}
   - component: {fileID: 114182169641727662}
+  - component: {fileID: 208270296712876392}
   m_Layer: 0
   m_Name: TrapFire
   m_TagString: Untagged
@@ -3468,3 +3469,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208270296712876392
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906070287596550}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
