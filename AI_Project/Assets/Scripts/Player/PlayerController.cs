@@ -67,7 +67,7 @@ namespace Player
 
         void Update()
         {
-            if (!GameController.Instace.getGameStatus())
+            if (!GameController.Instace.GetGameOver() && !GameController.Instace.GetPause())
             {
                 if (Input.GetKey(KeyCode.UpArrow))
                     target.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -108,7 +108,7 @@ namespace Player
 
         void LateUpdate()
         {
-            if (!GameController.Instace.getGameStatus())
+            if (!GameController.Instace.GetGameOver() && !GameController.Instace.GetPause())
             {
                 if (Input.GetKey(KeyCode.UpArrow)) weapon.Fire();
                 if (Input.GetKey(KeyCode.DownArrow)) weapon.Fire();
