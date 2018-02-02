@@ -66,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {  
-        if (other.tag.Equals("Player"))
+        if (other.tag.Equals("Player") && Time.timeSinceLevelLoad > 2f)
         {
             setRotation(other.transform);
             anim.SetTrigger("Attack");

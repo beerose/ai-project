@@ -39,15 +39,20 @@ public class WeaponController : MonoBehaviour
             HP = GetComponentInParent<PlayerHealth>();
             EquipmentManager.Instance.OnEquipmentChangedCallback += onEquipmentChangedCallback;
 
-            InvokeRepeating("manaRegen", 0, 1f);
+            InvokeRepeating("manaRegen", 0.5f, 1f);
 
-            StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
+            Invoke("dmgUpdate",0.5f);
+        }
+    }
+
+    void dmgUpdate()
+    {
+        StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
                 BulletSpeed + BulletSpeedModifier);
             if (Spell != null)
                 StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
                     Spell.GetComponent<SpellBehaviour>().ManaCost);
             else StatisticsUI.Instance.SpellUpdate(0f, 0f);
-        }
     }
 
     void manaRegen()
@@ -106,12 +111,7 @@ public class WeaponController : MonoBehaviour
 
         transform.parent.GetComponentInChildren<PlayerAnimatorController>().ChangeAnimAttackSpeed();
 
-        StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
-            BulletSpeed + BulletSpeedModifier);
-        if (Spell != null)
-            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
-                Spell.GetComponent<SpellBehaviour>().ManaCost);
-        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
+        dmgUpdate();
     }
 
 

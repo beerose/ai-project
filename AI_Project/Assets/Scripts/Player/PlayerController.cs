@@ -58,10 +58,6 @@ namespace Player
         private void active()
         {
             gameObject.SetActive(true);
-        }
-
-        void OnEnable()
-        {
             OnEnterNewRoom();
             target = GetComponent<Transform>();
             weapon = GetComponentInChildren<WeaponController>();

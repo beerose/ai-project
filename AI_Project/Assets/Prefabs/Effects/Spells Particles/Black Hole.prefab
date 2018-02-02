@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 82653914472006736}
   - component: {fileID: 114477779060458408}
   - component: {fileID: 114439100659827206}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Black Hole
   m_TagString: Spell
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4718309578480092}
   - component: {fileID: 198485173005319832}
   - component: {fileID: 199880823774941704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4990705132383750}
   - component: {fileID: 108254628442926888}
   - component: {fileID: 114438534568887628}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 4527337306299430}
   - component: {fileID: 198017385464233280}
   - component: {fileID: 199195074711003974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4941403179639770}
   - component: {fileID: 198972353462683234}
   - component: {fileID: 199739704763321710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYskill_core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
