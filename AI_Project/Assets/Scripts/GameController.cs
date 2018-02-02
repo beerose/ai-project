@@ -8,17 +8,18 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instace;
 
-    public GameObject GameOverUI;
     public GameObject YouWinUI;
+    public GameObject GameOverUI;
+    public GameObject OptionsUI;
+
     public GameObject Boss;
 
     private EnemiesCollector EC;
 
     private GameObject currentBoard;
 
-    private bool gameOver;
-
     private bool youWin;
+    private bool gameOver;
 
 
     void Start()
@@ -40,7 +41,6 @@ public class GameController : MonoBehaviour
             if (boards[id].name.Equals(currentBoard.name))
             {
                 id = new System.Random(i).Next(boards.Length);
-                Debug.Log(boards[id].name);
             }
             else
                 break;
@@ -50,8 +50,16 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey("escape")) Application.Quit();
-        if (Input.GetKey(KeyCode.R)) NewGame();
+        if (Input.GetKeyDown("escape"))
+        {
+            var iui = GameObject.Find("Inventory UI");
+            var eui = GameObject.Find("Equipment UI");
+            var cui = GameObject.Find("Controls UI");
+            if (iui != null) iui.SetActive(false);
+            if (eui != null) eui.SetActive(false);
+            if (cui != null) cui.SetActive(false);
+            if (iui == null && eui == null && cui == null) OptionsUI.SetActive(!OptionsUI.activeSelf);
+        }
     }
 
     public void ChangeBoard(GameObject newBoard)
@@ -68,6 +76,11 @@ public class GameController : MonoBehaviour
     public void NewGame()
     {
         SceneManager.LoadScene("Main");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void WinGame()

@@ -10,22 +10,31 @@ public class LanternSpreader : MonoBehaviour
 
     void Start()
     {
-        Vector3 roof = transform.Find("Roof").localScale;
-        roof.x -= 0.01f;
-        roof.y -= 0.01f;
-        roof.z -= 0.01f;
-        Vector4 board = new Vector4(-roof.x / 2 + 2, roof.x / 2 - 2, -roof.z / 2 + 2, roof.z / 2 - 2);
+        GameObject LanternFolder = new GameObject();
+        LanternFolder.transform.SetParent(transform);
+        LanternFolder.name = "Lantern";
+        Invoke("spread", 0.5f);
+    }
 
-        if (roof.x * roof.z < 80)
-            Instantiate(Lantern, transform.position + new Vector3(0.0f, 0.7f, 0.0f), transform.rotation);
-        else
+    private void spread()
+    {
+        foreach (var room in GameObject.FindGameObjectsWithTag("Board"))
         {
-            int iter = Mathf.RoundToInt(roof.x * roof.z / 100);
+            spawns = new List<Vector2>();
+            Vector3 roof = room.transform.Find("Roof").localScale;
+            roof.x -= 0.01f;
+            roof.y -= 0.01f;
+            roof.z -= 0.01f;
+            Vector4 board = new Vector4(-roof.x / 2 + 2, roof.x / 2 - 2, -roof.z / 2 + 2, roof.z / 2 - 2);
+            
+            int iter = Mathf.RoundToInt(roof.x * roof.z / 40);
 
             for (int i = 0; i < iter; i++)
             {
                 bool restart = false;
                 int restartCount = 0;
+
+                Random.InitState(restartCount);
                 Vector2 spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
                 foreach (var sp in spawns)
                 {
@@ -35,9 +44,10 @@ public class LanternSpreader : MonoBehaviour
                         break;
                     }
                 }
-                while (Vector2.Distance(spawn, -spawn) < 6 || restart)
+                while (restart)
                 {
                     restart = false;
+                    Random.InitState(restartCount);
                     spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
                     foreach (var sp in spawns)
                     {
@@ -45,7 +55,7 @@ public class LanternSpreader : MonoBehaviour
                         {
                             restart = true;
                             restartCount++;
-                            if (restartCount == 20)
+                            if (restartCount == 50)
                             {
                                 restart = false;
                                 restartCount = -1;
@@ -57,10 +67,8 @@ public class LanternSpreader : MonoBehaviour
                 if (restartCount != -1)
                 {
                     spawns.Add(spawn);
-                    spawns.Add(-spawn);
-                    Instantiate(Lantern, transform.position + new Vector3(spawn.x, 0.7f, spawn.y), transform.rotation);
-                    Instantiate(Lantern, transform.position + new Vector3(-spawn.x, 0.7f, -spawn.y),
-                        transform.rotation);
+                    GameObject lantern = Instantiate(Lantern, room.transform.position + new Vector3(spawn.x, 0.7f, spawn.y), room.transform.rotation);
+                    lantern.transform.SetParent(transform.Find("Lantern"));
                 }
             }
         }

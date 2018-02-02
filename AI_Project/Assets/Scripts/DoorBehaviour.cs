@@ -12,7 +12,7 @@ public enum Direction
 
 public class DoorBehaviour : MonoBehaviour
 {
-    public const int teleportationStrength = 3;
+    public const float teleportationStrength = 2.3f;
     public Direction direction;
 
     public bool isOpen = true;

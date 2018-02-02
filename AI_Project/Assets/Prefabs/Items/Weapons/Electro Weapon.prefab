@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23033202006853674}
   - component: {fileID: 65710639040308576}
   - component: {fileID: 114556040426676156}
+  - component: {fileID: 114453856590309280}
   m_Layer: 0
   m_Name: Electro Weapon
   m_TagString: Item
@@ -215,6 +216,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.31481966, y: 1.6212279, z: 0.30640033}
   m_Center: {x: -0.010802446, y: 0.5250158, z: 0.01470126}
+--- !u!114 &114453856590309280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283544000292108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a17b5bf56d746f4db5f53b8186fbe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Range: 50
 --- !u!114 &114556040426676156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d6de66e966a83a142b085e5de8f1af0e, type: 2}
-  PickUPeffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
+  PickUPEffect: {fileID: 1129712134455942, guid: 6234aefb3b8c3764b808e8c9ff9f2a82,
     type: 2}
 --- !u!198 &198232877804330850
 ParticleSystem:

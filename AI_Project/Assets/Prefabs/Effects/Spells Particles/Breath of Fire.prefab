@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4551798828634982}
   - component: {fileID: 108551543771257180}
   - component: {fileID: 114617234407225854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4487446157302608}
   - component: {fileID: 198651550875704102}
   - component: {fileID: 199174647770575684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYsmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4716958912743338}
   - component: {fileID: 198983811459744298}
   - component: {fileID: 199886309129780730}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ErekiSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4173650236243494}
   - component: {fileID: 198523050221239098}
   - component: {fileID: 199425968883072254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ErekiSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 82904509492271906}
   - component: {fileID: 114218288910232242}
   - component: {fileID: 114345691839353404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Breath of Fire
   m_TagString: Spell
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4170025167781958}
   - component: {fileID: 198897869910667758}
   - component: {fileID: 199673187497549474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KYdustD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
