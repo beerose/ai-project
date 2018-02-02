@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MultiBulletWeapon : Weapon {
+	public int numberBullets;
+	public float angle;
 	public float attacksNumber;
-	private WeaponController[] weaponControllers;
+	private WeaponController weaponController;
 	private float diff;
 	private Quaternion startRotation;
+	private float delay;
 
 	void Start(){
-		weaponControllers = GetComponents<WeaponController> ();
+		weaponController = GetComponent<WeaponController> ();
+		transform.Rotate (Vector3.up, -(angle/2));
 		startRotation = transform.rotation;
-		diff = 90 / weaponControllers.Length;
+		diff = angle / numberBullets;
+		delay = weaponController.FireDelay;
 	}
 
 	public override bool isAvailable (Transform playerTransform) {
 
-		if (weaponControllers.Length == 0 || attacksNumber == 0)
+		if (numberBullets == 0 || attacksNumber == 0)
 			return false;
 
-		for (int i = 0; i < weaponControllers.Length; i++) {
-			if (!weaponControllers [i].isAvailable ())
+		if (!weaponController.isAvailable ()){
 				return false;
 		}
+
 		transform.rotation = startRotation;	
-		transform.Rotate (Vector3.up, -45);
-		for (int i = 0; i < weaponControllers.Length; i++) {
+		for (int i = 0; i < numberBullets; i++) {
 			RaycastHit hit;
 			transform.Rotate (Vector3.up, diff);
 			if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
@@ -43,52 +47,31 @@ public class MultiBulletWeapon : Weapon {
 		double maxDistance = (attackDistance > distance) ? distance : attackDistance;
 		double rDistance = Vector3.Distance(transform.position, otherPosition) / maxDistance * 100;
 		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = averagePower() / playerHealth.m_StartingHealth * 100;
-		double rSpeed = averageSpeed();
-		return - (rDistance / rSpeed) + weaponControllers.Length + (rEnergy + rDemage) * incentive ;
+		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.BulletSpeed;;
+		return - (rDistance / rSpeed) + numberBullets + (rEnergy + rDemage) * incentive ;
 	}
 
 	public override double getRating(float enemyEnergy){
 		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
 		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = averagePower() / playerHealth.m_StartingHealth * 100;
-		double rSpeed = averageSpeed() / 20 * 100;
-		double rDelay = maxDelay() / 10 * 100;
-		return - rDelay - (100 / rSpeed) + weaponControllers.Length + (rEnergy + rDemage) * incentive ;
+		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
+		double rSpeed = weaponController.BulletSpeed / 20 * 100;
+		double rDelay = weaponController.FireDelay / 10 * 100;
+		return - rDelay - (100 / rSpeed) + numberBullets+ (rEnergy + rDemage) * incentive ;
 	}
-
-	private double averagePower(){
-		double average = 0;
-		for (int i = 0; i < weaponControllers.Length; i++) {
-			average += weaponControllers [i].Damage;
-		}
-		return average / weaponControllers.Length;
-	}
-
-	private double averageSpeed(){
-		double average = 0;
-		for (int i = 0; i < weaponControllers.Length; i++) {
-			average += weaponControllers [i].BulletSpeed;
-		}
-		return average / weaponControllers.Length;
-	}
-
-	private double maxDelay(){
-		double max = 0;
-		for (int i = 0; i < weaponControllers.Length; i++) {
-			if (max < weaponControllers [i].FireDelay)
-				max = weaponControllers [i].FireDelay;
-		}
-		return max;
-	}
-
+		
 	public override void attack(Collider player){
 		transform.rotation = startRotation;
-		transform.Rotate (Vector3.up, -45);
-		for (int i = 0; i < weaponControllers.Length; i++) {
+		weaponController.FireDelay = 0;
+		for (int i = 0; i < numberBullets; i++) {
+			if (i == numberBullets - 1) {
+				weaponController.FireDelay = delay;
+			}
 			transform.Rotate (Vector3.up, diff);
-			weaponControllers [i].Fire ();
+			weaponController.Fire ();
 		}
+		attacksNumber--;
 	}
 		
 }
