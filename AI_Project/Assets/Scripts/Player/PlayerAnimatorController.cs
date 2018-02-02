@@ -15,7 +15,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     void Update()
     {
-        if (!GameController.Instace.getGameStatus())
+        if (!GameController.Instace.GetGameOver())
         {
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) ||
                 Input.GetKey(KeyCode.RightArrow)) anim.SetBool("attack", true);

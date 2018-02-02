@@ -20,12 +20,14 @@ public class GameController : MonoBehaviour
 
     private bool youWin;
     private bool gameOver;
-
+    private bool pause;
 
     void Start()
     {
         Instace = FindObjectOfType<GameController>();
+        youWin = false;
         gameOver = false;
+        pause = false;
         //RemoveDoors();
         EC = GameObject.FindGameObjectWithTag("EnemiesCollector").GetComponent<EnemiesCollector>();
         Invoke("bossSpawn", 1); //temporary
@@ -54,9 +56,17 @@ public class GameController : MonoBehaviour
         {
             var iui = GameObject.Find("Inventory UI");
             var eui = GameObject.Find("Equipment UI");
+            var cui = GameObject.Find("Controls UI");
             if (iui != null) iui.SetActive(false);
             if (eui != null) eui.SetActive(false);
-            if (iui == null && eui == null) OptionsUI.SetActive(!OptionsUI.activeSelf);
+            if (cui != null) cui.SetActive(false);
+            if (iui == null && eui == null && cui == null)
+            {
+                OptionsUI.SetActive(!OptionsUI.activeSelf);
+                if (OptionsUI.activeSelf) Time.timeScale = 0;
+                else Time.timeScale = 1;
+                pause = !pause;
+            }
         }
     }
 
@@ -73,6 +83,7 @@ public class GameController : MonoBehaviour
 
     public void NewGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Main");
     }
 
@@ -107,9 +118,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public bool getGameStatus()
+    public bool GetGameOver()
     {
         return gameOver;
+    }
+
+    public bool GetPause()
+    {
+        return pause;
     }
 
     /*private void RemoveDoors() //temporary
