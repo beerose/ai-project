@@ -55,7 +55,7 @@ public class EquipmentGenerator : MonoBehaviour
 
         for (int i = 0; i < SelectNum; i++)
         {
-            EQ.Add(Mutation(Crossover(Selection(i), Selection(i * 17), i * 23)));
+            EQ.Add(Mutation(Crossover(Selection(i), Selection(i * 17), i * 23),i*49));
             //mods are "i" * my random numbers + seed
         }
 
@@ -134,9 +134,9 @@ public class EquipmentGenerator : MonoBehaviour
         return c;
     }
 
-    private Equipment Mutation(Equipment c)
+    private Equipment Mutation(Equipment c, int mod)
     {
-        Random.InitState(seed + c.GetInstanceID());
+        Random.InitState(seed + mod);
         switch (Random.Range(0, 12))
         {
             case 0:
