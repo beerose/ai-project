@@ -19,7 +19,7 @@ public class RoofHideScript : MonoBehaviour
     {
         if (!Application.isEditor)
         {
-            if (GameController.Instace.GetCurrentBoard().transform != transform.parent)
+            if (GameController.Instance.GetCurrentBoard().transform != transform.parent)
             {
                 if (Time.timeSinceLevelLoad < 1f)
                 {

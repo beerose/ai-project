@@ -121,7 +121,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnDeath()
     {
         m_Dead = true;
-        GameController.Instace.GameOver();
+        GameController.Instance.GameOver();
         //rb = GetComponent<Rigidbody>();
         //Destroy(gameObject, LifeTime);
     }

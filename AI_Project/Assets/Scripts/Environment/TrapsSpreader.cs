@@ -23,7 +23,7 @@ public class TrapsSpreader : MonoBehaviour
         {
             spawns = new List<Vector2>();
             count++;
-            if (!GameController.Instace.GetCurrentBoard().name.Equals(room.name))
+            if (!GameController.Instance.GetCurrentBoard().name.Equals(room.name))
             {
                 Random.InitState(count);
 
