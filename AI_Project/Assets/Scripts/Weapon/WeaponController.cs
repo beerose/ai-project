@@ -117,7 +117,7 @@ public class WeaponController : MonoBehaviour
 
     public void Fire()
     {
-        if (Time.time > nextFire)
+        if (Time.time >= nextFire)
         {
             nextFire = Time.time + FireDelay + FireDelayModifier;
             ShotMover bullet = Instantiate(Shot, transform.position, transform.rotation).GetComponent<ShotMover>();

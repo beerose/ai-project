@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public float radius = 3;
     public float runningSpeed = 8;
     public float runningCost = 0.1f;
+	public bool playerTracking = true;
     private float runningTimer = 0;
     private float runningDelay = 1;
 
@@ -66,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {  
-        if (other.tag.Equals("Player") && Time.timeSinceLevelLoad > 2f)
+		if (other.tag.Equals("Player") && Time.timeSinceLevelLoad > 2f && playerTracking)
         {
             setRotation(other.transform);
             anim.SetTrigger("Attack");
