@@ -1341,7 +1341,7 @@ MonoBehaviour:
   Spell: {fileID: 0}
   MaxMana: 35
   Mana: 35
-  ManaRegen: 5
+  ManaRegen: 2
   Damage: 1
   DamageModifier: 0
   FireDelay: 0.5
@@ -1350,6 +1350,8 @@ MonoBehaviour:
   SpellDelayModifier: 0
   BulletSpeed: 5
   BulletSpeedModifier: 0
+  NumberOfShots: 1
+  NumberOfShotsModifier: 0
 --- !u!136 &136748098505431768
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -10,22 +10,17 @@ public class NavigationBaker : MonoBehaviour
 
     void Start()
     {
-        gameObject.SetActive(false);
-        Invoke("active", 0.5f);
+        Invoke("bake", 0.5f);
     }
 
-    private void active()
-    {
-        gameObject.SetActive(true);
-    }
-
-    void OnEnable()
+    private void bake()
     {
         surfaces = FindObjectsOfType<NavMeshSurface>();
         for (int i = 0; i < surfaces.Length; i++)
         {
             surfaces[i].BuildNavMesh();
         }
+        LoadingBar.Instance.Progress += 1;
     }
 
 }

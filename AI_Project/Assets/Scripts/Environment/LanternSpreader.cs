@@ -72,5 +72,6 @@ public class LanternSpreader : MonoBehaviour
                 }
             }
         }
+        LoadingBar.Instance.Progress += 1;
     }
 }

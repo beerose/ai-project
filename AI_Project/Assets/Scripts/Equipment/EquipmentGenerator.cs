@@ -21,6 +21,7 @@ public class EquipmentGenerator : MonoBehaviour
 
     public int InitNum;
     public int SelectNum;
+    public int MaxPowerLVL;
 
     public string[] Prefix;
     public string[] Sufix;
@@ -31,6 +32,7 @@ public class EquipmentGenerator : MonoBehaviour
     public Vector2 BulletSpeedModifier; //Weapon
     public Vector2 FireDelayModifier; //Weapon
     public GameObject[] Shot; //Weapon
+    public int NumberOfShots; //Weapon
 
     public Vector2 HealthModifier; //Armor
 
@@ -62,6 +64,8 @@ public class EquipmentGenerator : MonoBehaviour
         {
             ProcessEndCallback.Invoke(EQ);
         }
+
+        LoadingBar.Instance.Progress += 1;
     }
 
     private void Initialization()
@@ -79,13 +83,14 @@ public class EquipmentGenerator : MonoBehaviour
             float bulletSpeedMod = Random.Range(BulletSpeedModifier.x, BulletSpeedModifier.y);
             float fireDelayMod = Random.Range(FireDelayModifier.x, FireDelayModifier.y);
             GameObject shot = Shot[Random.Range(0, Shot.Length)];
+            int shotNmod = NumberOfShots;
 
             float HPMod = Random.Range(HealthModifier.x, HealthModifier.y);
 
             GameObject spell = Spell[Random.Range(0, Spell.Length)];
 
             Equipment init = ScriptableObject.CreateInstance<Equipment>();
-            init.Build(name, icon, equipmentSlot, dmgMod, bulletSpeedMod, fireDelayMod, shot, HPMod,
+            init.Build(name, icon, equipmentSlot, dmgMod, bulletSpeedMod, fireDelayMod, shot, shotNmod, HPMod,
                 spell);
 
             EQ.Add(init);
@@ -112,16 +117,17 @@ public class EquipmentGenerator : MonoBehaviour
         float bulletSpeedMod = (p1.BulletSpeedModifier + p2.BulletSpeedModifier) * 0.7f;
         float fireDelayMod = (p1.FireDelayModifier + p2.FireDelayModifier) * 0.7f;
 
-        int id = Random.Range(0, 2);
         GameObject shot = p1.Shot;
-        if (id == 1) shot = p2.Shot;
+        int shotNmod = p1.ShotNumberModifier;
+        if (p1.Shot.name.Equals(p2.Shot.name)) shotNmod+=NumberOfShots;
 
         float HPMod = (p1.HealthModifier + p2.HealthModifier) * 0.7f;
-        
+
+        int id = Random.Range(0, 2);
         GameObject spell = p1.Spell;
         if (id == 1) spell = p2.Spell;
 
-        c.Build(name, icon, equipmentSlot, dmgMod, bulletSpeedMod, fireDelayMod, shot, HPMod,
+        c.Build(name, icon, equipmentSlot, dmgMod, bulletSpeedMod, fireDelayMod, shot, shotNmod, HPMod,
             spell);
 
         return c;
@@ -145,9 +151,12 @@ public class EquipmentGenerator : MonoBehaviour
                 c.Shot = Shot[Random.Range(0, Shot.Length)];
                 break;
             case 4:
-                c.HealthModifier = Random.Range(HealthModifier.x, HealthModifier.y);
+                c.ShotNumberModifier = NumberOfShots;
                 break;
             case 5:
+                c.HealthModifier = Random.Range(HealthModifier.x, HealthModifier.y);
+                break;
+            case 6:
                 c.Spell = Spell[Random.Range(0, Spell.Length)];
                 break;
             default:
@@ -158,5 +167,18 @@ public class EquipmentGenerator : MonoBehaviour
 
     private void Termination()
     {
+        for (int i = 0; i < EQ.Count; i++)
+        {
+            if (EQ[i].GetPowerLVL() > MaxPowerLVL)
+            {
+                Debug.Log("Delete item with power lvl: "+EQ[i].GetPowerLVL());
+                EQ.RemoveAt(i);
+                i--;
+            }
+            else
+            {
+                if(EQ[i].ShotNumberModifier > 1 && (int)EQ[i].EquipSlot == 0) Debug.Log("Weapon with "+EQ[i].ShotNumberModifier+" shots");
+            }
+        }
     }
 }

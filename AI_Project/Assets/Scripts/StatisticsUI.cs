@@ -24,6 +24,7 @@ public class StatisticsUI : MonoBehaviour
     public Text HP;
     public Text MP;
     public Text DPS;
+    public Text Number;
     public Text Spell;
     public Text Potions;
 
@@ -31,7 +32,8 @@ public class StatisticsUI : MonoBehaviour
     {
         HP.text = "HP : " + 0 + " / " + 0;
         MP.text = "MP : " + 0 + " / " + 0;
-        DPS.text = "Main DPS / Speed : " + 0 + " / " + 0;
+        DPS.text = "Shot DPS / Speed: " + 0 + " / " + 0;
+        Number.text = "Number of Shots : " + 0;
         Spell.text = "Spell DMG / Cost : " + 0 + " / " + 0;
         Potions.text = "HP potions : " + 0;
     }
@@ -46,9 +48,10 @@ public class StatisticsUI : MonoBehaviour
         MP.text = "MP : " + t.ToString("N0") + " / " + tMax.ToString("N0");
     }
 
-    public void DPSupdate(float t1, float t2)
+    public void DPSupdate(float t1, float t2, int t3)
     {
-        DPS.text = "Main DPS / Speed : " + t1.ToString("N2") + " / " + t2.ToString("N0");
+        DPS.text = "Shot DPS / Speed : " + t1.ToString("N2") + " / " + t2.ToString("N0");
+        Number.text = "Number of Shots : " + t3;
     }
 
     public void SpellUpdate(float t1, float t2)

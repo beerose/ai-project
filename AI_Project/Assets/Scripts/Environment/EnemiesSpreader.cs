@@ -52,5 +52,6 @@ public class EnemiesSpreader : MonoBehaviour
                 }
             }
         }
+        LoadingBar.Instance.Progress += 1;
     }
 }

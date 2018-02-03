@@ -9,7 +9,6 @@ public class DeactivateOnRange : MonoBehaviour
 
     void Start()
     {
-        
         InvokeRepeating("check", 2f, 1f);
     }
 

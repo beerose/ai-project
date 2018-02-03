@@ -65,5 +65,6 @@ public class ItemSpreader : MonoBehaviour
                 }
             }
         }
+        LoadingBar.Instance.Progress += 1;
     }
 }
