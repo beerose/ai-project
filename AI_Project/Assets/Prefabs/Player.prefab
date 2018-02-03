@@ -1348,7 +1348,7 @@ MonoBehaviour:
   FireDelayModifier: 0
   SpellDelay: 1
   SpellDelayModifier: 0
-  BulletSpeed: 5
+  BulletSpeed: 9
   BulletSpeedModifier: 0
   NumberOfShots: 1
   NumberOfShotsModifier: 0

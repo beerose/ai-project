@@ -3448,12 +3448,12 @@ Prefab:
     - target: {fileID: 224000852411040658, guid: 9c709412a0bc1624896cb130c6c68289,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000852411040658, guid: 9c709412a0bc1624896cb130c6c68289,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c709412a0bc1624896cb130c6c68289, type: 2}
@@ -4529,8 +4529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitNum: 20
-  SelectNum: 40
-  MaxPowerLVL: 3
+  SelectNum: 100
+  MaxPowerLVL: 4
+  MinPowerLVL: 0
   Prefix:
   - q
   - w
@@ -4648,13 +4649,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8d41c4d75ffb95449ad8cdbfefa74218, type: 3}
   - {fileID: 21300000, guid: 53085f18b2c38eb4e8539c23811c3347, type: 3}
   DamageModifier: {x: 0.2, y: 1.2}
-  BulletSpeedModifier: {x: 1, y: 3}
+  BulletSpeedModifier: {x: 0.4, y: 1.8}
   FireDelayModifier: {x: -0.2, y: 0.2}
   Shot:
   - {fileID: 1137472271365044, guid: 8e3fd2bcfd3fa8b47824e8a2bc36c2d7, type: 2}
   - {fileID: 1695753459632526, guid: 2e54d90fab550b846ad11f168b387b54, type: 2}
   NumberOfShots: 1
-  HealthModifier: {x: 40, y: 80}
+  HealthModifier: {x: 20, y: 40}
   Spell:
   - {fileID: 1002337227149376, guid: 86ddb34d9403adb4f90660ae5b4ca48a, type: 2}
   - {fileID: 1799730970850962, guid: 3aaaac9dbf25db246b15e40d2c3c978f, type: 2}

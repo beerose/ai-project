@@ -22,6 +22,7 @@ public class EquipmentGenerator : MonoBehaviour
     public int InitNum;
     public int SelectNum;
     public int MaxPowerLVL;
+    public int MinPowerLVL;
 
     public string[] Prefix;
     public string[] Sufix;
@@ -119,7 +120,7 @@ public class EquipmentGenerator : MonoBehaviour
 
         GameObject shot = p1.Shot;
         int shotNmod = p1.ShotNumberModifier;
-        if (p1.Shot.name.Equals(p2.Shot.name)) shotNmod+=NumberOfShots;
+        if (p1.Shot.name.Equals(p2.Shot.name)) shotNmod += NumberOfShots;
 
         float HPMod = (p1.HealthModifier + p2.HealthModifier) * 0.7f;
 
@@ -169,15 +170,18 @@ public class EquipmentGenerator : MonoBehaviour
     {
         for (int i = 0; i < EQ.Count; i++)
         {
-            if (EQ[i].GetPowerLVL() > MaxPowerLVL)
+            if (EQ[i].GetPowerLVL() > MaxPowerLVL || EQ[i].GetPowerLVL() <= MinPowerLVL)
             {
-                Debug.Log("Delete item with power lvl: "+EQ[i].GetPowerLVL());
+                if ((int) EQ[i].EquipSlot != 0)
+                    Debug.Log("Delete item with power lvl: " + EQ[i].GetPowerLVL() + " hpMod: " + (int) EQ[i].HealthModifier);
                 EQ.RemoveAt(i);
                 i--;
             }
             else
             {
-                if(EQ[i].ShotNumberModifier > 1 && (int)EQ[i].EquipSlot == 0) Debug.Log("Weapon with "+EQ[i].ShotNumberModifier+" shots");
+                if (EQ[i].ShotNumberModifier > 1 && (int) EQ[i].EquipSlot == 0)
+                    Debug.Log("Weapon with " + EQ[i].ShotNumberModifier + " shots Power: " + EQ[i].GetPowerLVL() +
+                              " DMG: " + EQ[i].DamageModifier + " Delay " + EQ[i].FireDelayModifier);
             }
         }
     }
