@@ -63,6 +63,7 @@ namespace Player
             weapon = GetComponentInChildren<WeaponController>();
             anim = GetComponentInChildren<Animator>();
             aud = GetComponent<AudioSource>();
+            LoadingBar.Instance.Progress += 1;
         }
 
         void Update()

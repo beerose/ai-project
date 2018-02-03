@@ -102,6 +102,7 @@ namespace Dungeon {
             }
 
             Random.state = oldRandomState;
+            LoadingBar.Instance.Progress += 1;
         }
 
 

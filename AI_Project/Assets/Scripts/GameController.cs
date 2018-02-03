@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,9 +9,13 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instace;
 
+    public GameObject InventoryUI;
+    public GameObject EquipmentUI;
     public GameObject YouWinUI;
     public GameObject GameOverUI;
     public GameObject OptionsUI;
+    public GameObject ControlsUI;
+    public GameObject LoadingScreenUI;
 
     public GameObject Boss;
 
@@ -21,23 +26,34 @@ public class GameController : MonoBehaviour
     private bool youWin;
     private bool gameOver;
     private bool pause;
+    private bool loading;
 
     void Start()
     {
         Instace = FindObjectOfType<GameController>();
         youWin = false;
         gameOver = false;
-        pause = false;
+        pause = true;
+        loading = true;
         //RemoveDoors();
         EC = GameObject.FindGameObjectWithTag("EnemiesCollector").GetComponent<EnemiesCollector>();
         Invoke("bossSpawn", 1); //temporary
+        LoadingScreenUI.SetActive(true);
+        LoadingBar.Instance.Progress += 1;
+    }
+
+    public void GameLoaded()
+    {
+        pause = false;
+        loading = false;
+        LoadingScreenUI.SetActive(false);
     }
 
     private void bossSpawn() //temporary
     {
         var boards = GameObject.FindGameObjectsWithTag("Board");
         int id = new System.Random().Next(boards.Length);
-        int i = 0;
+        int i;
         for (i = 0; i < 50; i++)
         {
             if (boards[id].name.Equals(currentBoard.name))
@@ -48,25 +64,26 @@ public class GameController : MonoBehaviour
                 break;
         }
         if (i != 50) Instantiate(Boss, boards[id].transform.position, boards[id].transform.rotation);
+        LoadingBar.Instance.Progress += 1;
     }
 
     void Update()
     {
         if (Input.GetKeyDown("escape"))
         {
-            var iui = GameObject.Find("Inventory UI");
-            var eui = GameObject.Find("Equipment UI");
-            var cui = GameObject.Find("Controls UI");
-            if (iui != null) iui.SetActive(false);
-            if (eui != null) eui.SetActive(false);
-            if (cui != null) cui.SetActive(false);
-            if (iui == null && eui == null && cui == null)
+            if (!(InventoryUI.activeSelf || EquipmentUI.activeSelf || YouWinUI.activeSelf || GameOverUI.activeSelf ||
+                  ControlsUI.activeSelf || loading))
             {
                 OptionsUI.SetActive(!OptionsUI.activeSelf);
                 if (OptionsUI.activeSelf) Time.timeScale = 0;
                 else Time.timeScale = 1;
                 pause = !pause;
             }
+            InventoryUI.SetActive(false);
+            EquipmentUI.SetActive(false);
+            YouWinUI.SetActive(false);
+            GameOverUI.SetActive(false);
+            ControlsUI.SetActive(false);
         }
     }
 

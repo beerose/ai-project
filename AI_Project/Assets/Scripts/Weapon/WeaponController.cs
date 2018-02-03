@@ -18,6 +18,8 @@ public class WeaponController : MonoBehaviour
     public float SpellDelayModifier = 0f;
     public float BulletSpeed = 5f;
     public float BulletSpeedModifier = 0f;
+    public int NumberOfShots = 1;
+    public int NumberOfShotsModifier = 0;
 
     private float nextFire;
     private float nextSpell;
@@ -41,18 +43,18 @@ public class WeaponController : MonoBehaviour
 
             InvokeRepeating("manaRegen", 0.5f, 1f);
 
-            Invoke("dmgUpdate",0.5f);
+            Invoke("dmgUpdate", 0.5f);
         }
     }
 
     void dmgUpdate()
     {
         StatisticsUI.Instance.DPSupdate((Damage + DamageModifier) / (FireDelay + FireDelayModifier),
-                BulletSpeed + BulletSpeedModifier);
-            if (Spell != null)
-                StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
-                    Spell.GetComponent<SpellBehaviour>().ManaCost);
-            else StatisticsUI.Instance.SpellUpdate(0f, 0f);
+            BulletSpeed + BulletSpeedModifier, NumberOfShots + NumberOfShotsModifier);
+        if (Spell != null)
+            StatisticsUI.Instance.SpellUpdate(Spell.GetComponent<SpellBehaviour>().Damage,
+                Spell.GetComponent<SpellBehaviour>().ManaCost);
+        else StatisticsUI.Instance.SpellUpdate(0f, 0f);
     }
 
     void manaRegen()
@@ -73,6 +75,7 @@ public class WeaponController : MonoBehaviour
                 DamageModifier -= oldItem.DamageModifier;
                 FireDelayModifier -= oldItem.FireDelayModifier;
                 BulletSpeedModifier -= oldItem.BulletSpeedModifier;
+                NumberOfShotsModifier -= oldItem.ShotNumberModifier;
                 if (oldItem.Shot != null) Shot = defaultShot;
             }
             if ((int) oldItem.EquipSlot == 1)
@@ -95,6 +98,7 @@ public class WeaponController : MonoBehaviour
                 DamageModifier += newItem.DamageModifier;
                 FireDelayModifier += newItem.FireDelayModifier;
                 BulletSpeedModifier += newItem.BulletSpeedModifier;
+                NumberOfShotsModifier += newItem.ShotNumberModifier;
                 if (newItem.Shot != null) Shot = newItem.Shot;
             }
             if ((int) newItem.EquipSlot == 1)
@@ -120,10 +124,20 @@ public class WeaponController : MonoBehaviour
         if (Time.time >= nextFire)
         {
             nextFire = Time.time + FireDelay + FireDelayModifier;
-            ShotMover bullet = Instantiate(Shot, transform.position, transform.rotation).GetComponent<ShotMover>();
-            bullet.SetShooterTag(ShooterTag);
-            bullet.Damage = Damage + DamageModifier;
-            bullet.Speed = BulletSpeed + BulletSpeedModifier;
+            int sign = 1;
+            for (int i = 0; i < NumberOfShots + NumberOfShotsModifier; i++)
+            {
+                sign *= -1;
+                ShotMover bullet = Instantiate(Shot, transform.position, transform.rotation).GetComponent<ShotMover>();
+
+                float correct = 0;
+                if ((NumberOfShots + NumberOfShotsModifier) % 2 == 0) correct = 7.5f;
+                bullet.transform.eulerAngles = new Vector3(0, sign * ((i + 1) / 2) * 15 - correct + transform.eulerAngles.y, 0);
+                bullet.SetShooterTag(ShooterTag);
+                bullet.Damage = Damage + DamageModifier;
+                bullet.Speed = BulletSpeed + BulletSpeedModifier;
+            }
+
             aud.Play();
         }
     }

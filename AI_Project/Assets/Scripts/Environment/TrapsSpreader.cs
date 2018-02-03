@@ -87,5 +87,6 @@ public class TrapsSpreader : MonoBehaviour
                 }
             }
         }
+        LoadingBar.Instance.Progress += 1;
     }
 }
