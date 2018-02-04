@@ -27,7 +27,7 @@ public class ItemSpreader : MonoBehaviour
         foreach (var room in GameObject.FindGameObjectsWithTag("Board"))
         {
             count++;
-            if (!GameController.Instace.GetCurrentBoard().name.Equals(room.name))
+            if (!GameController.Instance.GetCurrentBoard().name.Equals(room.name))
             {
                 Random.InitState(seed + count);
                 int chance = Random.Range(0, 100);

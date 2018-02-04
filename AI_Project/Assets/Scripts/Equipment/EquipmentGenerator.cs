@@ -55,7 +55,7 @@ public class EquipmentGenerator : MonoBehaviour
 
         for (int i = 0; i < SelectNum; i++)
         {
-            EQ.Add(Mutation(Crossover(Selection(i), Selection(i * 17), i * 23)));
+            EQ.Add(Mutation(Crossover(Selection(i), Selection(i * 17), i * 23), i * 49));
             //mods are "i" * my random numbers + seed
         }
 
@@ -84,7 +84,7 @@ public class EquipmentGenerator : MonoBehaviour
             float bulletSpeedMod = Random.Range(BulletSpeedModifier.x, BulletSpeedModifier.y);
             float fireDelayMod = Random.Range(FireDelayModifier.x, FireDelayModifier.y);
             GameObject shot = Shot[Random.Range(0, Shot.Length)];
-            int shotNmod = NumberOfShots;
+            int shotNmod = 0;
 
             float HPMod = Random.Range(HealthModifier.x, HealthModifier.y);
 
@@ -134,9 +134,9 @@ public class EquipmentGenerator : MonoBehaviour
         return c;
     }
 
-    private Equipment Mutation(Equipment c)
+    private Equipment Mutation(Equipment c, int mod)
     {
-        Random.InitState(seed + c.GetInstanceID());
+        Random.InitState(seed + mod);
         switch (Random.Range(0, 12))
         {
             case 0:
@@ -152,7 +152,7 @@ public class EquipmentGenerator : MonoBehaviour
                 c.Shot = Shot[Random.Range(0, Shot.Length)];
                 break;
             case 4:
-                c.ShotNumberModifier = NumberOfShots;
+                c.ShotNumberModifier = 0;
                 break;
             case 5:
                 c.HealthModifier = Random.Range(HealthModifier.x, HealthModifier.y);
@@ -172,16 +172,20 @@ public class EquipmentGenerator : MonoBehaviour
         {
             if (EQ[i].GetPowerLVL() > MaxPowerLVL || EQ[i].GetPowerLVL() <= MinPowerLVL)
             {
-                if ((int) EQ[i].EquipSlot != 0)
-                    Debug.Log("Delete item with power lvl: " + EQ[i].GetPowerLVL() + " hpMod: " + (int) EQ[i].HealthModifier);
+                /*if ((int) EQ[i].EquipSlot == 2) Debug.Log("Delete Spell");
+                if ((int) EQ[i].EquipSlot == 0)
+                    Debug.Log("Delete weapon with " + (EQ[i].ShotNumberModifier + 1) + " shots Power: " +
+                              EQ[i].GetPowerLVL() +
+                              " DPS: " + (1f + EQ[i].DamageModifier) / (0.5f + EQ[i].FireDelayModifier));*/
                 EQ.RemoveAt(i);
                 i--;
             }
             else
             {
-                if (EQ[i].ShotNumberModifier > 1 && (int) EQ[i].EquipSlot == 0)
-                    Debug.Log("Weapon with " + EQ[i].ShotNumberModifier + " shots Power: " + EQ[i].GetPowerLVL() +
-                              " DMG: " + EQ[i].DamageModifier + " Delay " + EQ[i].FireDelayModifier);
+                if (EQ[i].ShotNumberModifier > 0 && (int) EQ[i].EquipSlot == 0 && 0.5f + EQ[i].FireDelayModifier > 0f)
+                    Debug.Log("Add weapon with " + (EQ[i].ShotNumberModifier + 1) + " shots Power: " +
+                              EQ[i].GetPowerLVL() +
+                              " DPS: " + (1f + EQ[i].DamageModifier) / (0.5f + EQ[i].FireDelayModifier));
             }
         }
     }

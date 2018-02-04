@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instace;
+    public static GameController Instance;
 
     public GameObject InventoryUI;
     public GameObject EquipmentUI;
@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour
 
     public GameObject Boss;
 
+    public int Seed;
+    public int Rooms;
+    
     private EnemiesCollector EC;
 
     private GameObject currentBoard;
@@ -30,7 +33,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        Instace = FindObjectOfType<GameController>();
+        Instance = FindObjectOfType<GameController>();
         youWin = false;
         gameOver = false;
         pause = true;
@@ -101,7 +104,13 @@ public class GameController : MonoBehaviour
     public void NewGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Main");
+        Scenes.Load("Main", "seed","");
+    }
+
+    public void SeedGame()
+    {
+        Time.timeScale = 1;
+        Scenes.Load("Main", "seed", Seed + " " + Rooms);
     }
 
     public void ExitGame()

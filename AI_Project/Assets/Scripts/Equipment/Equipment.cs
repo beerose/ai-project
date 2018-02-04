@@ -39,8 +39,8 @@ public class Equipment : Item
         {
             if (0.5f + FireDelayModifier <= 0) power = -1;
             else
-                power = (int) (((1f + DamageModifier) / (0.5f + FireDelayModifier) * (1 + ShotNumberModifier) +
-                                (9 + BulletSpeedModifier) / 10) / 3); //magic numbers are player base stats
+                power = (int) Mathf.Floor((1f + DamageModifier) / (0.5f + FireDelayModifier) * (1 + ShotNumberModifier) +
+                                (9 + BulletSpeedModifier) / 10 - 2); //magic numbers are player base stats
         }
         if ((int) EquipSlot == 1) //Armor
         {
@@ -48,7 +48,8 @@ public class Equipment : Item
         }
         if ((int) EquipSlot == 2) //Spell
         {
-            power = 1 + (int) (Spell.GetComponent<SpellBehaviour>().Damage / Spell.GetComponent<SpellBehaviour>().ManaCost);
+            power = 1 + (int) (Spell.GetComponent<SpellBehaviour>().Damage /
+                               Spell.GetComponent<SpellBehaviour>().ManaCost);
         }
         return power;
     }
