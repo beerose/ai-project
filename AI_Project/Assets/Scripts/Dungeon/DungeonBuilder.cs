@@ -105,59 +105,6 @@ namespace Dungeon {
             LoadingBar.Instance.Progress += 1;
         }
 
-
-
-        private RoomModel[] Separate(RoomModel[] rooms)
-        {
-            for (var i = 0; i < rooms.Length; i++)
-            {
-                Debug.Log("outer loop");
-                RoomModel a = rooms[i];
-                for (var j = i + 1; j < rooms.Length; j++)
-                {
-                    Debug.Log("inner loop");
-                    RoomModel b = rooms[j];
-                    if (MathUtils.RoomsOverlap(a, b))
-                    {
-                        Debug.Log("rooms overlapps");
-                        var dx = Mathf.Ceil(Mathf.Min(a.Right - b.Left, a.Left - b.Right));
-                        var dy = Mathf.Ceil(Mathf.Min(a.Bottom - b.Top, a.Top - b.Bottom));
-
-                        if (Mathf.Abs(dx) < Mathf.Abs(dy))
-                        {
-                            dy = 0;
-                        }
-                        else
-                        {
-                            dx = 0;
-                        }
-
-                        Debug.Log(a.position);
-                        Debug.Log(b.position);
-                        Debug.Log(dx);
-                        Debug.Log(dy);
-
-                        var dxa = -dx / 2;
-                        var dxb = dx + dxa - 1;
-
-                        var dya = -dy / 2;
-                        var dyb = dya + dy - 1;
-
-                        rooms[i] = shiftRoom(a, dxa, dya);
-                        rooms[j] = shiftRoom(b, dxb, dyb);
-
-                    }
-                }
-            }
-            return rooms;
-        }
-
-        private RoomModel shiftRoom(RoomModel room, float dx, float dy)
-        {
-            room.position.x += (int)dx;
-            room.position.y += (int)dy;
-            return room;
-        }
     }
 
 }
