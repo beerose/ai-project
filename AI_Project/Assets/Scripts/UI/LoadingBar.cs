@@ -36,6 +36,6 @@ public class LoadingBar : MonoBehaviour
     {
         Progress++;
         slider.value = (float) Progress / ProgressMax;
-        GameController.Instace.GameLoaded();
+        GameController.Instance.GameLoaded();
     }
 }
