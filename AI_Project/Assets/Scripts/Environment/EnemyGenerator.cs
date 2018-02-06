@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
-	private const int numberOfPopulation = 15;
+	private const int numberOfPopulation = 30;
 	private const int numberIteration = 10;
-	private const int bestEnemies = 10;
 	private const int numberOfMutantEnemies = 5;
-	private const int numberNewPopulation = 10;
-	public int level = 1;
+	private const int numberNewPopulation = 5;
+	public float level = 1;
+
+	private int seed = 0;
 
 	private GameObject[] population;
 	private List<GameObject> newPopulation;
@@ -39,7 +40,6 @@ public class EnemyGenerator : MonoBehaviour {
 		}
 	}
 
-
 	private GameObject initEnemy (GameObject gameObject){
 		EnemyController enemyController = gameObject.GetComponentInChildren<EnemyController> ();
 		EnemyMovement enemyMovement = gameObject.GetComponentInChildren<EnemyMovement> ();
@@ -48,26 +48,27 @@ public class EnemyGenerator : MonoBehaviour {
 		MeleeWeapon[] meleeWeapons = gameObject.GetComponentsInChildren<MeleeWeapon> ();
 
 		for (int i = 0; weaponControllers.Length > i; i++) {
-			weaponControllers[i].Damage = Random.Range(1, 20);
-			weaponControllers[i].BulletSpeed = Random.Range(5, 15);
-			weaponControllers [i].FireDelay = Random.Range (0, 10);
+			weaponControllers[i].Damage = randomValue(2,20);
+			weaponControllers[i].BulletSpeed =  randomValue(5,15);
+			weaponControllers [i].FireDelay = randomValue(0,10);
 		}
 			
 		for (int i = 0; meleeWeapons.Length > i; i++) {
-			meleeWeapons [i].attackDemage = Random.Range (1, 10);
+			meleeWeapons [i].attackDemage = randomValue(1,10);
 		}
+			
+		enemyMovement.runningSpeed = randomValue(2,15);
 
-		enemyMovement.runningSpeed = Random.Range(1, 15);
-		enemyMovement.walkSpeed = Random.Range(1, enemyMovement.runningSpeed);
+		enemyMovement.walkSpeed = randomValue(2, (int)enemyMovement.runningSpeed);
 
-		enemyController.energy = Random.Range(10, 30);
-		enemyController.energyLimit = Random.Range(1, enemyController.energy);
+		enemyController.energy = randomValue(10,30);
 
-		enemyController.health = Random.Range(1, 10);
-		enemyController.healthLimit = Random.Range(1, enemyController.health);
+		enemyController.health = randomValue(2,8); 
 
 		return gameObject;
 	}
+		
+
 
 	private void sortPopulation(){
 		newPopulation.Sort(SortByScore);
@@ -87,10 +88,8 @@ public class EnemyGenerator : MonoBehaviour {
 
 	private void crossEnemies (){
 		for(int i = 0; i < numberNewPopulation; i++){
-			Random.InitState(i);
-			int id1 = Random.Range(0, bestEnemies);
-			Random.InitState(id1);
-			int id2 = Random.Range (0, bestEnemies);
+			int id1 = randomValue(1,numberOfPopulation); 
+			int id2 = randomValue(1,numberOfPopulation); 
 			newPopulation.Add( crossEnemy (population[id1], population[id2] ));
 		}
 	}
@@ -109,23 +108,17 @@ public class EnemyGenerator : MonoBehaviour {
 
 		for (int i = 0; weaponControllers.Length > i || weaponControllers1.Length > i; i++) {
 			weaponControllers [i].Damage = weaponControllers1 [i].Damage;
-			weaponControllers [i].FireDelay = weaponControllers1 [i].FireDelay;
-			weaponControllers [i].BulletSpeed = weaponControllers1 [i].BulletSpeed;
 		}
 			
 		enemyMovement.runningSpeed = enemyMovement1.runningSpeed;
-		enemyMovement.runningCost = enemyMovement.runningCost;
-		enemyMovement.walkSpeed = enemyMovement1.walkSpeed;
 
 		enemyController.health = enemyController1.health;
-		enemyController.healthDelay = enemyController1.healthDelay;
-		enemyController.healthLimit = enemyController1.healthLimit;
 
 		return gameObject;
 	}
 
 	private void mutateEnemies(){
-		for(int i = 0; i < bestEnemies; i++){
+		for(int i = 0; i < numberOfPopulation; i++){
 			List<GameObject> mutantEnemiesPopulation = new List<GameObject>();
 			for (int j = 0; j < numberOfMutantEnemies; j++) {
 				mutantEnemiesPopulation.Add( mutateEnemy(population[i]));
@@ -153,12 +146,15 @@ public class EnemyGenerator : MonoBehaviour {
 		MeleeWeapon[] meleeWeapons = result.GetComponentsInChildren<MeleeWeapon> ();
 
 		for (int i = 0;  i< weaponControllers.Length; i++) {
+			Random.InitState(i);
 			weaponControllers [i].Damage = mutate (weaponControllers [i].Damage);
 		}
 
 		for (int i = 0; i < meleeWeapons.Length; i++) {
+			Random.InitState(i);
 			meleeWeapons [i].attackDemage = mutate (meleeWeapons [i].attackDemage);
 		}
+
 
 		enemyMovement.runningSpeed = mutate (enemyMovement.runningSpeed);
 
@@ -170,7 +166,7 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	private float mutate(float value){
-		float newValue = value + Random.Range (-1, 1);
+		float newValue = value + randomValue(-1,1); 
 		if(newValue <= 0 ){
 			return value;
 		}
@@ -187,6 +183,11 @@ public class EnemyGenerator : MonoBehaviour {
 
 	private double getScore(){
 		return 10 * level;
+	}
+
+	private int randomValue(int from, int to){
+		Random.InitState(seed++);
+		return Random.Range (from, to);
 	}
 
 	public GameObject[] getPopulation(){

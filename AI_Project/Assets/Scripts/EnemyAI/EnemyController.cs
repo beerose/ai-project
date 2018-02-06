@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
 
     public GameObject DeathEffect;
 
-
     private float currentHealth;
 
     public float CurrentHealth
@@ -118,7 +117,7 @@ public class EnemyController : MonoBehaviour
 		double rShooting = enemyShooting.getWeaponsRating();
 		double rMovement = enemyMovement.getRating ();
 
-		double rHealth = System.Math.Min(100, health);
+		double rHealth = System.Math.Min(100, health * 3);
 
 		double rEnergy = System.Math.Min(100, energy);
 
