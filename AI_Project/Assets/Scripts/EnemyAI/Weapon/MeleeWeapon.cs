@@ -20,11 +20,12 @@ public class MeleeWeapon : Weapon {
 	}
 
 	public override double getRating(float enemyEnergy){
-		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
-		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = attackDemage / playerHealth.m_StartingHealth * 100;
-		double rDelay = attackDelay / 10 * 100;
-		return - rDelay + (rEnergy + rDemage) * incentive ;
+		double playerHealth = 100;
+		double second = 60;
+		double rDelay =  second / attackDelay;
+		double rEnergy = enemyEnergy / attackCost;
+		double rDemage = attackDemage * System.Math.Min (rDelay, rEnergy);
+		return (rDemage > playerHealth) ? 100.0 : (rDemage/playerHealth) * 100.0 ;
 	}
 
 	public override void attack(Collider player){

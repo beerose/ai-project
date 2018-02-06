@@ -72,9 +72,11 @@ public class EnemyMovement : MonoBehaviour
             setRotation(other.transform);
             anim.SetTrigger("Attack");
             startPosition = other.transform.position;
-			if (enemyController.isEnergy (runningCost))
-			{
+			if (enemyController.isEnergy (runningCost)) {
 				run (other.transform.position);
+			} else {
+				agent.speed = walkSpeed;
+				agent.SetDestination(startPosition);
 			}
         }
     }
@@ -112,7 +114,15 @@ public class EnemyMovement : MonoBehaviour
     }
 
 	public double getRating(){
-		double speed = 100 - (runningCost / enemyController.energy * 100);
-		return - (100 / runningSpeed) - (100 / walkSpeed) + speed;
+		Start ();
+		double rEnergy = enemyController.energy / runningCost;
+		double rDelay =  60 / runningDelay;
+		double rSpeed = runningSpeed * System.Math.Min (rDelay, rEnergy);
+		double rWalk = (600 / walkSpeed) / 600 * 100;
+		double rPlayerTracking = (playerTracking) ? 100 : 0;
+
+		double resultSpeed = (rSpeed > 600) ? 100 : ((rSpeed / 600) * 100);
+		return  (resultSpeed + rWalk + rPlayerTracking > 200) ? 100 : (resultSpeed + rWalk + rPlayerTracking)/300 * 100;
+
 	}
 }
