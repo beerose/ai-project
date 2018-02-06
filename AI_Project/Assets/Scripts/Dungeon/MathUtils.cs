@@ -39,7 +39,20 @@ public class MathUtils {
         };
     }
 
-    public static int NormalGausian(float mean, float stdDev) {         float u1 = 1.0f - Random.value;         float u2 = 1.0f - Random.value;         float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) *                      Mathf.Sin(2.0f * Mathf.PI * u2);         int randNormal = (int)Mathf.Ceil((mean + stdDev * randStdNormal)) * 2;         return randNormal;     }      public static Vector2 GetRandomSize() {         float mean = 5;         float stdDev = 1;          var v = new Vector2(NormalGausian(mean, stdDev), NormalGausian(mean, stdDev));
+    public static int NormalGausian(float mean, float stdDev) {
+        float u1 = 1.0f - Random.value;
+        float u2 = 1.0f - Random.value;
+        float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) *
+                     Mathf.Sin(2.0f * Mathf.PI * u2);
+        int randNormal = (int)Mathf.Ceil((mean + stdDev * randStdNormal)) * 2;
+        return randNormal;
+    }
+
+    public static Vector2 GetRandomSize() {
+        float mean = 5;
+        float stdDev = 1;
+
+        var v = new Vector2(NormalGausian(mean, stdDev)*2, NormalGausian(mean, stdDev));
         return v;
     }
 
