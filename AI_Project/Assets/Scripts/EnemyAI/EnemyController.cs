@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Instantiate(DeathEffect, transform.position, transform.rotation);
-            if(transform.CompareTag("Boss"))GameController.Instace.WinGame();
+            if(transform.CompareTag("Boss"))GameController.Instance.WinGame();
             Destroy(transform.parent.gameObject);
         }
         rechargeHealth();

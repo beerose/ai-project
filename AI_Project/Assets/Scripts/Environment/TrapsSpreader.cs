@@ -23,7 +23,7 @@ public class TrapsSpreader : MonoBehaviour
         {
             spawns = new List<Vector2>();
             count++;
-            if (!GameController.Instace.GetCurrentBoard().name.Equals(room.name))
+            if (!GameController.Instance.GetCurrentBoard().name.Equals(room.name))
             {
                 Random.InitState(count);
 
@@ -31,15 +31,32 @@ public class TrapsSpreader : MonoBehaviour
                 int trapSpreadRange;
 
                 if (id == 0) trapSpreadRange = 5;
-                else trapSpreadRange = 2;
+                else trapSpreadRange = 1;
 
                 Vector3 roof = room.transform.Find("Roof").localScale;
                 roof.x -= 0.01f;
                 roof.y -= 0.01f;
                 roof.z -= 0.01f;
-                Vector4 board = new Vector4(-roof.x / 2 + 4, roof.x / 2 - 4, -roof.z / 2 + 4, roof.z / 2 - 4);
+                Vector4 board;
+                if (id == 0) board = new Vector4(-roof.x / 2 + 3, roof.x / 2 - 3, -roof.z / 2 + 6, roof.z / 2 - 6);
+                else board = new Vector4(-roof.x / 2 + 1, roof.x / 2 - 1, -roof.z / 2 + 1, roof.z / 2 - 1);
 
-                int iter = Mathf.RoundToInt(roof.x * roof.z / 40);
+                if (id != 0)
+                {
+                    for (int i = 0; i <= roof.x/2; i++)
+                    {
+                        spawns.Add(new Vector2(i, 0));
+                        spawns.Add(new Vector2(-i, 0));
+                    }
+                    for (int i = 0; i <= roof.z/2; i++)
+                    {
+                        spawns.Add(new Vector2(0, i));
+                        spawns.Add(new Vector2(0, -i));
+                    }
+                }
+
+
+                int iter = Mathf.RoundToInt(roof.x * roof.z / 25);
                 if (roof.x < 10 || roof.z < 10) iter = 0;
                 for (int i = 0; i < iter; i++)
                 {
@@ -47,7 +64,9 @@ public class TrapsSpreader : MonoBehaviour
                     int restartCount = 0;
 
                     Random.InitState(restartCount);
-                    Vector2 spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
+                    Vector2 spawn = new Vector2(Random.Range((int) board.x, (int) board.y),
+                        Random.Range((int) board.z, (int) board.w));
+
                     foreach (var sp in spawns)
                     {
                         if (Vector2.Distance(spawn, sp) < trapSpreadRange)
@@ -60,7 +79,8 @@ public class TrapsSpreader : MonoBehaviour
                     {
                         restart = false;
                         Random.InitState(restartCount);
-                        spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
+                        spawn = new Vector2(Random.Range((int) board.x, (int) board.y),
+                            Random.Range((int) board.z, (int) board.w));
                         foreach (var sp in spawns)
                         {
                             if (Vector2.Distance(spawn, sp) < trapSpreadRange)
@@ -80,7 +100,8 @@ public class TrapsSpreader : MonoBehaviour
                     {
                         spawns.Add(spawn);
 
-                        GameObject trap = Instantiate(Traps[id], room.transform.position + new Vector3(spawn.x, -0.5f, spawn.y),
+                        GameObject trap = Instantiate(Traps[id],
+                            room.transform.position + new Vector3(spawn.x, -0.5f, spawn.y),
                             room.transform.rotation);
                         trap.transform.SetParent(transform.Find("Traps"));
                     }

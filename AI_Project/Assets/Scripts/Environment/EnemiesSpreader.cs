@@ -24,7 +24,7 @@ public class EnemiesSpreader : MonoBehaviour
         foreach (var room in GameObject.FindGameObjectsWithTag("Board"))
         {
             count++;
-            if (!GameController.Instace.GetCurrentBoard().name.Equals(room.name))
+            if (!GameController.Instance.GetCurrentBoard().name.Equals(room.name))
             {
                 Vector3 roof = room.transform.Find("Roof").localScale;
                 roof.x -= 0.01f;
