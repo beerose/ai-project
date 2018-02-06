@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemiesSpreader : MonoBehaviour
 {
-    public GameObject[] Enemies;
+	public GameObject[] enemies;
+	public GameObject[][] population;
+	private EnemyGenerator enemyGenerator;
 
     void Start()
     {
@@ -12,10 +14,12 @@ public class EnemiesSpreader : MonoBehaviour
         EnemiesFolder.transform.SetParent(transform);
         EnemiesFolder.name = "Enemies";
         Invoke("spread", 1.0f);
+		enemyGenerator = GetComponent<EnemyGenerator> ();
     }
 
     private void spread()
     {
+		createPopulation ();
         int count = 0;
         foreach (var room in GameObject.FindGameObjectsWithTag("Board"))
         {
@@ -29,24 +33,27 @@ public class EnemiesSpreader : MonoBehaviour
                 Vector4 board = new Vector4(-roof.x / 2 + 2, roof.x / 2 - 2, -roof.z / 2 + 2, roof.z / 2 - 2);
 
                 Random.InitState(count);
-                int id = Random.Range(0, Enemies.Length);
+				int row = Random.Range(0, population.Length);
+				Random.InitState(row);
+				int col = Random.Range(0, population[row].Length);
 
+				Debug.Log (row + " " + col);
                 if (roof.x * roof.z < 100)
                 {
-                    GameObject enemy = Instantiate(Enemies[id], room.transform.position, room.transform.rotation);
+					GameObject enemy = Instantiate(population[row][col], room.transform.position, room.transform.rotation);
+					Debug.Log (enemy);
                     enemy.transform.SetParent(transform.Find("Enemies"));
                 }
                 else
                 {
                     int iter = Mathf.RoundToInt(roof.x * roof.z / 150);
-
                     for (int i = 0; i < iter * 2; i++)
                     {
                         Vector2 spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
-                        id = Random.Range(0, Enemies.Length);
-                        GameObject enemy = Instantiate(Enemies[id],
+						GameObject enemy = Instantiate(population[row][col],
                             room.transform.position + new Vector3(spawn.x, 0.0f, spawn.y),
                             room.transform.rotation);
+						Debug.Log (enemy);
                         enemy.transform.SetParent(transform.Find("Enemies"));
                     }
                 }
@@ -54,4 +61,13 @@ public class EnemiesSpreader : MonoBehaviour
         }
         LoadingBar.Instance.Progress += 1;
     }
+
+	private void createPopulation(){
+		population = new GameObject[enemies.Length][];
+		for (int i = 0; i < enemies.Length; i++) {
+			enemyGenerator.start (enemies[i]);
+			population[i] = enemyGenerator.getPopulation ();
+		}
+	}
+
 }

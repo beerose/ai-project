@@ -61,29 +61,31 @@ public class EnemyShooting : MonoBehaviour
 
     public double getWeaponsRating()
     {
+		Start ();
         double sum = 0;
         for (int i = 0; i < weapons.Length; i++)
         {
-            double rating = weapons[i].getRating(enemyController.CurrentEnergy);
-            if (enemyController.isEnergy(weapons[i].attackCost))
+			double rating = weapons[i].getRating(enemyController.energy);
+			if (enemyController.energy > weapons[i].attackCost)
             {
                 sum += rating;
             }
-        }
-        return (weapons.Length == 0) ? 0 : sum / weapons.Length;
+		}
+		return (weapons.Length == 0) ? 0.0 : sum / weapons.Length;
     }
 
     public double getBestWeaponRating()
     {
+		Start ();
         double bestRating = double.NegativeInfinity;
         for (int i = 0; i < weapons.Length; i++)
         {
-            double rating = weapons[i].getRating(enemyController.CurrentEnergy);
-            if (rating > bestRating && enemyController.isEnergy(weapons[i].attackCost))
+			double rating = weapons[i].getRating(enemyController.energy);
+            if (rating > bestRating && enemyController.energy > weapons[i].attackCost)
             {
                 bestRating = rating;
             }
         }
-        return bestRating;
+		return (bestRating == double.NegativeInfinity )? 0.0 : bestRating;
     }
 }

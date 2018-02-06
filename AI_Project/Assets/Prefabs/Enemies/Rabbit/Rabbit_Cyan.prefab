@@ -758,7 +758,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892215945519976}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000020861623}
   m_LocalPosition: {x: 0, y: 0.4, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -940,11 +940,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0edbe8ff0a921459fdc03570a1f173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
-  energy: 20
-  healthLimit: 3
+  health: 9
+  energy: 25
+  healthLimit: 8.309415
   healthDelay: 4
-  energyLimit: 5
+  energyLimit: 24.50478
   energyDelay: 3
   DeathEffect: {fileID: 1524917693999438, guid: c0ea7f5ec02f0034fbff7da145ccc5c2,
     type: 2}
@@ -981,14 +981,16 @@ MonoBehaviour:
   MaxMana: 0
   Mana: 0
   ManaRegen: 0
-  Damage: 10
+  Damage: 6
   DamageModifier: 0
-  FireDelay: 0.5
+  FireDelay: 0
   FireDelayModifier: 0
   SpellDelay: 1
   SpellDelayModifier: 0
-  BulletSpeed: 15
+  BulletSpeed: 14
   BulletSpeedModifier: 0
+  NumberOfShots: 1
+  NumberOfShotsModifier: 0
 --- !u!114 &114579991415043122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1000,10 +1002,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b656b40a794a034f895a4ca2e2a56fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
+  walkSpeed: 1.7443076
   radius: 10
-  runningSpeed: 7
+  runningSpeed: 10
   runningCost: 0.2
+  playerTracking: 1
 --- !u!114 &114920065969852188
 MonoBehaviour:
   m_ObjectHideFlags: 1

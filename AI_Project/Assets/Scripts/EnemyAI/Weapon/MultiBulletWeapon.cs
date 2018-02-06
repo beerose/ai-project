@@ -45,20 +45,26 @@ public class MultiBulletWeapon : Weapon {
 		PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth> (); 
 		Vector3 otherPosition = player.transform.position;
 		double maxDistance = (attackDistance > distance) ? distance : attackDistance;
-		double rDistance = Vector3.Distance(transform.position, otherPosition) / maxDistance * 100;
-		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
+		double rDistance = Vector3.Distance(transform.position, otherPosition) / maxDistance * 100.0;
+		double rEnergy = 100.0 - (attackCost / enemyEnergy * 100.0);
+		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100.0;
 		double rSpeed = weaponController.BulletSpeed;;
 		return - (rDistance / rSpeed) + numberBullets + (rEnergy + rDemage) * incentive ;
 	}
 
 	public override double getRating(float enemyEnergy){
-		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
-		double rEnergy = 100 - (attackCost / enemyEnergy * 100);
-		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100;
-		double rSpeed = weaponController.BulletSpeed / 20 * 100;
-		double rDelay = weaponController.FireDelay / 10 * 100;
-		return - rDelay - (100 / rSpeed) + numberBullets+ (rEnergy + rDemage) * incentive ;
+		Start ();
+		double playerHealth = 100;
+		double second = 60;
+		double rDelay = second / weaponController.FireDelay;
+		double rEnergy = enemyEnergy / attackCost;
+		double rDemage = weaponController.Damage * System.Math.Min (rDelay, rEnergy);
+		double resultDemage =  (rDemage > playerHealth) ? 100.0 : (rDemage/playerHealth) * 100.0 ;
+
+		double rSpeed =  100.0 - (weaponController.BulletSpeed / 20.0 * 100.0);
+		double rNumber = (double) numberBullets / 36.0 * 100;
+
+		return  (rDemage >= 100) ? 200.0 : (rDemage/playerHealth) * 100.0 + (rSpeed + rNumber) / 200.0 * 100.0;
 	}
 		
 	public override void attack(Collider player){

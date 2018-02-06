@@ -52,7 +52,6 @@ public class EnemyController : MonoBehaviour
         }
         rechargeHealth();
         rechargeEnergy();
-		//EnemyShooting enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting> ();
     }
 
     private void rechargeEnergy()
@@ -115,20 +114,15 @@ public class EnemyController : MonoBehaviour
 		EnemyShooting enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting> ();
 		EnemyMovement enemyMovement = transform.parent.GetComponentInChildren<EnemyMovement> ();
 		SphereCollider sphereCollider = enemyMovement.GetComponent<SphereCollider> ();
-		PlayerHealth playerHealth = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth>(); 
 
-		double rShooting = enemyShooting.getWeaponsRating () + enemyShooting.getBestWeaponRating ();
-		double rMovement = enemyMovement.getRating () + sphereCollider.radius * 2;
+		double rShooting = enemyShooting.getWeaponsRating();
+		double rMovement = enemyMovement.getRating ();
 
-		double rHealth = (health / playerHealth.m_StartingHealth * 100) ;
-		double rHealthLimit = (healthLimit == 0 )? 0: (health / healthLimit * 100);
-		double rHealthDelay = healthDelay / 10 * 100;
+		double rHealth = System.Math.Min(100, health);
 
-		double rEnergy = energy ;
-		double rEnergyLimit = (energyLimit == 0 )? 0: (energy / energyLimit * 100);
-		double rEnergyDelay = energyDelay / 10 * 100;
+		double rEnergy = System.Math.Min(100, energy);
 
-		return -rEnergyDelay - rHealthDelay + rEnergyLimit + rHealthLimit + rEnergy + rHealth + rMovement + rShooting;
+		return System.Math.Min(100, ((rEnergy + rHealth + rMovement)/2 + rShooting) / 400 * 100);
 	}
 
     public void useEnergy(float value)

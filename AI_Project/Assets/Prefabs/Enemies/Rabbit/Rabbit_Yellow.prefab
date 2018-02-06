@@ -934,14 +934,16 @@ MonoBehaviour:
   MaxMana: 0
   Mana: 0
   ManaRegen: 0
-  Damage: 10
+  Damage: 9
   DamageModifier: 0
-  FireDelay: 0.5
+  FireDelay: 3
   FireDelayModifier: 0
   SpellDelay: 1
   SpellDelayModifier: 0
-  BulletSpeed: 10
+  BulletSpeed: 8
   BulletSpeedModifier: 0
+  NumberOfShots: 1
+  NumberOfShotsModifier: 0
 --- !u!114 &114136608538136254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,11 +966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0edbe8ff0a921459fdc03570a1f173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
+  health: 8
   energy: 20
-  healthLimit: 3
+  healthLimit: 6.5092516
   healthDelay: 4
-  energyLimit: 5
+  energyLimit: 14.578635
   energyDelay: 3
   DeathEffect: {fileID: 1524917693999438, guid: c0ea7f5ec02f0034fbff7da145ccc5c2,
     type: 2}
@@ -1011,9 +1013,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b656b40a794a034f895a4ca2e2a56fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
+  walkSpeed: 1.9905306
   radius: 10
-  runningSpeed: 7
+  runningSpeed: 2
   runningCost: 0.2
   playerTracking: 0
 --- !u!135 &135115278139862362
