@@ -52,7 +52,7 @@ public class MathUtils {
         float mean = 5;
         float stdDev = 1;
 
-        var v = new Vector2(NormalGausian(mean, stdDev)*2, NormalGausian(mean, stdDev));
+        var v = new Vector2(NormalGausian(mean * 2, stdDev), NormalGausian(mean, stdDev));
         return v;
     }
 
