@@ -165,7 +165,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!198 &198287871073268328
 ParticleSystem:
@@ -226,7 +226,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1653556917
+  randomSeed: -1011176961
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -34,7 +34,6 @@ public class EnemiesSpreader : MonoBehaviour
 
                 Random.InitState(count);
 				int row = Random.Range(0, population.Length);
-				Random.InitState(row);
 				int col = Random.Range(0, population[row].Length);
 
                 if (roof.x * roof.z < 100)
@@ -47,8 +46,9 @@ public class EnemiesSpreader : MonoBehaviour
                     int iter = Mathf.RoundToInt(roof.x * roof.z / 150);
                     for (int i = 0; i < iter * 2; i++)
                     {
-						Random.InitState(i);
-						col = Random.Range(0, population[row].Length);
+						Random.InitState(count + i);
+                        row = Random.Range(0, population.Length);
+                        col = Random.Range(0, population[row].Length);
                         Vector2 spawn = new Vector2(Random.Range(board.x, board.y), Random.Range(board.z, board.w));
 						GameObject enemy = Instantiate(population[row][col],
                             room.transform.position + new Vector3(spawn.x, 0.0f, spawn.y),

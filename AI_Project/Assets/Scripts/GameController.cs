@@ -19,7 +19,9 @@ public class GameController : MonoBehaviour
 
     public GameObject Boss;
 
+    [HideInInspector]
     public int Seed;
+    [HideInInspector]
     public int Rooms;
     
     private EnemiesCollector EC;
@@ -55,13 +57,15 @@ public class GameController : MonoBehaviour
     private void bossSpawn() //temporary
     {
         var boards = GameObject.FindGameObjectsWithTag("Board");
-        int id = new System.Random().Next(boards.Length);
+        Random.InitState(BuildOnStart.Instance.Seed);
+        int id = Random.Range(0,boards.Length);
         int i;
         for (i = 0; i < 50; i++)
         {
             if (boards[id].name.Equals(currentBoard.name))
             {
-                id = new System.Random(i).Next(boards.Length);
+                Random.InitState(BuildOnStart.Instance.Seed + i);
+                id = Random.Range(0, boards.Length);
             }
             else
                 break;
