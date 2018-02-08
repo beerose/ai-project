@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Klak.Wiring;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -57,20 +58,19 @@ public class GameController : MonoBehaviour
     private void bossSpawn() //temporary
     {
         var boards = GameObject.FindGameObjectsWithTag("Board");
-        Random.InitState(BuildOnStart.Instance.Seed);
-        int id = Random.Range(0,boards.Length);
-        int i;
-        for (i = 0; i < 50; i++)
+        float maxDist = 0f;
+        GameObject boardToSpawm = boards[0];
+        GameObject player = GameObject.Find("Player");
+        foreach (var board in boards)
         {
-            if (boards[id].name.Equals(currentBoard.name))
+            float dist = Vector3.Distance(board.transform.position, player.transform.position);
+            if (!board.name.Equals(currentBoard.name) && dist > maxDist)
             {
-                Random.InitState(BuildOnStart.Instance.Seed + i);
-                id = Random.Range(0, boards.Length);
+                maxDist = dist;
+                boardToSpawm = board;
             }
-            else
-                break;
         }
-        if (i != 50) Instantiate(Boss, boards[id].transform.position, boards[id].transform.rotation);
+        Instantiate(Boss, boardToSpawm.transform.position, boardToSpawm.transform.rotation);
         LoadingBar.Instance.Progress += 1;
     }
 
