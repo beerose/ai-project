@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531067f1c0954f94e983aea2973721aa, type: 3}
+  m_Name: Ghost_White
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1468828081179816, guid: b934b19277178b047b67e9b065e4bfeb,
+    type: 2}
+  walkSpeed: 5
+  runningSpeed: 8
+  runningCost: 0.2
+  runningDelay: 1
+  playerTracking: 1
+  health: 3
+  energy: 20
+  healthLimit: 0
+  healthDelay: 0
+  energyLimit: 5
+  energyDelay: 3
+  weaponModels:
+  - {fileID: 11400000, guid: b8fa6acdeb60613499fb0d2f63631137, type: 2}
+  - {fileID: 11400000, guid: d90aa530d0e40f84da4fc173aaaadc4e, type: 2}

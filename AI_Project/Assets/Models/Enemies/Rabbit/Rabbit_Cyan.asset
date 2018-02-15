@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531067f1c0954f94e983aea2973721aa, type: 3}
+  m_Name: Rabbit_Cyan
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1672082501111650, guid: a10e7c939675c3d42a0592428c91bbc0,
+    type: 2}
+  walkSpeed: 2
+  runningSpeed: 10
+  runningCost: 0.2
+  runningDelay: 1
+  playerTracking: 1
+  health: 9
+  energy: 25
+  healthLimit: 8
+  healthDelay: 4
+  energyLimit: 24
+  energyDelay: 3
+  weaponModels:
+  - {fileID: 11400000, guid: 949a896ac583bb14daf5bad06b8469d3, type: 2}
