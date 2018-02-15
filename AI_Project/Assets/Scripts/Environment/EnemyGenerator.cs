@@ -45,7 +45,7 @@ public class EnemyGenerator : MonoBehaviour {
 
 		for (int i = 0; i < enemy.weaponModels.Length; i++) {
 			WeaponModel newWeaponModel = Instantiate (enemy.weaponModels[i]);
-			if (newWeaponModel.weaponType == WeaponType.MELEE) {
+			if (newWeaponModel.GetType().Equals(typeof(MeleeWeaponModel))) {
 				newWeaponModel.attackDemage = randomValue (1, 10);
 			} else {
 				newWeaponModel.attackDemage = randomValue (2, 20);

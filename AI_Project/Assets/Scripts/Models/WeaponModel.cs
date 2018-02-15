@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class WeaponModel : ScriptableObject  {
 	public GameObject weaponPrefab;
-	public WeaponType weaponType;
 	public float attackCost;
 	public float incentive;
 	public float attackDistance;

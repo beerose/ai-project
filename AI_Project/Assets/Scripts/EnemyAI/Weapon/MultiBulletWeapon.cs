@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MultiBulletWeapon : Weapon {
-	public int numberBullets;
+	public int bulletsNumber;
 	public float angle;
 	public float attacksNumber;
 	private WeaponController weaponController;
@@ -15,13 +15,13 @@ public class MultiBulletWeapon : Weapon {
 		weaponController = GetComponent<WeaponController> ();
 		transform.Rotate (Vector3.up, -(angle/2));
 		startRotation = transform.rotation;
-		diff = angle / numberBullets;
+		diff = angle / bulletsNumber;
 		delay = weaponController.FireDelay;
 	}
 
 	public override bool isAvailable (Transform playerTransform) {
 
-		if (numberBullets == 0 || attacksNumber == 0)
+		if (bulletsNumber == 0 || attacksNumber == 0)
 			return false;
 
 		if (!weaponController.isAvailable ()){
@@ -29,7 +29,7 @@ public class MultiBulletWeapon : Weapon {
 		}
 
 		transform.rotation = startRotation;	
-		for (int i = 0; i < numberBullets; i++) {
+		for (int i = 0; i < bulletsNumber; i++) {
 			RaycastHit hit;
 			transform.Rotate (Vector3.up, diff);
 			if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) {
@@ -49,14 +49,14 @@ public class MultiBulletWeapon : Weapon {
 		double rEnergy = 100.0 - (attackCost / enemyEnergy * 100.0);
 		double rDemage = weaponController.Damage / playerHealth.m_StartingHealth * 100.0;
 		double rSpeed = weaponController.BulletSpeed;;
-		return - (rDistance / rSpeed) + numberBullets + (rEnergy + rDemage) * incentive ;
+		return - (rDistance / rSpeed) + bulletsNumber + (rEnergy + rDemage) * incentive ;
 	}
 				
 	public override void attack(Collider player){
 		transform.rotation = startRotation;
 		weaponController.FireDelay = 0;
-		for (int i = 0; i < numberBullets; i++) {
-			if (i == numberBullets - 1) {
+		for (int i = 0; i < bulletsNumber; i++) {
+			if (i == bulletsNumber - 1) {
 				weaponController.FireDelay = delay;
 			}
 			transform.Rotate (Vector3.up, diff);

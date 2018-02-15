@@ -33,7 +33,7 @@ public class MultiWeaponModel : WeaponModel {
 		multiBulletWeapon.attackDistance = attackDistance;
 		multiBulletWeapon.incentive = incentive;
 		multiBulletWeapon.angle = angle;
-		multiBulletWeapon.numberBullets = bulletsNumber;
+		multiBulletWeapon.bulletsNumber = bulletsNumber;
 
 		weaponController.BulletSpeed = bulletSpeed;
 		weaponController.Damage = attackDemage;
