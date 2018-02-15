@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     public float runningSpeed = 8;
     public float runningCost = 0.1f;
 	public bool playerTracking = true;
+	public float runningDelay = 1;
     private float runningTimer = 0;
-    private float runningDelay = 1;
 
     private EnemyController enemyController;
     private Vector3 startPosition;
@@ -112,17 +112,4 @@ public class EnemyMovement : MonoBehaviour
         finalRotation.z = oryginalZ;
         enemyTransform.rotation = finalRotation;
     }
-
-	public double getRating(){
-		Start ();
-		double rEnergy = enemyController.energy / runningCost;
-		double rDelay =  60 / runningDelay;
-		double rSpeed = runningSpeed * System.Math.Min (rDelay, rEnergy);
-		double rWalk = (600 / walkSpeed) / 600 * 100;
-		double rPlayerTracking = (playerTracking) ? 100 : 0;
-
-		double resultSpeed = (rSpeed > 600) ? 100 : ((rSpeed / 600) * 100);
-		return  (resultSpeed + rWalk + rPlayerTracking > 200) ? 100 : (resultSpeed + rWalk + rPlayerTracking)/300 * 100;
-
-	}
 }

@@ -13,6 +13,7 @@ public class EnemyShooting : MonoBehaviour
     {
         enemyController = transform.parent.GetComponentInChildren<EnemyController>();
         weapons = transform.parent.GetComponentsInChildren<Weapon>();
+		Debug.Log (weapons.Length);
         sphereCollider = transform.GetComponent<SphereCollider>();
     }
 
@@ -57,35 +58,5 @@ public class EnemyShooting : MonoBehaviour
             bestWeapon.attack(player);
             enemyController.useEnergy(bestWeapon.attackCost);
         }
-    }
-
-    public double getWeaponsRating()
-    {
-		Start ();
-        double sum = 0;
-        for (int i = 0; i < weapons.Length; i++)
-        {
-			double rating = weapons[i].getRating(enemyController.energy);
-			if (enemyController.energy > weapons[i].attackCost)
-            {
-                sum += rating;
-            }
-		}
-		return (weapons.Length == 0) ? 0.0 : sum / weapons.Length;
-    }
-
-    public double getBestWeaponRating()
-    {
-		Start ();
-        double bestRating = double.NegativeInfinity;
-        for (int i = 0; i < weapons.Length; i++)
-        {
-			double rating = weapons[i].getRating(enemyController.energy);
-            if (rating > bestRating && enemyController.energy > weapons[i].attackCost)
-            {
-                bestRating = rating;
-            }
-        }
-		return (bestRating == double.NegativeInfinity )? 0.0 : bestRating;
     }
 }
