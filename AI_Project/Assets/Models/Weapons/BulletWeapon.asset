@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12bb0e6e332b827408035d8582ad4a31, type: 3}
+  m_Name: BulletWeapon
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 1254776795537402, guid: 1bc4528e324719846a55390ad9eb46dc,
+    type: 2}
+  weaponType: 1
+  attackCost: 1
+  incentive: 1
+  attackDistance: 5
+  attackDelay: 1
+  attackDemage: 8
+  attacksNumber: 10
+  bulletSpeed: 15

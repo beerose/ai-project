@@ -11,76 +11,66 @@ public class EnemyGenerator : MonoBehaviour {
 
 	private int seed = 0;
 
-	private GameObject[] population;
-	private List<GameObject> newPopulation;
+	private EnemyModel[] population;
+	private List<EnemyModel> newPopulation;
 
 
-	public void start(GameObject enemy){
-		population = new GameObject[numberOfPopulation];
-		newPopulation = new List<GameObject>();
+	public void start(EnemyModel enemy){
+		population = new EnemyModel[numberOfPopulation];
+		newPopulation = new List<EnemyModel>();
 		initPopulation (enemy);
-		sortPopulation ();
+		sortAndMoveToPopulation ();
 		for (int i = 0; i < numberIteration; i++) {
 			crossEnemies ();
-			foreach (GameObject e in population) {
+			foreach (EnemyModel e in population) {
 				newPopulation.Add (e);
 			}
-			sortPopulation ();
+			sortAndMoveToPopulation ();
 			mutateEnemies ();
-			foreach (GameObject e in population) {
+			foreach (EnemyModel e in population) {
 				newPopulation.Add (e);
 			}
-			sortPopulation ();
+			sortAndMoveToPopulation ();
 		}
 	}
 
-	private void initPopulation(GameObject enemy){
+	private void initPopulation(EnemyModel enemy){
 		for (int i = 0; i < population.Length; i++){
-			newPopulation.Add( initEnemy (Instantiate(enemy)));
+			newPopulation.Add( initEnemy (enemy));
 		}
 	}
 
-	private GameObject initEnemy (GameObject gameObject){
-		EnemyController enemyController = gameObject.GetComponentInChildren<EnemyController> ();
-		EnemyMovement enemyMovement = gameObject.GetComponentInChildren<EnemyMovement> ();
+	private EnemyModel initEnemy (EnemyModel enemy){
+		EnemyModel newEnemy = Instantiate (enemy);
 
-		WeaponController [] weaponControllers = gameObject.GetComponentsInChildren<WeaponController> ();
-		MeleeWeapon[] meleeWeapons = gameObject.GetComponentsInChildren<MeleeWeapon> ();
-
-		for (int i = 0; weaponControllers.Length > i; i++) {
-			weaponControllers[i].Damage = randomValue(2,20);
-			weaponControllers[i].BulletSpeed =  randomValue(5,15);
-			weaponControllers [i].FireDelay = randomValue(0,10);
+		for (int i = 0; i < enemy.weaponModels.Length; i++) {
+			WeaponModel newWeaponModel = Instantiate (enemy.weaponModels[i]);
+			if (newWeaponModel.GetType().Equals(typeof(MeleeWeaponModel))) {
+				newWeaponModel.attackDemage = randomValue (1, 10);
+			} else {
+				newWeaponModel.attackDemage = randomValue (2, 20);
+			}
+			newEnemy.weaponModels[i] = newWeaponModel;
 		}
-			
-		for (int i = 0; meleeWeapons.Length > i; i++) {
-			meleeWeapons [i].attackDemage = randomValue(1,10);
-		}
-			
-		enemyMovement.runningSpeed = randomValue(2,15);
 
-		enemyMovement.walkSpeed = randomValue(2, (int)enemyMovement.runningSpeed);
+		newEnemy.runningSpeed = randomValue(2,15);
+		newEnemy.walkSpeed = randomValue(2, (int) newEnemy.runningSpeed);
+		newEnemy.energy = randomValue(10,30);
+		newEnemy.health = randomValue(2,8); 
 
-		enemyController.energy = randomValue(10,30);
-
-		enemyController.health = randomValue(2,8); 
-
-		return gameObject;
+		return newEnemy;
 	}
 		
-
-
-	private void sortPopulation(){
+	private void sortAndMoveToPopulation(){
 		newPopulation.Sort(SortByScore);
 
 		int j = 0;
-		foreach (GameObject enemy in newPopulation) {
+		foreach (EnemyModel enemy in newPopulation) {
 			if (j >= population.Length) {
-				Destroy(enemy);
-			} else {
-				population[j] = enemy;
-				j++;
-			}
+				break;
+			} 
+			population[j] = enemy;
+			j++;
 		}
 
 		newPopulation.Clear(); 
@@ -94,75 +84,45 @@ public class EnemyGenerator : MonoBehaviour {
 		}
 	}
 
-	private GameObject crossEnemy(GameObject gameObject1, GameObject gameObject2){
-		GameObject gameObject = Instantiate(gameObject2);
+	private EnemyModel crossEnemy(EnemyModel enemy1, EnemyModel enemy2){
+		EnemyModel newEnemy = Instantiate(enemy2);
 
-		EnemyController enemyController = gameObject.GetComponentInChildren<EnemyController> ();
-		EnemyController enemyController1 = gameObject1.GetComponentInChildren<EnemyController> ();
-
-		EnemyMovement enemyMovement = gameObject.GetComponentInChildren<EnemyMovement> ();
-		EnemyMovement enemyMovement1 = gameObject1.GetComponentInChildren<EnemyMovement> ();
-
-		WeaponController [] weaponControllers = gameObject.GetComponentsInChildren<WeaponController> ();
-		WeaponController [] weaponControllers1 = gameObject1.GetComponentsInChildren<WeaponController> ();
-
-		for (int i = 0; weaponControllers.Length > i || weaponControllers1.Length > i; i++) {
-			weaponControllers [i].Damage = weaponControllers1 [i].Damage;
+		for (int i = 0; i < enemy1.weaponModels.Length || i < newEnemy.weaponModels.Length; i = i + 2) {
+			newEnemy.weaponModels [i].attackDemage = enemy1.weaponModels [i].attackDemage;
 		}
 			
-		enemyMovement.runningSpeed = enemyMovement1.runningSpeed;
+		newEnemy.runningSpeed = enemy1.runningSpeed;
+		newEnemy.health = enemy1.health;
 
-		enemyController.health = enemyController1.health;
-
-		return gameObject;
+		return newEnemy;
 	}
 
 	private void mutateEnemies(){
 		for(int i = 0; i < numberOfPopulation; i++){
-			List<GameObject> mutantEnemiesPopulation = new List<GameObject>();
+			List<EnemyModel> mutantEnemiesPopulation = new List<EnemyModel>();
 			for (int j = 0; j < numberOfMutantEnemies; j++) {
 				mutantEnemiesPopulation.Add( mutateEnemy(population[i]));
 			}
 
 			mutantEnemiesPopulation.Sort(SortByScore);
 			newPopulation.Add (mutantEnemiesPopulation[0]);
-
-			int k = 0;
-			foreach (GameObject enemy in mutantEnemiesPopulation) {
-				if (k > 0) {
-					Destroy (enemy);
-				}
-				k++;
-			}
 		}
 	}
 
-	private GameObject mutateEnemy (GameObject gameObject){
-		GameObject result = Instantiate (gameObject);
-		EnemyController enemyController = result.GetComponentInChildren<EnemyController> ();
-		EnemyMovement enemyMovement = result.GetComponentInChildren<EnemyMovement> ();
+	private EnemyModel mutateEnemy (EnemyModel enemy){
+		EnemyModel newEnemy = Instantiate (enemy);
 
-		WeaponController [] weaponControllers = result.GetComponentsInChildren<WeaponController> ();
-		MeleeWeapon[] meleeWeapons = result.GetComponentsInChildren<MeleeWeapon> ();
-
-		for (int i = 0;  i< weaponControllers.Length; i++) {
-			Random.InitState(i);
-			weaponControllers [i].Damage = mutate (weaponControllers [i].Damage);
+		for (int i = 0;  i< enemy.weaponModels.Length; i++) {
+			WeaponModel newWeaponModel = Instantiate (newEnemy.weaponModels [i]);
+			newWeaponModel.attackDemage = mutate (newWeaponModel.attackDemage);
+			newEnemy.weaponModels [i] = newWeaponModel;
 		}
 
-		for (int i = 0; i < meleeWeapons.Length; i++) {
-			Random.InitState(i);
-			meleeWeapons [i].attackDemage = mutate (meleeWeapons [i].attackDemage);
-		}
+		newEnemy.runningSpeed = mutate (newEnemy.runningSpeed);
+		newEnemy.energy = mutate (newEnemy.energy);
+		newEnemy.health = mutate (newEnemy.health);
 
-
-		enemyMovement.runningSpeed = mutate (enemyMovement.runningSpeed);
-
-		enemyController.energy = mutate (enemyController.energy);
-
-		enemyController.health = mutate (enemyController.health);
-
-		return result;
+		return newEnemy;
 	}
 
 	private float mutate(float value){
@@ -173,11 +133,9 @@ public class EnemyGenerator : MonoBehaviour {
 		return newValue;
 	}
 
-	private int SortByScore(GameObject e1, GameObject e2){
-		EnemyController enemyController1 = e1.GetComponentInChildren<EnemyController> ();
-		EnemyController enemyController2 = e2.GetComponentInChildren<EnemyController> ();
-		double resultE1 = System.Math.Abs(enemyController1.getRating () - getScore ());
-		double resultE2 = System.Math.Abs(enemyController2.getRating () - getScore ());
+	private int SortByScore(EnemyModel e1, EnemyModel e2){
+		double resultE1 = System.Math.Abs(e1.getRating () - getScore ());
+		double resultE2 = System.Math.Abs(e2.getRating () - getScore ());
 		return (int) resultE1.CompareTo(resultE2);
 	}
 
@@ -190,7 +148,7 @@ public class EnemyGenerator : MonoBehaviour {
 		return Random.Range (from, to);
 	}
 
-	public GameObject[] getPopulation(){
+	public EnemyModel[] getPopulation(){
 		return population;
 	}
 		

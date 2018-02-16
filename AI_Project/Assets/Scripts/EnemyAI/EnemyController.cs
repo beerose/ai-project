@@ -108,22 +108,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
-	public double getRating(){
-		EnemyShooting enemyShooting = transform.parent.GetComponentInChildren<EnemyShooting> ();
-		EnemyMovement enemyMovement = transform.parent.GetComponentInChildren<EnemyMovement> ();
-		SphereCollider sphereCollider = enemyMovement.GetComponent<SphereCollider> ();
-
-		double rShooting = enemyShooting.getWeaponsRating();
-		double rMovement = enemyMovement.getRating ();
-
-		double rHealth = System.Math.Min(100, health * 3);
-
-		double rEnergy = System.Math.Min(100, energy);
-
-		return System.Math.Min(100, ((rEnergy + rHealth + rMovement)/2 + rShooting) / 400 * 100);
-	}
-
+		
     public void useEnergy(float value)
     {
         currentEnergy -= value;

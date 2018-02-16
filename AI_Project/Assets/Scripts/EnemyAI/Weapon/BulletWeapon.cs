@@ -32,20 +32,7 @@ public class BulletWeapon : Weapon {
 		double rSpeed = weaponController.BulletSpeed;
 		return - (rDistance / rSpeed) + (rEnergy + rDemage) * incentive ;
 	}
-
-	public override double getRating(float enemyEnergy){
-		Start ();
-		double playerHealth = 100;
-		double second = 60;
-		double rDelay =  second / weaponController.FireDelay;
-		double rEnergy = enemyEnergy / attackCost;
-		double rDemage = weaponController.Damage * System.Math.Min (rDelay, rEnergy);
-
-		double rSpeed =  100.0 - (weaponController.BulletSpeed / 20.0 * 100.0);
-
-		return (rDemage >= 100) ? 200.0 : (rDemage/playerHealth) * 100.0 + (rSpeed) / 200.0 * 100.0;
-	}
-
+		
 	public override void attack(Collider player){
 		weaponController.Fire();
 	}

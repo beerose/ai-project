@@ -15,13 +15,10 @@ public class PlayerHealth : MonoBehaviour
     public float DamageFromEnemyCollision = 5;
     public float DelayFromTakeDamage = 0.5f;
 
-    //public float LifeTime;
-
     private float m_CurrentHealth;
     private bool m_Dead;
     private float lastHit;
 
-    //private Rigidbody rb;
     private PlayerAnimatorController pAnimC;
 
     private Light playerLight;
@@ -122,8 +119,6 @@ public class PlayerHealth : MonoBehaviour
     {
         m_Dead = true;
         GameController.Instance.GameOver();
-        //rb = GetComponent<Rigidbody>();
-        //Destroy(gameObject, LifeTime);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -137,14 +132,5 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-
-    /*void OnCollisionStay(Collision collision)
-    {
-        string colTag = collision.transform.tag;
-        if ((colTag.Equals("Enemy") || colTag.Equals("Boss")) && lastHit + DelayFromTakeDamage < Time.time && !m_Dead)
-        {
-            lastHit = Time.time;
-            TakeDamage(DamageFromEnemyCollision);
-        }
-    }*/
+		
 }
